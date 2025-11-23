@@ -44,33 +44,49 @@ class AdminAdvertisementController extends Controller
         $home_ad_data->above_footer_ad_url = $request->above_footer_ad_url;
         $home_ad_data->above_footer_ad_status = $request->above_footer_ad_status;
         $home_ad_data->update();
-        return redirect()->back()->with('success', '정보가 성공적으로 변경되었습니다.');
+        return redirect()->back()->with('success', 'Informasi Anda telah berhasil diubah.');
     }
 
     public function top_ad_show()
     {
         $top_ad_data = TopAdvertisement::where('id', 1)->first();
+
         return view('admin.advertisement_top_view', compact('top_ad_data'));
     }
 
     public function top_ad_update(Request $request)
     {
-        $top_ad_data = topAdvertisement::where('id', 1)->first();
+        $top_ad_data = TopAdvertisement::where('id', 1)->first();
+
         if ($request->hasFile('top_ad')) {
+
             $request->validate([
                 'top_ad' => 'image|mimes:jpg,jpeg,png,gif'
             ]);
-            unlink(public_path('uploads/' . $top_ad_data->top_ad));
+
+            // HAPUS FILE LAMA (jika ada)
+            if ($top_ad_data->top_ad_image && file_exists(public_path('uploads/' . $top_ad_data->top_ad_image))) {
+                unlink(public_path('uploads/' . $top_ad_data->top_ad_image));
+            }
+
             $ext = $request->file('top_ad')->extension();
-            $final_name = 'top_ad' . '.' . $ext;
+            $final_name = 'top_ad_' . time() . '.' . $ext;
+
             $request->file('top_ad')->move(public_path('uploads/'), $final_name);
-            $top_ad_data->top_ad = $final_name;
+
+            // SIMPAN KE KOLOM YANG BENAR
+            $top_ad_data->top_ad_image = $final_name;
         }
+
+        // UPDATE KOLOM LAIN
         $top_ad_data->top_ad_url = $request->top_ad_url;
         $top_ad_data->top_ad_status = $request->top_ad_status;
+
         $top_ad_data->update();
-        return redirect()->back()->with('success', '정보가 성공적으로 변경되었습니다.');
+
+        return redirect()->back()->with('success', 'Berhasil diperbarui!');
     }
+
 
     public function sidebar_ad_show()
     {
@@ -101,7 +117,7 @@ class AdminAdvertisementController extends Controller
         $sidebar_ad_data->sidebar_ad_url = $request->sidebar_ad_url;
         $sidebar_ad_data->sidebar_ad_location = $request->sidebar_ad_location;
         $sidebar_ad_data->save();
-        return redirect()->route('admin_sidebar_ad_show')->with('success', '광고가 성공적으로 추가되었습니다.');
+        return redirect()->route('admin_sidebar_ad_show')->with('success', 'Iklan Anda telah berhasil ditambahkan.');
     }
 
     public function sidebar_ad_edit($id)
@@ -131,7 +147,7 @@ class AdminAdvertisementController extends Controller
         $sidebar_ad_data->sidebar_ad_url = $request->sidebar_ad_url;
         $sidebar_ad_data->sidebar_ad_location = $request->sidebar_ad_location;
         $sidebar_ad_data->update();
-        return redirect()->route('admin_sidebar_ad_show')->with('success', '정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_sidebar_ad_show')->with('success', 'Informasi Anda telah berhasil diubah.');
     }
 
     public function sidebar_ad_delete($id)
@@ -139,6 +155,6 @@ class AdminAdvertisementController extends Controller
         $sidebar_ad_data = SidebarAdvertisement::where('id', $id)->first();
         unlink(public_path('uploads/' . $sidebar_ad_data->sidebar_ad));
         $sidebar_ad_data->delete();
-        return redirect()->route('admin_sidebar_ad_show')->with('success', '정보가 성공적으로 삭제되었습니다.');
+        return redirect()->route('admin_sidebar_ad_show')->with('success', 'Informasi Anda telah berhasil dihapus.');
     }
 }

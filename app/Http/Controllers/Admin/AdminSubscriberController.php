@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subscriber;
 use App\Mail\Websitemail;
+use Illuminate\Support\Facades\Mail;
 
 class AdminSubscriberController extends Controller
 {
@@ -32,7 +33,7 @@ class AdminSubscriberController extends Controller
 
         $subscribers = Subscriber::where('status', 'Active')->get();
         foreach ($subscribers as $row) {
-            \Mail::to($row->email)->send(new Websitemail($subject, $message));
+            Mail::to($row->email)->send(new Websitemail($subject, $message));
         }
 
         return redirect()->route('admin_subscribers_send_email')->with('success', 'Email is sent successfully to subscribers');

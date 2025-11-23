@@ -31,7 +31,7 @@ class AdminPageController extends Controller
 
         $page_data->update();
 
-        return redirect()->route('admin_page_about')->with('success', '페이지 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_page_about')->with('success', 'Informasi halaman telah berhasil diubah.');
     }
 
     public function faq()
@@ -56,7 +56,7 @@ class AdminPageController extends Controller
 
         $page_data->update();
 
-        return redirect()->route('admin_page_faq')->with('success', '페이지 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_page_faq')->with('success', 'Informasi halaman telah berhasil diubah.');
     }
 
     public function terms()
@@ -82,7 +82,7 @@ class AdminPageController extends Controller
 
         $page_data->update();
 
-        return redirect()->route('admin_page_terms')->with('success', '페이지 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_page_terms')->with('success', 'Informasi halaman telah berhasil diubah.');
     }
 
     public function privacy()
@@ -108,7 +108,7 @@ class AdminPageController extends Controller
 
         $page_data->update();
 
-        return redirect()->route('admin_page_privacy')->with('success', '페이지 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_page_privacy')->with('success', 'Informasi halaman telah berhasil diubah.');
     }
 
     public function disclaimer()
@@ -134,7 +134,7 @@ class AdminPageController extends Controller
 
         $page_data->update();
 
-        return redirect()->route('admin_page_disclaimer')->with('success', '페이지 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_page_disclaimer')->with('success', 'Informasi halaman telah berhasil diubah.');
     }
 
     public function login()
@@ -158,7 +158,7 @@ class AdminPageController extends Controller
 
         $page_data->update();
 
-        return redirect()->route('admin_page_login')->with('success', '페이지 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_page_login')->with('success', 'Informasi halaman telah berhasil diubah.');
     }
 
     public function contact()
@@ -186,7 +186,7 @@ class AdminPageController extends Controller
 
         $page_data->update();
 
-        return redirect()->route('admin_page_contact')->with('success', '페이지 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_page_contact')->with('success', 'Informasi halaman telah berhasil diubah.');
     }
 
 

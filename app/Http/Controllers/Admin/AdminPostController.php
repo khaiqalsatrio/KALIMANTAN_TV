@@ -67,12 +67,12 @@ class AdminPostController extends Controller
 
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::with('tags')->findOrFail($id);
         $categories = Category::orderBy('category_name', 'asc')->get();
-        // load tags untuk ditampilkan di form
-        $tags = Tag::where('post_id', $id)->pluck('tag_name')->implode(',');
-        return view('admin.post.edit', compact('post', 'categories', 'tags'));
+
+        return view('admin.post.edit', compact('post', 'categories'));
     }
+
 
     public function update(Request $request, $id)
     {

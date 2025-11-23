@@ -31,7 +31,7 @@ class AdminVideoController extends Controller
         $video->caption = $request->caption;
         $video->save();
 
-        return redirect()->route('admin_video_show')->with('success', '동영상 정보가 성공적으로 업로드되었습니다.');
+        return redirect()->route('admin_video_show')->with('success', 'Informasi video telah berhasil diunggah.');
     }
 
     public function edit($id)
@@ -49,7 +49,7 @@ class AdminVideoController extends Controller
         $video_data->caption = $request->caption;
         $video_data->update();
 
-        return redirect()->route('admin_video_show')->with('success', '동영상 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_video_show')->with('success', 'Informasi video telah berhasil diubah.');
     }
 
     public function delete($id)
@@ -58,6 +58,6 @@ class AdminVideoController extends Controller
         $video_data = Video::where('id', $id)->first();
         $video_data->delete();
 
-        return redirect()->route('admin_video_show')->with('success', '동영상 정보가 성공적으로 삭제되었습니다.');
+        return redirect()->route('admin_video_show')->with('success', 'Informasi video telah berhasil diubah.');
     }
 }

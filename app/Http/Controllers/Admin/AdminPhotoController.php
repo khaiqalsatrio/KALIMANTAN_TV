@@ -36,7 +36,7 @@ class AdminPhotoController extends Controller
         $photo->photo = $final_name;
         $photo->save();
 
-        return redirect()->route('admin_photo_show')->with('success', '사진이 성공적으로 업로드되었습니다.');
+        return redirect()->route('admin_photo_show')->with('success', 'Foto Anda telah berhasil diunggah.');
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class AdminPhotoController extends Controller
         $photo_data->caption = $request->caption;
         $photo_data->update();
 
-        return redirect()->route('admin_photo_show')->with('success', '사진 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_photo_show')->with('success', 'Informasi foto telah berhasil diubah.');
     }
 
     public function delete($id)
@@ -79,7 +79,7 @@ class AdminPhotoController extends Controller
         $photo_data->delete();
         unlink(public_path('uploads/photo_gallery/' . $photo_data->photo));
 
-        return redirect()->route('admin_photo_show')->with('success', '사진 정보가 성공적으로 삭제되었습니다.');
+        return redirect()->route('admin_photo_show')->with('success', 'Informasi foto telah berhasil dihapus.');
     }
 
 

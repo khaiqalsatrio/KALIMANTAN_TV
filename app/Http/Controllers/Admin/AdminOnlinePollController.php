@@ -31,7 +31,7 @@ class AdminOnlinePollController extends Controller
         $online_poll->no_vote = 0;
         $online_poll->save();
 
-        return redirect()->route('admin_online_poll_show')->with('success', '온라인 투표 정보가 성공적으로 저장되었습니다.');
+        return redirect()->route('admin_online_poll_show')->with('success', 'Informasi pemungutan suara daring Anda telah berhasil disimpan..');
     }
 
     public function edit($id)
@@ -52,7 +52,7 @@ class AdminOnlinePollController extends Controller
         $online_poll->question = $request->question;
         $online_poll->update();
 
-        return redirect()->route('admin_online_poll_show')->with('success', '온라인 투표 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_online_poll_show')->with('success', 'Informasi pemungutan suara daring Anda telah berhasil diubah..');
     }
 
     public function delete($id)
@@ -61,6 +61,6 @@ class AdminOnlinePollController extends Controller
         $online_poll = OnlinePoll::where('id', $id)->first();
         $online_poll->delete();
 
-        return redirect()->route('admin_online_poll_show')->with('success', '라이브 채널 정보가 성공적으로 삭제되었습니다.');
+        return redirect()->route('admin_online_poll_show')->with('success', 'Informasi saluran langsung telah berhasil dihapus.');
     }
 }

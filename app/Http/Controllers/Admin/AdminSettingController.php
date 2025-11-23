@@ -28,6 +28,6 @@ class AdminSettingController extends Controller
         $setting_data->video_status = $request->video_status;
         $setting_data->update();
 
-        return redirect()->route('admin_setting')->with('success', '홈페이지 설정 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_setting')->with('success', 'Pengaturan beranda Anda telah berhasil diubah.');
     }
 }

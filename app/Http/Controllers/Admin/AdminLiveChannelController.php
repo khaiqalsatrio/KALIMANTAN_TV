@@ -31,7 +31,7 @@ class AdminLiveChannelController extends Controller
         $live_channel->heading = $request->heading;
         $live_channel->save();
 
-        return redirect()->route('admin_live_channel_show')->with('success', '라이브 채널 정보가 성공적으로 저장되었습니다.');
+        return redirect()->route('admin_live_channel_show')->with('success', 'Informasi saluran langsung telah berhasil disimpan.');
     }
 
     public function edit($id)
@@ -54,7 +54,7 @@ class AdminLiveChannelController extends Controller
         $live_channel->video_id = $request->video_id;
         $live_channel->update();
 
-        return redirect()->route('admin_live_channel_show')->with('success', '라이브 채널 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_live_channel_show')->with('success', 'Informasi saluran langsung telah berhasil diubah.');
     }
 
     public function delete($id)
@@ -63,6 +63,6 @@ class AdminLiveChannelController extends Controller
         $live_channel = LiveChannel::where('id', $id)->first();
         $live_channel->delete();
 
-        return redirect()->route('admin_live_channel_show')->with('success', '라이브 채널 정보가 성공적으로 삭제되었습니다.');
+        return redirect()->route('admin_live_channel_show')->with('success', 'Informasi saluran langsung telah berhasil dihapus.');
     }
 }

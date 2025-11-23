@@ -34,7 +34,7 @@ class AdminCategoryController extends Controller
 
         $category_data->save();
 
-        return redirect()->route('admin_category_show')->with('success', '카테고리가 성공적으로 생성되었습니다.');
+        return redirect()->route('admin_category_show')->with('success', 'Kategori berhasil dibuat.');
     }
 
     public function edit($id)
@@ -59,13 +59,13 @@ class AdminCategoryController extends Controller
 
         $category_data->update();
 
-        return redirect()->route('admin_category_show')->with('success', '카테고리 정보가 성공적으로 변경되었습니다.');
+        return redirect()->route('admin_category_show')->with('success', 'Informasi kategori telah berhasil diubah.');
     }
 
     public function delete($id)
     {
         $category_data = Category::where('id', $id)->first();
         $category_data->delete();
-        return redirect()->route('admin_category_show')->with('success', '카테고리 정보가 성공적으로 삭제되었습니다.');
+        return redirect()->route('admin_category_show')->with('success', 'Informasi kategori telah berhasil dihapus.');
     }
 }

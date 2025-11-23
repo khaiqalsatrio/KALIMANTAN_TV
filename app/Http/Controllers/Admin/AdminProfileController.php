@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
-use Auth;
-use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash; 
 
 class AdminProfileController extends Controller
 {
@@ -53,7 +53,7 @@ class AdminProfileController extends Controller
 
         $admin_data->update();
 
-        return redirect()->back()->with('success', '프로필 정보가 성공적으로 변경되었습니다.');
+        return redirect()->back()->with('success', 'Informasi profil Anda telah berhasil diubah.');
     }
 
 
