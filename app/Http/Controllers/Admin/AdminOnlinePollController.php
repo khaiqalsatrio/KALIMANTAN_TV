@@ -24,43 +24,35 @@ class AdminOnlinePollController extends Controller
         $request->validate([
             'question' => 'required'
         ]);
-
         $online_poll = new OnlinePoll();
         $online_poll->question = $request->question;
         $online_poll->yes_vote = 0;
         $online_poll->no_vote = 0;
         $online_poll->save();
-
         return redirect()->route('admin_online_poll_show')->with('success', 'Informasi pemungutan suara daring Anda telah berhasil disimpan..');
     }
 
     public function edit($id)
     {
         $online_poll_single = OnlinePoll::where('id', $id)->first();
-
         return view('admin.online_poll_edit', compact('online_poll_single'));
     }
 
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'question' => 'required'
         ]);
-
         $online_poll = OnlinePoll::where('id', $id)->first();
         $online_poll->question = $request->question;
         $online_poll->update();
-
         return redirect()->route('admin_online_poll_show')->with('success', 'Informasi pemungutan suara daring Anda telah berhasil diubah..');
     }
 
     public function delete($id)
     {
-
         $online_poll = OnlinePoll::where('id', $id)->first();
         $online_poll->delete();
-
         return redirect()->route('admin_online_poll_show')->with('success', 'Informasi saluran langsung telah berhasil dihapus.');
     }
 }

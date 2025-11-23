@@ -1,4 +1,4 @@
-@extends('front.layout.app');
+@extends('front.layout.app')
 
 @section('main_content')
 
@@ -11,7 +11,6 @@
                     <div class="acme-news-ticker-label">Latest News</div>
                     <div class="acme-news-ticker-box">
                         <ul class="my-news-ticker">
-
                             @php
                             $i=0;
                             @endphp
@@ -26,8 +25,6 @@
                                 {{ route('news_detail', $row->id) }}
                                 ">{{$row->post_title}}</a></li>
                             @endforeach
-
-
                         </ul>
                     </div>
                 </div>
@@ -41,23 +38,17 @@
 <div class="home-main">
     <div class="container">
         <div class="row g-2">
-
             <div class="col-lg-8 col-md-12 left">
-
                 @php
                 $i = 0;
                 @endphp
-
                 @foreach($post_data as $row)
-
                 @php
                 $i++;
                 @endphp
-
                 @if ($i > 1)
                 @break
                 @endif
-
                 <div class="inner">
                     <div class="photo">
                         <div class="bg"></div>
@@ -73,7 +64,6 @@
                                 <div class="date-user">
                                     <div class="user">
                                         <a href="">
-
                                             @if($row->author_id == 0)
                                             @php
                                             $user_data = \App\Models\Admin::where('id', $row->admin_id)->first();
@@ -81,7 +71,6 @@
                                             @else
                                             {{--Implement this later--}}
                                             @endif
-
                                             {{ $user_data->name ?? 'Unknown' }}
                                         </a>
                                     </div>
@@ -99,34 +88,22 @@
                         </div>
                     </div>
                 </div>
-
-
                 @endforeach
-
-
             </div>
-
-
             <div class="col-lg-4 col-md-12">
-
                 @php
                 $i = 0;
                 @endphp
-
                 @foreach ($post_data as $row)
-
                 @php
                 $i++;
                 @endphp
-
                 @if ($i == 1)
                 @continue
                 @endif
-
                 @if ($i > 3)
                 @break
                 @endif
-
                 <div class="inner inner-right">
                     <div class="photo">
                         <div class="bg"></div>
@@ -168,8 +145,6 @@
                 </div>
                 @endforeach
             </div>
-
-
         </div>
     </div>
 </div>
@@ -191,41 +166,34 @@
     </div>
 </div>
 @endif
-
 <div class="search-section">
     <div class="container">
-        <div class="inner">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <input type="text" name="" class="form-control" placeholder="Title or Description">
+        <form action="{{ route('search') }}" method="GET">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <input type="text" name="q" class="form-control" placeholder="Cari judul atau isi berita...">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select name="" class="form-select">
-                            <option value="">Select Category</option>
-                            <option value="">Sports</option>
-                            <option value="">National</option>
-                            <option value="">Lifestyle</option>
-                        </select>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <select name="category" class="form-select">
+                                <option value="">Semua Kategori</option>
+                                @foreach($categories as $cat)
+                                <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <select name="" class="form-select">
-                            <option value="">Select Category</option>
-                            <option value="">Football</option>
-                            <option value="">Cricket</option>
-                            <option value="">Baseball</option>
-                        </select>
+
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary">Search</button>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
@@ -234,14 +202,10 @@
         <div class="row">
             <div class="col-lg-8 col-md-6 left-col">
                 <div class="left">
-
-
                     @foreach($categories as $item)
-
                     @if($item->posts->count() == 0)
                     @continue
                     @endif
-
                     <!-- News Of Category -->
                     <div class="news-total-item">
                         <div class="row">
@@ -258,11 +222,9 @@
                             </div>
                         </div>
                         <div class="row">
-
                             {{-- POST BESAR (1 POST) --}}
                             @foreach($item->posts as $single)
                             @if($loop->iteration == 2) @break @endif
-
                             <div class="col-lg-6 col-md-12">
                                 <div class="left-side">
                                     <div class="photo">
@@ -276,7 +238,6 @@
                                             {{ $single->post_title }}
                                         </a>
                                     </h3>
-
                                     <div class="date-user">
                                         <div class="user">
                                             @php
@@ -290,21 +251,18 @@
                                             </a>
                                         </div>
                                     </div>
-
                                     <div class="post-short-text">
                                         {!! $single->post_detail !!}
                                     </div>
                                 </div>
                             </div>
                             @endforeach
-
                             {{-- LIST KANAN (5 POST) --}}
                             <div class="col-lg-6 col-md-12">
                                 <div class="right-side">
                                     @foreach($item->posts as $single)
                                     @if($loop->iteration == 1) @continue @endif
                                     @if($loop->iteration == 6) @break @endif
-
                                     <div class="right-side-item">
                                         <div class="left">
                                             <img src="{{ asset('uploads/post/'.$single->post_photo) }}" alt="">
@@ -318,7 +276,6 @@
                                                     {{ $single->post_title }}
                                                 </a>
                                             </h2>
-
                                             <div class="date-user">
                                                 <div class="user">
                                                     @php
@@ -326,29 +283,21 @@
                                                     @endphp
                                                     <a href="javascript:void;">{{ $user_data->name ?? 'Unknown' }}</a>
                                                 </div>
-
                                                 <div class="date">
                                                     <a href="javascript:void;">
                                                         {{ date('d F, Y', strtotime($single->updated_at)) }}
                                                     </a>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                     @endforeach
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <!-- // News Of Category -->
-
                     @endforeach
-
-
-
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 sidebar-col">
@@ -357,10 +306,7 @@
         </div>
     </div>
 </div>
-
-
 @if ($setting_data->video_status == 'Show'))
-
 <div class="video-content">
     <div class="container">
         <div class="row">
@@ -373,13 +319,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="video-carousel owl-carousel">
-
-
                     @foreach ($video_data as $row)
                     @if($loop->iteration > $setting_data->video_total)
                     @break
                     @endif
-
                     <div class="item">
                         <div class="video-thumb">
                             <img src="http://img.youtube.com/vi/{{ $row->video_id }}/0.jpg" alt="">
@@ -425,7 +368,4 @@
     </div>
 </div>
 @endif
-
-
-
 @endsection

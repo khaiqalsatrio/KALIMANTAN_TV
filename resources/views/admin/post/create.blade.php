@@ -22,25 +22,20 @@
             </ul>
         </div>
         @endif
-
         <form action="{{ route('admin_post_store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
             <div class="mb-3">
                 <label class="form-label">Judul Post</label>
                 <input type="text" name="post_title" class="form-control" value="{{ old('post_title') }}" required>
             </div>
-
             <div class="mb-3">
                 <label class="form-label">Slug</label>
                 <input type="text" name="slug" class="form-control" value="{{ old('slug') }}" required>
             </div>
-
             <div class="mb-3">
                 <label class="form-label">Kategori</label>
                 <select name="category_id" class="form-select" required>
                     <option value="" disabled selected>-- Pilih Kategori --</option>
-
                     @foreach ($categories as $item)
                     <option value="{{ $item->id }}"
                         {{ old('category_id') == $item->id ? 'selected' : '' }}>
@@ -49,28 +44,24 @@
                     @endforeach
                 </select>
             </div>
-
+            <div class="mb-3">
+                <label class="form-label">Isi berita</label>
             <textarea name="post_detail" class="form-control" id="editor" style="height: 200px;">
             {{ old('post_detail') }}
             </textarea>
-
-
+            </div>
             <div class="mb-3">
                 <label class="form-label">Foto Thumbnail</label>
                 <input type="file" name="post_photo" class="form-control" required>
             </div>
-
-
             <div class="mb-3">
                 <label class="form-label">Tags (opsional)</label>
                 <input type="text" name="post_tag" class="form-control" value="{{ old('post_tag') }}">
             </div>
-
             <button type="submit" class="btn btn-success">
                 <i class="fas fa-save"></i> Simpan Post
             </button>
         </form>
-
     </div>
 </div>
 @endsection

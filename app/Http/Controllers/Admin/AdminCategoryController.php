@@ -26,39 +26,31 @@ class AdminCategoryController extends Controller
             'category_name' => 'required',
             'category_order' => 'required',
         ]);
-
         $category_data = new Category();
         $category_data->category_name = $request->category_name;
         $category_data->show_on_menu = $request->show_on_menu;
         $category_data->category_order = $request->category_order;
-
         $category_data->save();
-
         return redirect()->route('admin_category_show')->with('success', 'Kategori berhasil dibuat.');
     }
 
     public function edit($id)
     {
         $category_single = Category::where('id', $id)->first();
-
         return view('admin.category_edit', compact('category_single'));
     }
 
     public function update(Request $request, $id)
     {
         $category_data = Category::where('id', $id)->first();
-
         $request->validate([
             'category_name' => 'required',
             'category_order' => 'required',
         ]);
-
         $category_data->category_name = $request->category_name;
         $category_data->show_on_menu = $request->show_on_menu;
         $category_data->category_order = $request->category_order;
-
         $category_data->update();
-
         return redirect()->route('admin_category_show')->with('success', 'Informasi kategori telah berhasil diubah.');
     }
 

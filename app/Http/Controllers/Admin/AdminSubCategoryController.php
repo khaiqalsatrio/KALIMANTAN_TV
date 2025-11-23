@@ -14,7 +14,6 @@ class AdminSubCategoryController extends Controller
         $sub_categories  = Category::with('rCategory')
             ->orderBy('sub_category_order', 'asc')
             ->get();
-
         return view('admin.sub_category_show', compact('sub_categories'));
     }
 
@@ -31,7 +30,6 @@ class AdminSubCategoryController extends Controller
             'sub_category_order' => 'required',
             'category_id' => 'required'
         ]);
-
         Category::create([
             'sub_category_name' => $request->sub_category_name,
             'show_on_menu' => $request->show_on_menu,
@@ -39,7 +37,6 @@ class AdminSubCategoryController extends Controller
             'sub_category_order' => $request->sub_category_order,
             'category_id' => $request->category_id
         ]);
-
         return redirect()->route('admin_sub_category_show')
             ->with('success', 'Sub Category berhasil dibuat.');
     }
@@ -48,7 +45,6 @@ class AdminSubCategoryController extends Controller
     {
         $sub_category_single = Category::findOrFail($id);
         $category_data = Category::orderBy('id', 'asc')->get();
-
         return view('admin.sub_category_edit', compact('sub_category_single', 'category_data'));
     }
 
@@ -59,9 +55,7 @@ class AdminSubCategoryController extends Controller
             'sub_category_order' => 'required',
             'category_id' => 'required'
         ]);
-
         $sub_category_data = Category::findOrFail($id);
-
         $sub_category_data->update([
             'sub_category_name' => $request->sub_category_name,
             'show_on_menu' => $request->show_on_menu,
@@ -69,7 +63,6 @@ class AdminSubCategoryController extends Controller
             'sub_category_order' => $request->sub_category_order,
             'category_id' => $request->category_id
         ]);
-
         return redirect()->route('admin_sub_category_show')
             ->with('success', 'Sub Category berhasil diperbarui.');
     }
@@ -78,7 +71,6 @@ class AdminSubCategoryController extends Controller
     {
         $sub_category_data = Category::findOrFail($id);
         $sub_category_data->delete();
-
         return redirect()->route('admin_sub_category_show')
             ->with('success', 'Sub Category berhasil dihapus.');
     }

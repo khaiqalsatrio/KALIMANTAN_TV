@@ -20,14 +20,12 @@ class AdminSettingController extends Controller
             'news_ticker_total' => 'required',
             'video_total' => 'required'
         ]);
-
         $setting_data = Setting::where('id', 1)->first();
         $setting_data->news_ticker_total = $request->news_ticker_total;
         $setting_data->news_ticker_status = $request->news_ticker_status;
         $setting_data->video_total = $request->video_total;
         $setting_data->video_status = $request->video_status;
         $setting_data->update();
-
         return redirect()->route('admin_setting')->with('success', 'Pengaturan beranda Anda telah berhasil diubah.');
     }
 }

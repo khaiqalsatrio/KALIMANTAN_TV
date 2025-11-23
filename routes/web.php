@@ -42,6 +42,7 @@ use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminLiveChannelController;
 use App\Http\Controllers\Admin\AdminOnlinePollController;
 use App\Http\Controllers\Front\CategoryController;
+use App\Http\Controllers\Front\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -252,6 +253,17 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminOnlinePollController::class, 'update'])->name('admin_online_poll_update');
         Route::get('/delete/{id}', [AdminOnlinePollController::class, 'delete'])->name('admin_online_poll_delete');
     });
+
+    Route::get('archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
+
+    Route::get('/archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
+
+    // Search engine
+    Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------

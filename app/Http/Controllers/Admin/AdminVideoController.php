@@ -25,39 +25,31 @@ class AdminVideoController extends Controller
             'caption' => 'required',
             'video_id' => 'required'
         ]);
-
         $video = new Video();
         $video->video_id = $request->video_id;
         $video->caption = $request->caption;
         $video->save();
-
         return redirect()->route('admin_video_show')->with('success', 'Informasi video telah berhasil diunggah.');
     }
 
     public function edit($id)
     {
         $video_single = Video::where('id', $id)->first();
-
         return view('admin.video_edit', compact('video_single'));
     }
 
     public function update(Request $request, $id)
     {
-
         $video_data = Video::where('id', $id)->first();
-
         $video_data->caption = $request->caption;
         $video_data->update();
-
         return redirect()->route('admin_video_show')->with('success', 'Informasi video telah berhasil diubah.');
     }
 
     public function delete($id)
     {
-
         $video_data = Video::where('id', $id)->first();
         $video_data->delete();
-
         return redirect()->route('admin_video_show')->with('success', 'Informasi video telah berhasil diubah.');
     }
 }

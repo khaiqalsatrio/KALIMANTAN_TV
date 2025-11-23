@@ -103,7 +103,7 @@
 
 @section('map_scripts')
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15bed1c8cddf50a218e2c27a919fe330"></script>
-<script>
+<!-- <script>
     // Mengambil elemen HTML tempat peta akan ditampilkan
     var container = document.getElementById('map');
     // Opsi dasar untuk membuat peta
@@ -123,5 +123,5 @@
     };
     // Membuat peta dan menampilkannya ke halaman
     var map = new kakao.maps.Map(container, options);
-</script>
+</script> -->
 @endsection

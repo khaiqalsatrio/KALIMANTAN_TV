@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Page;
 use App\Models\LiveChannel;
 use App\Models\Post;
+use App\Models\Tag;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -57,5 +58,9 @@ class AppServiceProvider extends ServiceProvider
 
         view()->share('global_recent_news_data', $recent_news_data);
         view()->share('global_popular_news_data', $popular_news_data);
+
+        view()->composer('*', function ($view) {
+            $view->with('global_tags', Tag::orderBy('tag_name')->get());
+        });
     }
 }

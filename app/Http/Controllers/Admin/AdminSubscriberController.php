@@ -27,15 +27,12 @@ class AdminSubscriberController extends Controller
             'subject' => 'required',
             'message' => 'required'
         ]);
-
         $subject = $request->subject;
         $message = $request->message;
-
         $subscribers = Subscriber::where('status', 'Active')->get();
         foreach ($subscribers as $row) {
             Mail::to($row->email)->send(new Websitemail($subject, $message));
         }
-
         return redirect()->route('admin_subscribers_send_email')->with('success', 'Email is sent successfully to subscribers');
     }
 }
