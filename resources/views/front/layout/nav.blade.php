@@ -20,16 +20,16 @@
                                     {{ $row->category_name }}
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach (($row->rSubCategory ?? []) as $row2)
+                                    @foreach (($row->Category ?? []) as $row2)
                                     <li>
                                         <a class="dropdown-item" href="{{ route('category', $row2->id) }}">
-                                            {{ $row2->sub_category_name }}
+                                            {{ $row2->category_name }}
                                         </a>
                                     </li>
                                     @endforeach
-                                    @if(empty($row->rSubCategory) || count($row->rSubCategory) == 0)
+                                    @if(empty($row->Category) || count($row->Category) == 0)
                                     <li>
-                                        <a class="dropdown-item text-muted" href="javascript:void;">No Subcategory</a>
+                                        <a class="dropdown-item text-muted" href="javascript:void;">No category</a>
                                     </li>
                                     @endif
                                 </ul>
@@ -38,10 +38,10 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Gallery
+                                    Video
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('photo_gallery') }}">Photo Gallery</a></li>
+                                    <!-- <li><a class="dropdown-item" href="{{ route('photo_gallery') }}">Photo Gallery</a></li> -->
                                     <li><a class="dropdown-item" href="{{ route('video_gallery') }}">Video Gallery</a></li>
                                 </ul>
                             </li>
