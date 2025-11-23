@@ -61,33 +61,29 @@
 </div>
 
 <script>
-    (function($){
-        $(".form_contact_ajax").on('submit', function(e){
+    (function($) {
+        $(".form_contact_ajax").on('submit', function(e) {
             e.preventDefault();
             $('#loader').show();
             var form = this;
 
             $.ajax({
-                url:$(form).attr('action'),
-                method:$(form).attr('method'),
-                data:new FormData(form),
-                processData:false,
-                dataType:'json',
-                contentType:false,
-                beforeSend:function(){
+                url: $(form).attr('action'),
+                method: $(form).attr('method'),
+                data: new FormData(form),
+                processData: false,
+                dataType: 'json',
+                contentType: false,
+                beforeSend: function() {
                     $(form).find('span.error-text').text('');
                 },
-                success:function(data)
-                {
+                success: function(data) {
                     $('#loader').hide();
-                    if(data.result == false)
-                    {
+                    if (data.result == false) {
                         $.each(data.error_message, function(prefix, val) {
-                            $(form).find('span.'+prefix+'_error').text(val[0]);
+                            $(form).find('span.' + prefix + '_error').text(val[0]);
                         });
-                    }
-                    else if(data.result == true)
-                    {
+                    } else if (data.result == true) {
                         $(form)[0].reset();
                         iziToast.success({
                             title: '',
@@ -105,17 +101,27 @@
 
 @endsection
 
-
 @section('map_scripts')
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15bed1c8cddf50a218e2c27a919fe330"></script>
 <script>
-    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-var options = { //지도를 생성할 때 필요한 기본 옵션
-center: new kakao.maps.LatLng({{ $page_data->contact_map_x }}, {{ $page_data->contact_map_y }}), //지도의 중심좌표.
-level: 3 //지도의 레벨(확대, 축소 정도)
-};
-
-var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-</script> --}}
-
-{{-- @endsection
+    // Mengambil elemen HTML tempat peta akan ditampilkan
+    var container = document.getElementById('map');
+    // Opsi dasar untuk membuat peta
+    var options = {
+        // Titik pusat peta (latitude, longitude)
+        center: new kakao.maps.LatLng({
+            {
+                $page_data - > contact_map_x
+            }
+        }, {
+            {
+                $page_data - > contact_map_y
+            }
+        }),
+        // Level zoom (semakin besar angka, semakin jauh)
+        level: 3
+    };
+    // Membuat peta dan menampilkannya ke halaman
+    var map = new kakao.maps.Map(container, options);
+</script>
+@endsection

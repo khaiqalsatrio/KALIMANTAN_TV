@@ -29,6 +29,30 @@
         gtag('config', 'UA-84213520-6');
     </script>
 
+    <style>
+        .top-ad-img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Wrap container supaya rapi */
+        .ad-section-1 {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Batas maksimal agar tetap mirip ukuran desain */
+        @media (min-width: 992px) {
+            .top-ad-img {
+                max-width: 800px;
+                max-height: 100px;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -57,10 +81,9 @@
                         @endif
                         <li>
                             <div class="language-switch">
-                                <select name="">
-                                    <option value="">English</option>
-                                    <option value="">Hindi</option>
-                                    <option value="">Arabic</option>
+                                <select id="language_select">
+                                    <option value="en" {{ session('lang') == 'en' ? 'selected' : '' }}>English</option>
+                                    <option value="id" {{ session('lang') == 'id' ? 'selected' : '' }}>Indonesia</option>
                                 </select>
                             </div>
                         </li>
@@ -74,31 +97,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 d-flex align-items-center">
-                    <div class="logo">
-                        <a href="{{ route('home') }}">
-                            <img src="uploads/logo.png" alt="">
+                    <div class="logo" style="padding: 20px 0;">
+                        <a href="{{ route('home') }}" style="text-decoration: none;">
+                            <h1 style="
+                                    margin: 0; padding: 0;
+                                    font-size: 35px;
+                                    font-weight: 800;
+                                    letter-spacing: 1px;
+                                    font-family: 'Poppins', sans-serif;
+                                    color: #6c85f0;
+                                ">
+                                Kalimantan <span style="color:#2e2c2c;">TV</span>
+                            </h1>
                         </a>
                     </div>
+                    <!-- <div class="logo"> <a href="{{ route('home') }}"> <img src="uploads/logo.png" alt=""> </a> </div> -->
                 </div>
-                @if ($global_top_ad_data->top_ad_status == 'Show')
+                <!-- TOP ADS -->
+                <!-- @if ($global_top_ad_data->top_ad_status == 'Show')
                 <div class="col-md-8">
-                    <div class="ad-section-1">
+                    <div class="ad-section-1 text-center">
                         @if ($global_top_ad_data->top_ad_url == '')
-                        <img src="{{ asset('uploads/'.$global_top_ad_data->top_ad) }}" alt="">
+                        <img src="{{ asset('uploads/'.$global_top_ad_data->top_ad_image) }}"
+                            alt=""
+                            class="top-ad-img">
                         @else
-                        <a href="{{ $global_top_ad_data->top_ad_url}}">
-                            <img src="{{ asset('uploads/'.$global_top_ad_data->top_ad) }}" alt=""></a>
+                        <a href="{{ $global_top_ad_data->top_ad_url }}">
+                            <img src="{{ asset('uploads/'.$global_top_ad_data->top_ad_image) }}"
+                                alt=""
+                                style="width: 800px; height: 100px;">
+                        </a>
                         @endif
                     </div>
                 </div>
-                @endif
-
+                @endif -->
             </div>
         </div>
     </div>
-
     @include('front.layout.nav')
-
     @yield('main_content')
 
 
@@ -108,17 +144,18 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">About Us</h2>
+                        <h2 class="heading">Tentang kami</h2>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.
+                            Kalimantan TV adalah platform media yang menghadirkan informasi terbaru seputar kehidupan di Kalimantan.
+                            Kami berfokus pada berita lokal, budaya, dan perkembangan daerah, dengan tujuan memberikan tayangan yang
+                            mudah dipahami dan bermanfaat bagi masyarakat.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">Useful Links</h2>
+                        <h2 class="heading">
+                            Tautan</h2>
                         <ul class="useful-links">
                             <li><a href="{{ route('home') }}">Home</a></li>
                             @if ($global_page_data->terms_status == 'Show')
@@ -134,8 +171,6 @@
                         </ul>
                     </div>
                 </div>
-
-
                 <div class="col-md-3">
                     <div class="item">
                         <h2 class="heading">Contact</h2>
@@ -144,8 +179,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="right">
-                                34 Antiger Lane,<br>
-                                PK Lane, USA, 12937
+                                Yogyakarta, JL. As-Samawaat<br>
                             </div>
                         </div>
                         <div class="list-item">
@@ -153,7 +187,7 @@
                                 <i class="far fa-envelope"></i>
                             </div>
                             <div class="right">
-                                contact@arefindev.com
+                                khaiqalsatrio29@gmail.com
                             </div>
                         </div>
                         <div class="list-item">
@@ -161,19 +195,38 @@
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div class="right">
-                                122-222-1212
+                                000-000-0000
                             </div>
                         </div>
                         <ul class="social">
-                            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-pinterest-p"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-
                 <div class="col-md-3">
                     <div class="item">
                         <h2 class="heading">Newsletter</h2>
@@ -243,6 +296,11 @@
                 });
             });
         })(jQuery);
+
+        // Change Language (Bahasa)
+        document.getElementById('language_select').addEventListener('change', function() {
+            window.location.href = "/set-language/" + this.value;
+        });
     </script>
     <div id="loader"></div>
 

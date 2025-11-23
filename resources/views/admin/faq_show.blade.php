@@ -32,7 +32,7 @@
                                         <a href="{{ route('admin_faq_edit', $row->id) }}"
                                             class="btn btn-primary">Edit</a>
                                         <a href="{{ route('admin_faq_delete', $row->id) }}"
-                                            class="btn btn-danger" onClick="return confirm('삭제하시겠습니까?');">Delete</a>
+                                            class="btn btn-danger" onClick="return confirm('Apakah Anda ingin menghapus?');">Delete</a>
                                     </td>
                                 </tr>
                             </tbody>

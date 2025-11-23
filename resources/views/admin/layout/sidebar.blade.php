@@ -16,8 +16,7 @@
                         <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_setting') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Setting</span></a></li>
-
-                        <li
+                        <!-- <li
                                 class="nav-item dropdown {{ Request::is('admin/top-advertisement')||Request::is('admin/home-advertisement')||Request::is('admin/sidebar-advertisement-*') ? 'active' : '' }}">
                                 <a href="#" class="nav-link has-dropdown"><i
                                                 class="fas fa-hand-point-right"></i><span>Advertisements</span></a>
@@ -36,8 +35,7 @@
                                                 </a>
                                         </li>
                                 </ul>
-                        </li>
-
+                        </li> -->
                         <li
                                 class="nav-item dropdown {{ Request::is('admin/category/*')||Request::is('admin/sub-category/*')||Request::is('admin/post/*') ? 'active' : '' }}">
                                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>News</span></a>
@@ -45,10 +43,10 @@
                                         <li class="{{ Request::is('admin/category/*') ? 'active' : '' }}"><a class="nav-link"
                                                         href="{{ route('admin_category_show') }}"><i class="fas fa-angle-right"></i> Categories </a>
                                         </li>
-                                        <li class="{{ Request::is('admin/sub-category/*') ? 'active' : '' }}"><a class="nav-link"
+                                        <!-- <li class="{{ Request::is('admin/sub-category/*') ? 'active' : '' }}"><a class="nav-link"
                                                         href="{{ route('admin_sub_category_show') }}"><i class="fas fa-angle-right"></i>
                                                         SubCategories </a>
-                                        </li>
+                                        </li> -->
                                         <li class="{{ Request::is('admin/post/*') ? 'active' : '' }}"><a class="nav-link"
                                                         href="{{ route('admin_post_show') }}"><i class="fas fa-angle-right"></i>
                                                         Posts </a>

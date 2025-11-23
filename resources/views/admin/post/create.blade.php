@@ -50,15 +50,10 @@
                 </select>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Deskripsi Singkat</label>
-                <textarea name="short_description" class="form-control" rows="3">{{ old('short_description') }}</textarea>
-            </div>
+            <textarea name="post_detail" class="form-control" id="editor" style="height: 200px;">
+            {{ old('post_detail') }}
+            </textarea>
 
-            <div class="mb-3">
-                <label class="form-label">Isi Berita</label>
-                <textarea name="post_detail" class="form-control" id="editor" rows="6">{{ old('post_detail') }}</textarea>
-            </div>
 
             <div class="mb-3">
                 <label class="form-label">Foto Thumbnail</label>

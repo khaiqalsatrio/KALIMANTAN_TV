@@ -105,7 +105,7 @@
                                             <td class="pt_10 pb_10">
                                                 <a href="{{ route('admin_post_delete_tag', [$post_single->id, $row->id]) }}"
                                                     class="btn btn-danger"
-                                                    onClick="return confirm('삭제하시겠습니까?');">Delete</a>
+                                                    onClick="return confirm('Yakin ingin menghapus?');">Delete</a>
                                             </td>
                                         </tr>
                                         @endforeach

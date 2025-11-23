@@ -264,4 +264,11 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/admin/setting/update', [AdminSettingController::class, 'update'])
             ->name('admin_setting_update');
     });
+
+    
+    // Set Language
+    Route::get('/set-language/{lang}', function ($lang) {
+        session(['lang' => $lang]);
+        return redirect()->back();
+    })->name('set_language');
 });
