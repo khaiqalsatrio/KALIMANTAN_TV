@@ -28,9 +28,9 @@ class SearchController extends Controller
 
         // Jika tidak ada filter → tampilkan semua post
         if (empty($keyword) && empty($category)) {
-            $post_data = Post::orderBy('id', 'desc')->paginate(10);
+            $post_data = Post::orderBy('id', 'desc')->get();
         } else {
-            $post_data = $query->orderBy('id', 'desc')->paginate(10);
+            $post_data = $query->orderBy('id', 'desc')->get();
         }
 
         return view('front.search', [

@@ -1,5 +1,58 @@
-<div class="sidebar">
+<style>
+    .search-title-link {
+        color: #1a1a1a;
+        text-decoration: none;
+        transition: 0.2s ease-in-out;
+    }
 
+    .search-title-link:hover {
+        color: #0d6efd;
+        text-decoration: underline;
+    }
+
+    .search-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .search-thumb {
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+    }
+
+    /* Kalender */
+    #calendar {
+        width: 100%;
+    }
+
+    .calendar-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    .calendar-table th {
+        background: #4f74e8;
+        color: white;
+        padding: 8px;
+    }
+
+    .calendar-table td {
+        padding: 8px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .calendar-header {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+</style>
+
+<div class="sidebar">
     {{-- TOP SIDEBAR ADS --}}
     <div class="widget">
         @foreach($global_sidebar_top_ad as $row)
@@ -146,6 +199,86 @@
                         </div>
                     </div>
                     @endforeach
+                </div>
+                
+                {{-- TENTANG KAMI --}}
+                <div class="widget">
+                    <div class="card shadow-sm mb-4 mt-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="fw-bold mb-0">Tentang Kami</h5>
+                                <i class="bi bi-person-circle text-secondary" style="font-size: 22px;"></i>
+                            </div>
+                            <div class="mt-1 mb-3"
+                                style="width: 60px; height: 3px; background-color: #4f74e8; border-radius: 4px;">
+                            </div>
+                            <p class="text-muted" style="font-size: 14px; line-height: 1.5;">
+                                Kalimantan TV adalah platform media berbasis digital
+                                yang menyediakan berita terkini, video, dan informasi
+                                terbaru seputar Kalimantan. Menghadirkan konten informatif,
+                                faktual, dan terpercaya untuk masyarakat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- CALENDAR --}}
+                @php
+                $month = date('n');
+                $year = date('Y');
+                $firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year);
+                $totalDays = date('t', $firstDayOfMonth);
+                $startDay = date('N', $firstDayOfMonth); // 1 (Mon) - 7 (Sun)
+                $dayNames = ['S','S','R','K','J','S','M'];
+                @endphp
+                <div class="col-md-15 mt-4">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-3">Kalender</h5>
+                            <div class="text-center mb-2">
+                                <strong style="font-size:18px;">
+                                    {{ date('F Y') }}
+                                </strong>
+                            </div>
+                            <table class="table text-center calendar-table">
+                                <thead>
+                                    <tr>
+                                        @foreach($dayNames as $d)
+                                        <th>{{ $d }}</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                    $day = 1;
+                                    $currentDay = date('j');
+                                    @endphp
+                                    <tr>
+                                        @for ($i = 1; $i < $startDay; $i++)
+                                            <td>
+                                            </td>
+                                            @endfor
+                                            @for ($i = $startDay; $i <= 7; $i++)
+                                                <td class="{{ $day == $currentDay ? 'active-day' : '' }}">
+                                                {{ $day }}
+                                                </td>
+                                                @php $day++; @endphp
+                                                @endfor
+                                    </tr>
+                                    @while ($day <= $totalDays)
+                                        <tr>
+                                        @for ($i = 1; $i <= 7 && $day <=$totalDays; $i++)
+                                            <td class="{{ $day == $currentDay ? 'active-day' : '' }}">
+                                            {{ $day }}
+                                            </td>
+                                            @php $day++; @endphp
+                                            @endfor
+                                            </tr>
+                                            @endwhile
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

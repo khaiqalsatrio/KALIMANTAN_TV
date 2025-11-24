@@ -51,7 +51,6 @@
                 max-height: 100px;
             }
         }
-        
     </style>
 
 </head>
@@ -174,13 +173,13 @@
                 </div>
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">Contact</h2>
+                        <h2 class="heading">Kontak</h2>
                         <div class="list-item">
                             <div class="left">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="right">
-                                Yogyakarta, JL. As-Samawaat<br>
+                                Kalimantan Tengah Pangkalnung, JL. Panglima-utar<br>
                             </div>
                         </div>
                         <div class="list-item">
@@ -230,23 +229,14 @@
                 </div>
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">Newsletter</h2>
+                        <h2 class="heading">Tentang Situs Ini</h2>
                         <p>
-                            In order to get the latest news and other great items, please subscribe us here:
+                            Kami menyajikan berita terbaru, akurat, dan terpercaya dari berbagai kategori.
+                            Hadir untuk memberikan informasi yang cepat, relevan, dan mudah dipahami
+                            oleh pembaca di seluruh Indonesia.
                         </p>
-                        <form action={{ route('subscribe') }} method="post" class="form_subscribe_ajax">
-                            @csrf
-                            <div class="form-group">
-                                <input type="text" name="email" placeholder="Email Address" class="form-control">
-                                <span class="text-danger error-text email_error"></span>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary" value="Subscribe Now">
-                            </div>
-                        </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

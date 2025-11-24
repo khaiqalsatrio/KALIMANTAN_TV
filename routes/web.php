@@ -58,49 +58,56 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/terms', [TermsController::class, 'index'])->name('terms');
 Route::get('/privacy-policy', [PrivacyController::class, 'index'])->name('privacy');
 Route::get('/disclaimer', [DisclaimerController::class, 'index'])->name('disclaimer');
-
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_form_submit');
-
 // Post Berita
 Route::get('/post', [PostController::class, 'index'])->name('post_list');
 Route::get('/post/{id}', [PostController::class, 'detail'])->name('post_detail');
 Route::get('/news-detail/{id}', [PostController::class, 'detail'])->name('news_detail');
-
 // Category
 Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category');
-
 // Gallery
 Route::get('/photo-gallery', [PhotoController::class, 'index'])->name('photo_gallery');
 Route::get('/video-gallery', [VideoController::class, 'index'])->name('video_gallery');
-
 // Subscriber
 Route::post('/subscriber', [SubscriberController::class, 'index'])->name('subscribe');
 Route::get('/subscriber/verify/{token}/{email}', [SubscriberController::class, 'verify'])->name('subscriber_verify');
-
-
+// Archive
+Route::get('archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
+// Archive
+Route::get('/archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
+// Search engine
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+// Category
+Route::get('/category/{id}', [CategoryController::class, 'category'])->name('category');
+// News
+Route::post('/news/{id}/comment', [NewPasswordController::class, 'comment_store'])->name('comment_store');
+// Live Stream
+Route::get('/live-stream', [HomeController::class, 'live_stream'])->name('live_stream');
+// // Category
+// Set Language
+Route::get('/set-language/{lang}', function ($lang) {
+    session(['lang' => $lang]);
+    return redirect()->back();
+})->name('set_language');
+// Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category');
 
 /*
 |--------------------------------------------------------------------------
 | ADMIN ROUTES
 |--------------------------------------------------------------------------
 */
-
 // Auth
 Route::get('/admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
 Route::post('/admin/login-submit', [AdminLoginController::class, 'login_submit'])->name('admin_login_submit');
 Route::get('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin_logout');
-
 Route::get('/admin/forget-password', [AdminLoginController::class, 'forget_password'])->name('admin_forget_password');
 Route::post('/admin/forget-password-submit', [AdminLoginController::class, 'forget_password_submit'])->name('admin_forget_password_submit');
-
 Route::get('/admin/reset-password/{token}/{email}', [AdminLoginController::class, 'reset_password'])->name('admin_reset_password');
 Route::post('/admin/reset-password-submit', [AdminLoginController::class, 'reset_password_submit'])->name('admin_reset_password_submit');
-
 
 // Semua route admin harus pakai middleware admin
 Route::middleware('admin:admin')->group(function () {
@@ -125,7 +132,6 @@ Route::middleware('admin:admin')->group(function () {
     Route::get('/admin/sidebar-advertisement-edit/{id}', [AdminAdvertisementController::class, 'sidebar_ad_edit'])->name('admin_sidebar_ad_edit');
     Route::post('/admin/sidebar-advertisement-update/{id}', [AdminAdvertisementController::class, 'sidebar_ad_update'])->name('admin_sidebar_ad_update');
     Route::get('/admin/sidebar-advertisement-delete/{id}', [AdminAdvertisementController::class, 'sidebar_ad_delete'])->name('admin_sidebar_ad_delete');
-
     /*
     |--------------------------------------------------------------------------
     | Category & SubCategory
@@ -139,7 +145,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminCategoryController::class, 'update'])->name('admin_category_update');
         Route::get('/delete/{id}', [AdminCategoryController::class, 'delete'])->name('admin_category_delete');
     });
-
     Route::prefix('admin/sub-category')->group(function () {
         Route::get('/show', [AdminSubCategoryController::class, 'show'])->name('admin_sub_category_show');
         Route::get('/create', [AdminSubCategoryController::class, 'create'])->name('admin_sub_category_create');
@@ -148,8 +153,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminSubCategoryController::class, 'update'])->name('admin_sub_category_update');
         Route::get('/delete/{id}', [AdminSubCategoryController::class, 'delete'])->name('admin_sub_category_delete');
     });
-
-
     /*
     |--------------------------------------------------------------------------
     | Post, Photo, Video
@@ -163,7 +166,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminPostController::class, 'update'])->name('admin_post_update');
         Route::get('/delete/{id}', [AdminPostController::class, 'delete'])->name('admin_post_delete');
     });
-
     Route::prefix('admin/photo')->group(function () {
         Route::get('/create', [AdminPhotoController::class, 'create'])->name('admin_photo_create');
         Route::post('/store', [AdminPhotoController::class, 'store'])->name('admin_photo_store');
@@ -172,7 +174,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminPhotoController::class, 'update'])->name('admin_photo_update');
         Route::get('/delete/{id}', [AdminPhotoController::class, 'delete'])->name('admin_photo_delete');
     });
-
     Route::prefix('admin/video')->group(function () {
         Route::get('/create', [AdminVideoController::class, 'create'])->name('admin_video_create');
         Route::post('/store', [AdminVideoController::class, 'store'])->name('admin_video_store');
@@ -181,7 +182,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminVideoController::class, 'update'])->name('admin_video_update');
         Route::get('/delete/{id}', [AdminVideoController::class, 'delete'])->name('admin_video_delete');
     });
-
     /*
     |--------------------------------------------------------------------------
     | Pages
@@ -203,7 +203,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::get('/contact/edit', [AdminPageController::class, 'contact'])->name('admin_page_contact');
         Route::post('/contact/update', [AdminPageController::class, 'contact_update'])->name('admin_page_contact_update');
     });
-
     /*
     |--------------------------------------------------------------------------
     | FAQ + SUBSCRIBER + LIVE CHANNEL + POLL
@@ -217,13 +216,11 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminFaqController::class, 'update'])->name('admin_faq_update');
         Route::get('/delete/{id}', [AdminFaqController::class, 'delete'])->name('admin_faq_delete');
     });
-
     Route::prefix('admin/subscriber')->group(function () {
         Route::get('/all', [AdminSubscriberController::class, 'show_all'])->name('admin_subscribers');
         Route::get('/send-email', [AdminSubscriberController::class, 'send_email'])->name('admin_subscribers_send_email');
         Route::post('/send-email-submit', [AdminSubscriberController::class, 'send_email_submit'])->name('admin_subscribers_send_email_submit');
     });
-
     Route::prefix('admin/live_channel')->group(function () {
         Route::get('/create', [AdminLiveChannelController::class, 'create'])->name('admin_live_channel_create');
         Route::post('/store', [AdminLiveChannelController::class, 'store'])->name('admin_live_channel_store');
@@ -232,7 +229,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminLiveChannelController::class, 'update'])->name('admin_live_channel_update');
         Route::get('/delete/{id}', [AdminLiveChannelController::class, 'delete'])->name('admin_live_channel_delete');
     });
-
     Route::prefix('admin/online_poll')->group(function () {
         Route::get('/create', [AdminOnlinePollController::class, 'create'])->name('admin_online_poll_create');
         Route::post('/store', [AdminOnlinePollController::class, 'store'])->name('admin_online_poll_store');
@@ -241,20 +237,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminOnlinePollController::class, 'update'])->name('admin_online_poll_update');
         Route::get('/delete/{id}', [AdminOnlinePollController::class, 'delete'])->name('admin_online_poll_delete');
     });
-    // Archive
-    Route::get('archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
-    // Archive
-    Route::get('/archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
-    // Search engine
-    Route::get('/search', [SearchController::class, 'index'])->name('search');
-    // Category
-    Route::get('/category/{id}', [CategoryController::class, 'category'])->name('category');
-    // News
-    Route::post('/news/{id}/comment', [NewPasswordController::class, 'comment_store'])->name('comment_store');
-    // Live Stream
-    Route::get('/live-stream', [HomeController::class, 'live_stream'])->name('live_stream');
-    // // Category
-    // Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category');
     /*
     |--------------------------------------------------------------------------
     | ADMIN SETTING
@@ -266,11 +248,4 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/admin/setting/update', [AdminSettingController::class, 'update'])
             ->name('admin_setting_update');
     });
-
-
-    // Set Language
-    Route::get('/set-language/{lang}', function ($lang) {
-        session(['lang' => $lang]);
-        return redirect()->back();
-    })->name('set_language');
 });

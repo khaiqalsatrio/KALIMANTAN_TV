@@ -89,24 +89,43 @@
                     </script>
                 </div>
                 @endif
-
                 <!-- COMMENT FORM -->
                 <div class="comment-section mt-5">
                     <h3 class="mb-3">Tinggalkan Komentar</h3>
                     @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
-                    <form action="{{ route('comment_store', $post_detail->id) }}" method="POST" class="comment-form">
+                    <form action="{{ route('comment_store', $post_detail->id) }}" method="POST" class="p-3 border rounded bg-white shadow-sm">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <input type="text" name="name" class="form-control" placeholder="Nama Anda">
+                                <label class="form-label fw-semibold">Nama Anda</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
+                                    placeholder="Masukkan nama"
+                                    required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input type="email" name="email" class="form-control" placeholder="Email Anda">
+                                <label class="form-label fw-semibold">Email Anda</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Masukkan email"
+                                    required>
                             </div>
                         </div>
-                        <textarea name="comment" class="form-control mb-3" rows="4" placeholder="Tulis komentar di sini..."></textarea>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Komentar</label>
+                            <textarea
+                                name="comment"
+                                class="form-control"
+                                rows="4"
+                                placeholder="Tulis komentar di sini..."
+                                required></textarea>
+                        </div>
                         <button class="btn btn-primary px-4" type="submit">
                             <i class="fas fa-paper-plane"></i> Kirim Komentar
                         </button>
@@ -145,15 +164,30 @@
                     </div>
                 </div>
                 <!-- COMMENTS LIST -->
-                <div class="comments-list mt-4">
-                    <h3>{{ $post_detail->comments->count() }} Komentar</h3>
-                    @foreach ($post_detail->comments as $komen)
-                    <div class="comment-item p-2 mb-2" style="border-bottom: 1px solid #eee;">
-                        <b>{{ $komen->name }}</b>
-                        <small class="text-muted"> • {{ $komen->created_at->format('d M Y H:i') }}</small>
-                        <p class="mt-1 mb-1">{{ $komen->comment }}</p>
+                <div class="card mt-4 shadow-sm border-0">
+                    <div class="card-body bg-light rounded">
+                        <h4 class="mb-4">{{ $post_detail->comments->count() }} Komentar</h4>
+                        <!-- Scroll Container -->
+                        <div class="px-1" style="max-height: 300px; overflow-y: auto;">
+                            @foreach ($post_detail->comments as $komen)
+                            <div class="d-flex gap-3 p-3 mb-3 border rounded bg-white shadow-sm">
+                                <!-- Avatar -->
+                                <div class="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
+                                    style="width:45px; height:45px; font-weight:600; font-size: 18px;">
+                                    {{ strtoupper(substr($komen->name, 0, 1)) }}
+                                </div>
+                                <!-- Comment Content -->
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <strong>{{ $komen->name }}</strong>
+                                        <small class="text-muted">{{ $komen->created_at->format('d M Y H:i') }}</small>
+                                    </div>
+                                    <p class="mb-0">{{ $komen->comment }}</p>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 sidebar-col">
