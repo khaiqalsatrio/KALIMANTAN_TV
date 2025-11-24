@@ -241,26 +241,20 @@ Route::middleware('admin:admin')->group(function () {
         Route::post('/update/{id}', [AdminOnlinePollController::class, 'update'])->name('admin_online_poll_update');
         Route::get('/delete/{id}', [AdminOnlinePollController::class, 'delete'])->name('admin_online_poll_delete');
     });
-
     // Archive
     Route::get('archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
     // Archive
     Route::get('/archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
     // Search engine
     Route::get('/search', [SearchController::class, 'index'])->name('search');
-
     // Category
     Route::get('/category/{id}', [CategoryController::class, 'category'])->name('category');
-
     // News
     Route::post('/news/{id}/comment', [NewPasswordController::class, 'comment_store'])->name('comment_store');
-
-
+    // Live Stream
+    Route::get('/live-stream', [HomeController::class, 'live_stream'])->name('live_stream');
     // // Category
     // Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category');
-
-
-
     /*
     |--------------------------------------------------------------------------
     | ADMIN SETTING

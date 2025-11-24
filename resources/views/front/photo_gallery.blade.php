@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Photo Gallery</h2>
+                <h2>Jurnalis</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -22,7 +22,6 @@
     <div class="container">
         <div class="photo-gallery">
             <div class="row">
-
                 @foreach ($photo_data as $row)
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="photo-thumb">
@@ -45,11 +44,9 @@
                     </div>
                 </div>
                 @endforeach
-
                 <div class="d-flex justify-content-center">
                     {{ $photo_data->links() }}
                 </div>
-
             </div>
         </div>
     </div>

@@ -35,7 +35,6 @@
                                     @endforeach
                                 </ul>
                             </li>
-
                             <!-- MENU VIDEO -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
@@ -46,12 +45,13 @@
                                     <li><a class="dropdown-item" href="{{ route('video_gallery') }}">Video News</a></li>
                                 </ul>
                             </li>
-
+                            <!-- Live Channel -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('live_stream') }}">Live Stream</a>
+                            </li>
                         </ul>
                     </div>
-
                 </nav>
-
             </div>
         </div>
     </div>

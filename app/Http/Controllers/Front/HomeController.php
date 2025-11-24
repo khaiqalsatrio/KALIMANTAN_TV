@@ -11,6 +11,7 @@ use App\Models\Video;
 use App\Models\SidebarAdvertisement;
 use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
+use App\Models\LiveChannel;
 
 class HomeController extends Controller
 {
@@ -94,5 +95,11 @@ class HomeController extends Controller
         $monthName = date("F", mktime(0, 0, 0, $month, 1));
 
         return view('front.archive', compact('posts', 'year', 'month', 'monthName'));
+    }
+
+    public function live_stream()
+    {
+        $live_channels = LiveChannel::latest()->paginate(10);
+        return view('front.live_stream', compact('live_channels'));
     }
 }

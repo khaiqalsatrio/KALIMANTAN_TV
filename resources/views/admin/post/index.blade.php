@@ -16,7 +16,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-
                     {{-- MASUKKAN TABEL LANGSUNG DI SINI --}}
                     <div class="table-responsive">
                         <table class="table table-bordered" id="example1">
@@ -31,24 +30,21 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 @foreach($posts as $row)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-
                                     <td>
                                         <img src="{{ asset('uploads/post/'.$row->post_photo) }}" style="width:200px;">
                                     </td>
-
                                     <td>{{ $row->post_title }}</td>
-
                                     {{-- CATEGORY LANGSUNG --}}
-                                    <td>{{ $row->rCategory->category_name ?? '-' }}</td>
-
+                                    <td>{{ $row->category ? $row->category->category_name : '-' }}</td>
                                     {{-- AUTHOR (KOSONGKAN JIKA TIDAK DIPAKAI) --}}
-                                    <td>-</td>
-
+                                    <td> @if($row->admin_id != 0)
+                                        {{ Auth::guard('admin')->user()->name }}
+                                        @endif
+                                    </td>
                                     {{-- ADMIN --}}
                                     <td>
                                         @if($row->admin_id)
@@ -57,7 +53,6 @@
                                         -
                                         @endif
                                     </td>
-
                                     <td>
                                         <a href="{{ route('admin_post_edit', $row->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                         <a href="javascript:;"
@@ -69,11 +64,9 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-
                         </table>
                     </div>
                     {{-- END TABLE --}}
-
                 </div>
             </div>
         </div>
