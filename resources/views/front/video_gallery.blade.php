@@ -44,15 +44,10 @@
                         {{ $create_date }}
                     </div>
                 </div>
-
                 @endforeach
-
-
-
                 <div class="d-flex justify-content-center">
                     {{ $video_data->links() }}
                 </div>
-
             </div>
         </div>
     </div>

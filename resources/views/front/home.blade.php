@@ -34,7 +34,7 @@
 </div>
 @endif
 
-
+<!-- Home Main -->
 <div class="home-main">
     <div class="container">
         <div class="row g-2">
@@ -171,13 +171,12 @@
         <form action="{{ route('search') }}" method="GET">
             <div class="inner">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-10">
                         <div class="form-group">
                             <input type="text" name="q" class="form-control" placeholder="Cari judul atau isi berita...">
                         </div>
                     </div>
-
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <div class="form-group">
                             <select name="category" class="form-select">
                                 <option value="">Semua Kategori</option>
@@ -186,9 +185,8 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
-
-                    <div class="col-md-3">
+                    </div> -->
+                    <div class="col-md-2">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </div>
                 </div>

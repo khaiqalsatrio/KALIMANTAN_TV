@@ -10,20 +10,30 @@ use App\Models\Tag;
 
 class CategoryController extends Controller
 {
-    public function index($id)
-    {
-        $category_data = Category::where('id', $id)->first();
-        $post_data = Post::where('category_id', $id)
-            ->orderBy('id', 'desc')
-            ->paginate(4);
+    // public function index($id)
+    // {
+    //     // Ambil kategori
+    //     $category = Category::findOrFail($id);
 
-        // 🔥 Tambahkan ini untuk menghindari error $tags
-        $tags = Tag::orderBy('id', 'desc')->get();
+    //     // Ambil 3 berita terbaru
+    //     $posts = Post::where('category_id', $id)
+    //         ->orderBy('id', 'desc')
+    //         ->take(3)
+    //         ->get();
 
-        return view('front.category', compact(
-            'category_data',
-            'post_data',
-            'tags'
-        ));
-    }
+    //     return view('front.category', compact('category', 'posts'));
+    // }
+
+
+public function category($id)
+{
+    $category = Category::findOrFail($id);
+
+    $posts = Post::where('category_id', $id)
+        ->orderBy('id', 'desc')
+        ->paginate(6);
+
+    return view('front.category', compact('category', 'posts'));
+}
+
 }

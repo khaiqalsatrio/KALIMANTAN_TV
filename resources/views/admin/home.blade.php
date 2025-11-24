@@ -30,7 +30,7 @@
                     <h4>Total News</h4>
                 </div>
                 <div class="card-body">
-                    122
+                    {{ $total_news }}
                 </div>
             </div>
         </div>

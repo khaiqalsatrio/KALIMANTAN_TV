@@ -41,6 +41,7 @@ use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminLiveChannelController;
 use App\Http\Controllers\Admin\AdminOnlinePollController;
+use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Front\CategoryController;
 use App\Http\Controllers\Front\SearchController;
 
@@ -106,11 +107,9 @@ Route::middleware('admin:admin')->group(function () {
 
     // Dashboard
     Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home');
-
     // Profile
     Route::get('/admin/edit-profile', [AdminProfileController::class, 'index'])->name('admin_profile');
     Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
-
     /*
     |--------------------------------------------------------------------------
     | Advertisement
@@ -118,17 +117,14 @@ Route::middleware('admin:admin')->group(function () {
     */
     Route::get('/admin/home-advertisement', [AdminAdvertisementController::class, 'home_ad_show'])->name('admin_home_ad_show');
     Route::post('/admin/home-advertisement-update', [AdminAdvertisementController::class, 'home_ad_update'])->name('admin_home_ad_update');
-
     Route::get('/admin/top-advertisement', [AdminAdvertisementController::class, 'top_ad_show'])->name('admin_top_ad_show');
     Route::post('/admin/top-advertisement-update', [AdminAdvertisementController::class, 'top_ad_update'])->name('admin_top_ad_update');
-
     Route::get('/admin/sidebar-advertisement', [AdminAdvertisementController::class, 'sidebar_ad_show'])->name('admin_sidebar_ad_show');
     Route::get('/admin/sidebar-advertisement-create', [AdminAdvertisementController::class, 'sidebar_ad_create'])->name('admin_sidebar_ad_create');
     Route::post('/admin/sidebar-advertisement-store', [AdminAdvertisementController::class, 'sidebar_ad_store'])->name('admin_sidebar_ad_store');
     Route::get('/admin/sidebar-advertisement-edit/{id}', [AdminAdvertisementController::class, 'sidebar_ad_edit'])->name('admin_sidebar_ad_edit');
     Route::post('/admin/sidebar-advertisement-update/{id}', [AdminAdvertisementController::class, 'sidebar_ad_update'])->name('admin_sidebar_ad_update');
     Route::get('/admin/sidebar-advertisement-delete/{id}', [AdminAdvertisementController::class, 'sidebar_ad_delete'])->name('admin_sidebar_ad_delete');
-
 
     /*
     |--------------------------------------------------------------------------
@@ -186,7 +182,6 @@ Route::middleware('admin:admin')->group(function () {
         Route::get('/delete/{id}', [AdminVideoController::class, 'delete'])->name('admin_video_delete');
     });
 
-
     /*
     |--------------------------------------------------------------------------
     | Pages
@@ -195,26 +190,19 @@ Route::middleware('admin:admin')->group(function () {
     Route::prefix('admin/page')->group(function () {
         Route::get('/about/edit', [AdminPageController::class, 'about'])->name('admin_page_about');
         Route::post('/about/update', [AdminPageController::class, 'about_update'])->name('admin_page_about_update');
-
         Route::get('/faq/edit', [AdminPageController::class, 'faq'])->name('admin_page_faq');
         Route::post('/faq/update', [AdminPageController::class, 'faq_update'])->name('admin_page_faq_update');
-
         Route::get('/terms/edit', [AdminPageController::class, 'terms'])->name('admin_page_terms');
         Route::post('/terms/update', [AdminPageController::class, 'terms_update'])->name('admin_page_terms_update');
-
         Route::get('/privacy/edit', [AdminPageController::class, 'privacy'])->name('admin_page_privacy');
         Route::post('/privacy/update', [AdminPageController::class, 'privacy_update'])->name('admin_page_privacy_update');
-
         Route::get('/disclaimer/edit', [AdminPageController::class, 'disclaimer'])->name('admin_page_disclaimer');
         Route::post('/disclaimer/update', [AdminPageController::class, 'disclaimer_update'])->name('admin_page_disclaimer_update');
-
         Route::get('/login/edit', [AdminPageController::class, 'login'])->name('admin_page_login');
         Route::post('/login/update', [AdminPageController::class, 'login_update'])->name('admin_page_login_update');
-
         Route::get('/contact/edit', [AdminPageController::class, 'contact'])->name('admin_page_contact');
         Route::post('/contact/update', [AdminPageController::class, 'contact_update'])->name('admin_page_contact_update');
     });
-
 
     /*
     |--------------------------------------------------------------------------
@@ -254,14 +242,22 @@ Route::middleware('admin:admin')->group(function () {
         Route::get('/delete/{id}', [AdminOnlinePollController::class, 'delete'])->name('admin_online_poll_delete');
     });
 
+    // Archive
     Route::get('archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
-
+    // Archive
     Route::get('/archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
-
     // Search engine
     Route::get('/search', [SearchController::class, 'index'])->name('search');
 
+    // Category
+    Route::get('/category/{id}', [CategoryController::class, 'category'])->name('category');
 
+    // News
+    Route::post('/news/{id}/comment', [NewPasswordController::class, 'comment_store'])->name('comment_store');
+
+
+    // // Category
+    // Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category');
 
 
 
@@ -277,7 +273,7 @@ Route::middleware('admin:admin')->group(function () {
             ->name('admin_setting_update');
     });
 
-    
+
     // Set Language
     Route::get('/set-language/{lang}', function ($lang) {
         session(['lang' => $lang]);

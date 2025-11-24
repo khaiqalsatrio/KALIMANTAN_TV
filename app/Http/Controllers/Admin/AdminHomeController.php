@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 class AdminHomeController extends Controller
 {
     public function index()
-
     {
-        return view('admin.home');
+        $total_news = \App\Models\Post::count(); // hitung total berita
+
+        return view('admin.home', compact('total_news'));
     }
 }

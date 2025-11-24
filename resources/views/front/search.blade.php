@@ -58,9 +58,9 @@
         @endforeach
     </div>
 
-    <div class="d-flex justify-content-center">
+    <!-- <div class="d-flex justify-content-center">
         {{ $posts->appends(['q' => request()->q])->links() }}
-    </div>
+    </div> -->
 
 </div>
 @endsection

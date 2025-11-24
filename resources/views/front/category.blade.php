@@ -5,12 +5,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>{{ $category_data->category_name }}</h2>
+                <h2>{{ $category->category_name }}</h2>
                 <nav class="breadcrumb-container">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            {{ $category_data->category_name }}
+                            {{ $category->category_name }}
                         </li>
                     </ol>
                 </nav>
@@ -27,23 +27,27 @@
                 <div class="category-page">
                     <div class="row">
 
-                        @if (count($post_data))
-                        @foreach($post_data as $row)
-                        <div class="col-lg-6 col-md-12">
+                        @if ($posts->count())
+                        @foreach($posts as $row)
+                        <div class="col-lg-4 col-md-6 mb-4">
                             <div class="category-page-post-item">
                                 <div class="photo">
-                                    <img src="{{ asset('uploads/post/'.$row->post_photo) }}" alt="">
+                                    <a href="{{ route('news_detail', $row->id) }}">
+                                        <img src="{{ asset('uploads/post/'.$row->post_photo) }}" alt="">
+                                    </a>
                                 </div>
 
                                 <div class="category">
                                     <span class="badge bg-success">
-                                        {{ $category_data->category_name }}
+                                        {{ $category->category_name }}
                                     </span>
                                 </div>
 
-                                <h3><a href="{{ route('news_detail', $row->id) }}">
-                                        {!! $row->post_detail !!}
-                                    </a></h3>
+                                <h3 class="mt-2">
+                                    <a href="{{ route('news_detail', $row->id) }}">
+                                        {{ $row->post_title }}
+                                    </a>
+                                </h3>
 
                                 <div class="date-user">
                                     <div class="user">
@@ -54,22 +58,20 @@
                                     </div>
 
                                     <div class="date">
-                                        @php
-                                        $updated_date = date('d F, Y', strtotime($row->updated_at));
-                                        @endphp
-                                        <a href="javascript:void;">{{ $updated_date }}</a>
+                                        <a href="javascript:void;">
+                                            {{ date('d F, Y', strtotime($row->updated_at)) }}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
-
                         @else
                         <span class="text-danger">Tidak ada postingan.</span>
                         @endif
 
-                        <div class="d-flex justify-content-center">
-                            {{ $post_data->links() }}
+                        <div class="d-flex justify-content-center mt-4">
+                            {{ $posts->links() }}
                         </div>
 
                     </div>

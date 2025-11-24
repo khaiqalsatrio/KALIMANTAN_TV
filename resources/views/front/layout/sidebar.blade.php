@@ -18,7 +18,7 @@
     {{-- TAG STATIC --}}
     <div class="widget">
         <div class="tag-heading">
-            <h2>Tags</h2>
+            <h2>Tag Berita</h2>
         </div>
         <div class="tag">
             @foreach($tags as $tag)
@@ -32,13 +32,13 @@
     </div>
 
     {{-- ARCHIVE --}}
-@foreach($tags as $tag)
+    @foreach($tags as $tag)
     <div class="tag-item">
         <a href="#">
             <span class="badge bg-secondary">{{ $tag->arcives }}</span>
         </a>
     </div>
-@endforeach
+    @endforeach
 
 
 
@@ -64,17 +64,18 @@
     <div class="widget">
         <div class="news">
             <div class="news-heading">
-                <h2>Popular & Recent News</h2>
+                <h2>
+                    Berita Populer & Terkini</h2>
             </div>
             <ul class="nav nav-pills mb-3">
                 <li class="nav-item">
                     <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#recent-news">
-                        Recent News
+                        Berita Terkini
                     </button>
                 </li>
                 <li class="nav-item">
                     <button class="nav-link" data-bs-toggle="pill" data-bs-target="#popular-news">
-                        Popular News
+                        Berita Populer
                     </button>
                 </li>
             </ul>

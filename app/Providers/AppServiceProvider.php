@@ -62,5 +62,16 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $view->with('global_tags', Tag::orderBy('tag_name')->get());
         });
+
+        view()->composer('*', function ($view) {
+            $view->with('global_category_data', Category::with(['posts' => function ($q) {
+                $q->orderBy('id', 'desc')->limit(5); // ambil 5 post terbaru untuk dropdown
+            }])->get());
+        });
+
+        view()->composer('front.layout.sidebar', function ($view) {
+            $tags = Tag::orderBy('id', 'desc')->take(10)->get();
+            $view->with('tags', $tags);
+        });
     }
 }

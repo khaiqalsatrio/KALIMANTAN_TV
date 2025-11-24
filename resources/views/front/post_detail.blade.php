@@ -89,6 +89,30 @@
                     </script>
                 </div>
                 @endif
+
+                <!-- COMMENT FORM -->
+                <div class="comment-section mt-5">
+                    <h3 class="mb-3">Tinggalkan Komentar</h3>
+                    @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    <form action="{{ route('comment_store', $post_detail->id) }}" method="POST" class="comment-form">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" name="name" class="form-control" placeholder="Nama Anda">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="email" name="email" class="form-control" placeholder="Email Anda">
+                            </div>
+                        </div>
+                        <textarea name="comment" class="form-control mb-3" rows="4" placeholder="Tulis komentar di sini..."></textarea>
+                        <button class="btn btn-primary px-4" type="submit">
+                            <i class="fas fa-paper-plane"></i> Kirim Komentar
+                        </button>
+                    </form>
+                </div>
+                <!-- RELATED NEWS -->
                 {{-- RELATED NEWS - MASIH STATIC, nanti bisa saya buat dinamis --}}
                 <div class="related-news">
                     <div class="related-news-heading">
@@ -119,6 +143,17 @@
                         </div>
                         @endforeach
                     </div>
+                </div>
+                <!-- COMMENTS LIST -->
+                <div class="comments-list mt-4">
+                    <h3>{{ $post_detail->comments->count() }} Komentar</h3>
+                    @foreach ($post_detail->comments as $komen)
+                    <div class="comment-item p-2 mb-2" style="border-bottom: 1px solid #eee;">
+                        <b>{{ $komen->name }}</b>
+                        <small class="text-muted"> • {{ $komen->created_at->format('d M Y H:i') }}</small>
+                        <p class="mt-1 mb-1">{{ $komen->comment }}</p>
+                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 sidebar-col">

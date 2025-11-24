@@ -51,6 +51,7 @@
                 max-height: 100px;
             }
         }
+        
     </style>
 
 </head>
@@ -107,7 +108,7 @@
                                     font-family: 'Poppins', sans-serif;
                                     color: #6c85f0;
                                 ">
-                                Kalimantan <span style="color:#2e2c2c;">TV</span>
+                                Kalimantan <span style="color:#2e2c2c;">NEWS</span>
                             </h1>
                         </a>
                     </div>

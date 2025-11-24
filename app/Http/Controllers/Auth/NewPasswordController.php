@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules;use App\Models\Comment;
 
 class NewPasswordController extends Controller
 {
@@ -55,8 +55,26 @@ class NewPasswordController extends Controller
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         return $status == Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))
-                    : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withInput($request->only('email'))
+            ->withErrors(['email' => __($status)]);
+    }
+
+    public function comment_store(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'comment' => 'required'
+        ]);
+
+        Comment::create([
+            'post_id' => $id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'comment' => $request->comment
+        ]);
+
+        return back()->with('success', 'Komentar berhasil dikirim!');
     }
 }
