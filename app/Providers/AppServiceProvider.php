@@ -33,7 +33,9 @@ class AppServiceProvider extends ServiceProvider
             ->get();
 
         $page_data = Page::where('id', 1)->first();
-        $live_channel_data = LiveChannel::get();
+        $live_channel_data = LiveChannel::orderBy('id', 'desc')
+            ->take(2)
+            ->get();
 
         // 🔥 FIX: HAPUS rSubCategory
         $recent_news_data = Post::orderBy('id', 'desc')

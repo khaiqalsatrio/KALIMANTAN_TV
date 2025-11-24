@@ -40,8 +40,6 @@
     </div>
     @endforeach
 
-
-
     {{-- LIVE CHANNEL --}}
     <div class="widget">
         @foreach ($global_live_channel_data as $row)
@@ -59,7 +57,6 @@
         </div>
         @endforeach
     </div>
-
     {{-- POPULAR & RECENT NEWS --}}
     <div class="widget">
         <div class="news">
