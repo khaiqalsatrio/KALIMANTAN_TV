@@ -15,7 +15,7 @@
                     <h4>Total News Categories</h4>
                 </div>
                 <div class="card-body">
-                    12
+                    {{ $total_category }}
                 </div>
             </div>
         </div>

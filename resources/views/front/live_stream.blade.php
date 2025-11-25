@@ -3,66 +3,74 @@
 @section('main_content')
 
 <style>
-    .video-thumb {
+    .live-card {
         position: relative;
         border-radius: 10px;
         overflow: hidden;
         cursor: pointer;
         transition: 0.3s;
+        height: 230px;
+        display: block;
+        text-decoration: none !important;
     }
 
-    .video-thumb img {
+    .live-card:hover {
+        transform: scale(1.02);
+    }
+
+    .live-card img {
         width: 100%;
-        height: 180px;
+        height: 100%;
         object-fit: cover;
     }
 
-    .video-thumb:hover {
-        transform: scale(1.03);
-    }
-
-    .video-thumb .play-btn {
+    .gradient-bottom {
         position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 38px;
-        color: white;
-        opacity: 0.9;
-    }
-
-    .video-caption a {
-        font-weight: 600;
-        font-size: 16px;
-        text-decoration: none;
-        color: #222;
-    }
-
-    .video-caption a:hover {
-        color: #0066ff;
-    }
-
-    /* MODAL PLAYER */
-    #videoModal iframe {
+        bottom: 0;
+        left: 0;
         width: 100%;
-        height: 500px;
+        height: 45%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        color: white;
+    }
 
+    .play-circle {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 42px;
+        height: 42px;
+        border: 2px solid white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        opacity: 0.9;
+        backdrop-filter: blur(3px);
+    }
+
+    .live-date {
+        font-size: 13px;
+        opacity: 0.9;
+        margin-bottom: 4px;
+    }
+
+    .live-title {
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: white;
+        text-decoration: none !important;
+        display: block;
     }
 </style>
 
-<!-- Modal Player -->
-<div class="modal fade" id="videoModal" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body p-0">
-                <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Page Top -->
 <div class="page-top">
     <div class="container">
         <h2>Live Stream</h2>
@@ -73,59 +81,30 @@
     </div>
 </div>
 
-<!-- Page Content -->
 <div class="page-content">
     <div class="container">
         <div class="row">
 
             @foreach ($live_channels as $row)
             <div class="col-lg-3 col-md-4 mb-4">
-
-                <div class="video-thumb"
-                    onclick="openVideo('{{ $row->video_id }}')">
-
-                    <img src="http://img.youtube.com/vi/{{ $row->video_id }}/hqdefault.jpg" alt="">
-
-                    <div class="play-btn">
-                        <i class="fas fa-play-circle"></i>
+                <a href="{{ route('live.detail', $row->id) }}" class="live-card">
+                    <img src="http://img.youtube.com/vi/{{ $row->video_id }}/hqdefault.jpg">
+                    <div class="play-circle"><i class="fas fa-play"></i></div>
+                    <div class="gradient-bottom">
+                        <div class="live-date">{{ date('d F Y', strtotime($row->created_at)) }}</div>
+                        <span class="live-title">🔴 {{ $row->heading }}</span>
                     </div>
-
-                </div>
-
-                <div class="video-caption mt-2">
-                    <a href="javascript:void(0)" onclick="openVideo('{{ $row->video_id }}')">
-                        {{ $row->heading }}
-                    </a>
-                </div>
-
-                <div class="video-date">
-                    <i class="fas fa-calendar-alt"></i>
-                    {{ date('d F, Y', strtotime($row->created_at)) }}
-                </div>
-
+                </a>
             </div>
             @endforeach
 
-            <div class="d-flex justify-content-center mt-3">
-                {{ $live_channels->links() }}
-            </div>
-
         </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            {{ $live_channels->links() }}
+        </div>
+
     </div>
 </div>
-
-<script>
-    function openVideo(videoId) {
-        let url = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
-        document.getElementById("videoFrame").src = url;
-        let modal = new bootstrap.Modal(document.getElementById('videoModal'));
-        modal.show();
-
-        // Hapus video saat modal ditutup
-        document.getElementById('videoModal').addEventListener('hidden.bs.modal', function() {
-            document.getElementById("videoFrame").src = "";
-        });
-    }
-</script>
 
 @endsection

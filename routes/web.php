@@ -58,41 +58,59 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/terms', [TermsController::class, 'index'])->name('terms');
 Route::get('/privacy-policy', [PrivacyController::class, 'index'])->name('privacy');
 Route::get('/disclaimer', [DisclaimerController::class, 'index'])->name('disclaimer');
+
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_form_submit');
+
 // Post Berita
 Route::get('/post', [PostController::class, 'index'])->name('post_list');
 Route::get('/post/{id}', [PostController::class, 'detail'])->name('post_detail');
 Route::get('/news-detail/{id}', [PostController::class, 'detail'])->name('news_detail');
+
 // Category
 Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category');
+
 // Gallery
 Route::get('/photo-gallery', [PhotoController::class, 'index'])->name('photo_gallery');
 Route::get('/video-gallery', [VideoController::class, 'index'])->name('video_gallery');
+
 // Subscriber
 Route::post('/subscriber', [SubscriberController::class, 'index'])->name('subscribe');
 Route::get('/subscriber/verify/{token}/{email}', [SubscriberController::class, 'verify'])->name('subscriber_verify');
+
 // Archive
 Route::get('archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
+
 // Archive
 Route::get('/archive/{year}/{month}', [HomeController::class, 'archive'])->name('archive');
+
 // Search engine
 Route::get('/search', [SearchController::class, 'index'])->name('search');
+
 // Category
 Route::get('/category/{id}', [CategoryController::class, 'category'])->name('category');
+
 // News
 Route::post('/news/{id}/comment', [NewPasswordController::class, 'comment_store'])->name('comment_store');
+
 // Live Stream
 Route::get('/live-stream', [HomeController::class, 'live_stream'])->name('live_stream');
-// // Category
+
 // Set Language
 Route::get('/set-language/{lang}', function ($lang) {
     session(['lang' => $lang]);
     return redirect()->back();
 })->name('set_language');
+
+// FRONT LIVE
+Route::get('/live', [\App\Http\Controllers\Front\LiveController::class, 'index'])->name('live.index');
+Route::get('/live/{id}', [\App\Http\Controllers\Front\LiveController::class, 'detail'])->name('live.detail');
+
+// // Category
 // Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category');
 
 /*

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>News Portal Website</title>
+    <title>News Portal Kalimantan TV - Website</title>
 
     <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
 
@@ -97,17 +97,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 d-flex align-items-center">
-                    <div class="logo" style="padding: 20px 0;">
+                    <div class="logo" style="padding: 20px 0; text-align:center;">
                         <a href="{{ route('home') }}" style="text-decoration: none;">
                             <h1 style="
-                                    margin: 0; padding: 0;
-                                    font-size: 35px;
-                                    font-weight: 800;
-                                    letter-spacing: 1px;
-                                    font-family: 'Poppins', sans-serif;
-                                    color: #6c85f0;
-                                ">
-                                Kalimantan <span style="color:#2e2c2c;">NEWS</span>
+                            margin: 0; padding: 0;
+                            font-size: 40px;
+                            font-weight: 800;
+                            font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                            color: #6c85f0;
+                            text-shadow: 2px 2px 0 #dfe3ff;
+                            letter-spacing: 0.5px;
+                            transition: 0.3s ease;
+                            display: inline-block;
+                        "
+                                onmouseover="this.style.transform='scale(1.03)'"
+                                onmouseout="this.style.transform='scale(1)'">
+                                Kalimantan<span style="color:#1e1e1e; margin-left: 6px; letter-spacing: 1px;">TV</span>
                             </h1>
                         </a>
                     </div>
