@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+    <!-- <div class="col-lg-4 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
             <div class="card-icon bg-warning">
                 <i class="fas fa-bullhorn"></i>
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 @endsection

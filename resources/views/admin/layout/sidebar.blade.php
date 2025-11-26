@@ -89,10 +89,10 @@
                                         </li>
                                 </ul>
                         </li>
-                        <li class="{{ Request::is('admin/faq/*') ? 'active' : '' }}"><a class="nav-link"
+                        <!-- <li class="{{ Request::is('admin/faq/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_faq_show') }}"><i class="fas fa-hand-point-right"></i>
-                                        <span>Faq Section</span></a></li>
-                        <li class="nav-item dropdown {{ Request::is('admin/subscribers/*') ? 'active' : '' }}">
+                                        <span>Faq Section</span></a></li> -->
+                        <!-- <li class="nav-item dropdown {{ Request::is('admin/subscribers/*') ? 'active' : '' }}">
                                 <a href="#" class="nav-link has-dropdown"><i
                                                 class="fas fa-hand-point-right"></i><span>Subscribers</span></a>
                                 <ul class="dropdown-menu">
@@ -110,7 +110,7 @@
                                                 </a>
                                         </li>
                                 </ul>
-                        </li>
+                        </li> -->
                         <li class="{{ Request::is('admin/live_channel/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_live_channel_show') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Live Channel</span></a></li>
