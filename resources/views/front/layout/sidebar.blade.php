@@ -200,28 +200,26 @@
                     </div>
                     @endforeach
                 </div>
-                
                 {{-- TENTANG KAMI --}}
                 <div class="widget">
-                    <div class="card shadow-sm mb-4 mt-4">
+                    <div class="card shadow-sm mb-4 mt-4" style="border-radius: 12px;">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
                                 <h5 class="fw-bold mb-0">Tentang Kami</h5>
-                                <i class="bi bi-person-circle text-secondary" style="font-size: 22px;"></i>
+                                <div class="d-flex justify-content-center align-items-center"
+                                    style="width:34px; height:34px; background:#eef2ff; border-radius:50%;">
+                                    <i class="bi bi-person-circle text-primary" style="font-size: 20px;"></i>
+                                </div>
                             </div>
-                            <div class="mt-1 mb-3"
-                                style="width: 60px; height: 3px; background-color: #4f74e8; border-radius: 4px;">
-                            </div>
-                            <p class="text-muted" style="font-size: 14px; line-height: 1.5;">
-                                Kalimantan TV adalah platform media berbasis digital
-                                yang menyediakan berita terkini, video, dan informasi
-                                terbaru seputar Kalimantan. Menghadirkan konten informatif,
+                            <div style="width: 70px; height: 3px; background-color: #4f74e8; border-radius: 3px;" class="mb-3"></div>
+                            <p class="text-muted" style="font-size: 14.2px; line-height: 1.55;">
+                                Kalimantan TV adalah platform media digital yang menyediakan berita terkini,
+                                video, serta informasi terbaru seputar Kalimantan. Menghadirkan konten informatif,
                                 faktual, dan terpercaya untuk masyarakat.
                             </p>
                         </div>
                     </div>
                 </div>
-
                 {{-- CALENDAR --}}
                 @php
                 $month = date('n');
@@ -229,30 +227,35 @@
                 $firstDayOfMonth = mktime(0, 0, 0, $month, 1, $year);
                 $totalDays = date('t', $firstDayOfMonth);
                 $startDay = date('N', $firstDayOfMonth); // 1 (Mon) - 7 (Sun)
-                $dayNames = ['S','S','R','K','J','S','M'];
+                // Urutan hari (Minggu–Sabtu)
+                $dayNames = ['M', 'S', 'S', 'R', 'K', 'J', 'S'];
+                $currentDay = date('j');
+                $day = 1;
                 @endphp
-                <div class="col-md-15 mt-4">
-                    <div class="card shadow-sm mb-4">
+                <div class="col-md-12 mt-4">
+                    <div class="card shadow-sm mb-4"  style="border-radius: 12px;">
                         <div class="card-body">
+                            {{-- TITLE --}}
                             <h5 class="fw-bold mb-3">Kalender</h5>
+                            {{-- MONTH NAME --}}
                             <div class="text-center mb-2">
                                 <strong style="font-size:18px;">
                                     {{ date('F Y') }}
                                 </strong>
                             </div>
+                            {{-- CALENDAR TABLE --}}
                             <table class="table text-center calendar-table">
                                 <thead>
                                     <tr>
-                                        @foreach($dayNames as $d)
-                                        <th>{{ $d }}</th>
+                                        @foreach($dayNames as $index => $d)
+                                        <th class="fw-bold py-2 {{ $index == 0 ? 'text-danger' : '' }}">
+                                            {{ $d }}
+                                        </th>
                                         @endforeach
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                    $day = 1;
-                                    $currentDay = date('j');
-                                    @endphp
+                                    {{-- FIRST ROW --}}
                                     <tr>
                                         @for ($i = 1; $i < $startDay; $i++)
                                             <td>
@@ -265,6 +268,7 @@
                                                 @php $day++; @endphp
                                                 @endfor
                                     </tr>
+                                    {{-- REMAINING ROWS --}}
                                     @while ($day <= $totalDays)
                                         <tr>
                                         @for ($i = 1; $i <= 7 && $day <=$totalDays; $i++)
@@ -280,6 +284,7 @@
                         </div>
                     </div>
                 </div>
+                {{-- STYLE UNTUK HARI AKTIF --}}
             </div>
         </div>
     </div>
@@ -297,4 +302,12 @@
         </div>
         @endforeach
     </div>
+    <style>
+        .active-day {
+            background: #0d6efd !important;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 6px;
+        }
+    </style>
 </div>

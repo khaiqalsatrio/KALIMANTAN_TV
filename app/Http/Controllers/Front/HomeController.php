@@ -56,10 +56,8 @@ class HomeController extends Controller
         $post_data = Post::orderBy('id', 'desc')->get();
         $video_data = Video::orderBy('id', 'desc')->get();
         $global_sidebar_top_ad = SidebarAdvertisement::where('sidebar_ad_location', 'Top')->get();
-
         // AMBIL DATA TAG
         $tags = Tag::orderBy('id', 'desc')->limit(25)->get();
-
         // TAMBAHKAN BAGIAN INI UNTUK ARCHIVE 
         $archives = Post::select(
             DB::raw('YEAR(created_at) as year'),
@@ -70,7 +68,6 @@ class HomeController extends Controller
             ->orderBy('year', 'desc')
             ->orderBy('month', 'desc')
             ->get();
-
         return view('front.home', compact(
             'home_ad_data',
             'setting_data',
@@ -90,10 +87,8 @@ class HomeController extends Controller
             ->whereMonth('created_at', $month)
             ->orderBy('id', 'desc')
             ->get();
-
         // Format nama bulan untuk judul
         $monthName = date("F", mktime(0, 0, 0, $month, 1));
-
         return view('front.archive', compact('posts', 'year', 'month', 'monthName'));
     }
 

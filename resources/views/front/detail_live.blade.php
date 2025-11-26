@@ -14,21 +14,27 @@
 </div>
 
 <div class="container py-4">
-
-    <div class="ratio ratio-16x9 mb-3">
-        <iframe
-            src="https://www.youtube.com/embed/{{ $live->video_id }}?autoplay=1"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
+    <div class="row">
+        {{-- Konten Utama --}}
+        <div class="col-lg-8 col-md-12">
+            <div class="ratio ratio-16x9 mb-3">
+                <iframe
+                    src="https://www.youtube.com/embed/{{ $live->video_id }}?autoplay=1&mute=1&playsinline=1"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <h3 class="fw-bold mb-3">{{ $live->heading }}</h3>
+            <p class="text-muted">
+                Tanggal: {{ date('d F Y', strtotime($live->created_at)) }}
+            </p>
+        </div>
+        {{-- Sidebar --}}
+        <div class="col-lg-4 col-md-12">
+            @include('front.layout.sidebar')
+        </div>
     </div>
-
-    <h3 class="fw-bold mb-3">{{ $live->heading }}</h3>
-
-    <p class="text-muted">
-        Tanggal: {{ date('d F Y', strtotime($live->created_at)) }}
-    </p>
-
 </div>
 
 @endsection

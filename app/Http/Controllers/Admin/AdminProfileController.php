@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash; 
+use Illuminate\Support\Facades\Hash;
 
 class AdminProfileController extends Controller
 {
@@ -33,15 +33,17 @@ class AdminProfileController extends Controller
         }
         if ($request->hasFile('photo')) {
             $request->validate([
-                'photo' => 'image|mimes:jpg,jpeng,png,gif'
+                'photo' => 'image|mimes:jpg,jpeg,png,gif'
             ]);
-            unlink(public_path('uploads/' . $admin_data->photo));
+            if ($admin_data->photo && file_exists(public_path('uploads/' . $admin_data->photo))) {
+                unlink(public_path('uploads/' . $admin_data->photo));
+            }
             $ext = $request->file('photo')->extension();
-            $final_name = 'admin' . '.' . $ext;
+            $final_name = 'admin_' . $admin_data->id . '_' . time() . '.' . $ext;
             $request->file('photo')->move(public_path('uploads/'), $final_name);
             $admin_data->photo = $final_name;
         }
-        $admin_data->update();
+        $admin_data->save();
         return redirect()->back()->with('success', 'Informasi profil Anda telah berhasil diubah.');
     }
 }
