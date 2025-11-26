@@ -15,18 +15,18 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->integer('sub_category_id');
             $table->string('post_title');
             $table->text('post_detail');
             $table->string('post_photo');
-            $table->integer('visitors');
-            $table->integer('author_id');
             $table->integer('admin_id');
-            $table->integer('is_share');
-            $table->integer('is_comment');
+            $table->integer('category_id')->nullable();
+            $table->string('post_slug')->nullable();
+            $table->integer('visitor_count')->default(0);
+            $table->string('show_on_menu')->default('Show');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

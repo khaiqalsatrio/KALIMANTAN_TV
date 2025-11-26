@@ -15,19 +15,14 @@ return new class extends Migration
     {
         Schema::create('sidebar_advertisements', function (Blueprint $table) {
             $table->id();
-
             // File iklan / gambar
             $table->string('sidebar_ad');
-
             // URL ke website tertentu (opsional)
             $table->string('sidebar_ad_url')->nullable();
-
             // Lokasi penempatan: Top, Middle, Bottom
             $table->enum('sidebar_ad_location', ['Top', 'Middle', 'Bottom']);
-
             // Status iklan: Show / Hide
             $table->enum('status', ['Show', 'Hide'])->default('Show');
-
             $table->timestamps();
         });
     }

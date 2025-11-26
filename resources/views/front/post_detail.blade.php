@@ -59,7 +59,7 @@
                     {!! $post_detail->post_detail !!}
                 </div>
                 <div class="tag-section">
-                    <h2>Tags</h2>
+                    <h2 class="text-uppercase">Tags</h2>
                     <div class="tag-section-content">
                         @foreach ($tag_data as $row)
                         <a href="javascript:void(0)">

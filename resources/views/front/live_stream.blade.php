@@ -73,7 +73,7 @@
 
 <div class="page-top">
     <div class="container">
-        <h2>Live Stream</h2>
+        <h2 class="fw-bold">Live Stream</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item active">Live Stream</li>

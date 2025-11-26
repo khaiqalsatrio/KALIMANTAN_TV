@@ -209,10 +209,7 @@
                     <div class="news-total-item">
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
-                                <h2 class="ps-3"
-                                    style="border-left:5px solid #0d6efd; font-weight:800; font-size:25px; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">
-                                    {{ $item->category_name }}
-                                </h2>
+                                <h2 class="ps-3" style="border-left:5px solid #0d6efd; font-weight:800; font-size:25px; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">{{ $item->category_name }}</h2>
                             </div>
                             <div class="col-lg-6 col-md-12 see-all">
                                 <a href="{{ route('category', $item->id) }}" class="btn btn-primary btn-sm">

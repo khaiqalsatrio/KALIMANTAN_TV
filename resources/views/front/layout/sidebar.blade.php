@@ -52,6 +52,7 @@
     }
 </style>
 
+<!-- Sidebar -->
 <div class="sidebar">
     {{-- TOP SIDEBAR ADS --}}
     <div class="widget">
@@ -68,10 +69,11 @@
         @endforeach
     </div>
 
+    
     {{-- TAG STATIC --}}
     <div class="widget">
         <div class="tag-heading">
-            <h2>Tag Berita</h2>
+            <h2 class="ps-3" style="border-left:5px solid #0d6efd; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">Tag berita</h2>
         </div>
         <div class="tag">
             @foreach($tags as $tag)
@@ -92,13 +94,14 @@
         </a>
     </div>
     @endforeach
-
     {{-- LIVE CHANNEL --}}
     <div class="widget">
         @foreach ($global_live_channel_data as $row)
         <div class="live-channel">
             <div class="live-channel-heading">
-                <h2>{{ $row->heading }}</h2>
+                <h2 class="fw-bold mb-3 pb-2 border-bottom border-2 border-black">
+                    {{ strtoupper($row->heading) }}
+                </h2>
             </div>
             <div class="live-channel-item">
                 <iframe width="560" height="315"
@@ -115,7 +118,7 @@
         <div class="news">
             <div class="news-heading">
                 <h2>
-                    Berita Populer & Terkini</h2>
+                    BERITA POPLER & TERKINI</h2>
             </div>
             <ul class="nav nav-pills mb-3">
                 <li class="nav-item">
@@ -233,7 +236,7 @@
                 $day = 1;
                 @endphp
                 <div class="col-md-12 mt-4">
-                    <div class="card shadow-sm mb-4"  style="border-radius: 12px;">
+                    <div class="card shadow-sm mb-4" style="border-radius: 12px;">
                         <div class="card-body">
                             {{-- TITLE --}}
                             <h5 class="fw-bold mb-3">Kalender</h5>
