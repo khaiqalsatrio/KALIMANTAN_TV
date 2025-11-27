@@ -27,7 +27,7 @@
                                             onmouseout="this.style.background='transparent'"
                                             href="{{ route('category', $cat->id) }}">
                                             <span style="width:7px; height:7px; background:#0d6efd; border-radius:50%;"></span>
-                                            {{ $cat->category_name }}
+                                            {{ ucwords($cat->category_name) }}
                                         </a>
                                     </li>
                                     @endforeach

@@ -19,14 +19,13 @@
     </div>
 </div>
 
+<!-- Page Content -->
 <div class="page-content">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-6">
-
                 <div class="category-page">
                     <div class="row">
-
                         @if ($posts->count())
                         @foreach($posts as $row)
                         <div class="col-lg-4 col-md-6 mb-4">
@@ -36,19 +35,16 @@
                                         <img src="{{ asset('uploads/post/'.$row->post_photo) }}" alt="">
                                     </a>
                                 </div>
-
                                 <div class="category">
                                     <span class="badge bg-success">
                                         {{ $category->category_name }}
                                     </span>
                                 </div>
-
                                 <h3 class="mt-2">
                                     <a href="{{ route('news_detail', $row->id) }}">
                                         {{ $row->post_title }}
                                     </a>
                                 </h3>
-
                                 <div class="date-user">
                                     <div class="user">
                                         @php
@@ -56,7 +52,6 @@
                                         @endphp
                                         <a href="javascript:void;">{{ $user_data->name }}</a>
                                     </div>
-
                                     <div class="date">
                                         <a href="javascript:void;">
                                             {{ date('d F, Y', strtotime($row->updated_at)) }}
@@ -69,16 +64,11 @@
                         @else
                         <span class="text-danger">Tidak ada postingan.</span>
                         @endif
-
                         <div class="d-flex justify-content-center mt-4">
-                            {{ $posts->links() }}
                         </div>
-
                     </div>
                 </div>
-
             </div>
-
             <div class="col-lg-4 col-md-6 sidebar-col">
                 @include('front.layout.sidebar')
             </div>

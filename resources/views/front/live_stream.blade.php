@@ -71,7 +71,7 @@
     }
 </style>
 
-<div class="page-top">
+<div class="page-top mb-5">
     <div class="container">
         <h2 class="fw-bold">Live Stream</h2>
         <ol class="breadcrumb">
@@ -84,7 +84,6 @@
 <div class="page-content">
     <div class="container">
         <div class="row">
-
             @foreach ($live_channels as $row)
             <div class="col-lg-3 col-md-4 mb-4">
                 <a href="{{ route('live.detail', $row->id) }}" class="live-card">
@@ -97,14 +96,10 @@
                 </a>
             </div>
             @endforeach
-
         </div>
-
         <div class="d-flex justify-content-center mt-3">
             {{ $live_channels->links() }}
         </div>
-
     </div>
 </div>
-
 @endsection
