@@ -94,7 +94,7 @@ class HomeController extends Controller
 
     public function live_stream()
     {
-        $live_channels = LiveChannel::latest()->paginate(10);
+        $live_channels = LiveChannel::latest()->paginate(5);
         return view('front.live_stream', compact('live_channels'));
     }
 }

@@ -6,15 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>News Portal Kalimantan TV - Website</title>
-
     <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
 
     @include('front.layout.styles')
-
     @include('front.layout.scripts')
 
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6212352ed76fda0a"></script>
 
     <!-- Google Analytics -->
@@ -28,7 +25,6 @@
         gtag('js', new Date());
         gtag('config', 'UA-84213520-6');
     </script>
-
     <style>
         .top-ad-img {
             max-width: 100%;
@@ -52,8 +48,9 @@
             }
         }
     </style>
-
 </head>
+
+<!-- Header -->
 
 <body>
     <div class="top">
@@ -67,11 +64,9 @@
                 </div>
                 <div class="col-md-6">
                     <ul class="right">
-
                         @if ($global_page_data->faq_status == 'Show')
                         <li class="menu"><a href="{{ route('faq') }}">FAQ</a></li>
                         @endif
-
                         @if ($global_page_data->about_status == 'Show')
                         <li class="menu"><a href="{{ route('about') }}">About</a></li>
                         @endif
@@ -93,6 +88,7 @@
         </div>
     </div>
 
+    <!-- Header -->
     <div class="heading-area">
         <div class="container">
             <div class="row">
@@ -116,44 +112,29 @@
                             </h1>
                         </a>
                     </div>
-                    <!-- <div class="logo"> <a href="{{ route('home') }}"> <img src="uploads/logo.png" alt=""> </a> </div> -->
                 </div>
-                <!-- TOP ADS -->
-                <!-- @if ($global_top_ad_data->top_ad_status == 'Show')
-                <div class="col-md-8">
-                    <div class="ad-section-1 text-center">
-                        @if ($global_top_ad_data->top_ad_url == '')
-                        <img src="{{ asset('uploads/'.$global_top_ad_data->top_ad_image) }}"
-                            alt=""
-                            class="top-ad-img">
-                        @else
-                        <a href="{{ $global_top_ad_data->top_ad_url }}">
-                            <img src="{{ asset('uploads/'.$global_top_ad_data->top_ad_image) }}"
-                                alt=""
-                                style="width: 800px; height: 100px;">
-                        </a>
-                        @endif
-                    </div>
-                </div>
-                @endif -->
             </div>
         </div>
     </div>
+
+    <!-- Navigation -->
     @include('front.layout.nav')
+
+    <!-- Main Content -->
     @yield('main_content')
 
-
-
+    <!-- Footer -->
     <div class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">Tentang kami</h2>
+                        <h2 class="heading">Kunjungi YouTube Kami</h2>
                         <p>
-                            Kalimantan TV adalah platform media yang menghadirkan informasi terbaru seputar kehidupan di Kalimantan.
-                            Kami berfokus pada berita lokal, budaya, dan perkembangan daerah, dengan tujuan memberikan tayangan yang
-                            mudah dipahami dan bermanfaat bagi masyarakat.
+                            Dapatkan konten terbaru dari Kalimantan TV melalui kanal YouTube resmi kami.
+                            Kami menghadirkan berita lokal, liputan daerah, budaya, dan berbagai program menarik lainnya
+                            langsung dari Pangkalan Bun, Kotawaringin Barat.
+                            Jangan lupa subscribe agar tidak ketinggalan update terbaru!
                         </p>
                     </div>
                 </div>
@@ -172,37 +153,18 @@
                             @if ($global_page_data->disclaimer_status == 'Show')
                             <li><a href="{{ route('disclaimer') }}">Disclaimer</a></li>
                             @endif
-                            <li><a href="{{ route('contact') }}">Contact</a></li>
+                            <!-- <li><a href="{{ route('contact') }}">Contact</a></li> -->
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="item">
-                        <h2 class="heading">Kontak</h2>
-                        <div class="list-item">
-                            <div class="left">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="right">
-                                Kalimantan Tengah Pangkalnung, JL. Panglima-utar<br>
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="left">
-                                <i class="far fa-envelope"></i>
-                            </div>
-                            <div class="right">
-                                khaiqalsatrio29@gmail.com
-                            </div>
-                        </div>
-                        <div class="list-item">
-                            <div class="left">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="right">
-                                000-000-0000
-                            </div>
-                        </div>
+                        <h2 class="heading">Informasi Lebih Lanjut</h2>
+                        <p>
+                            Semua informasi terkait alamat, email, dan nomor telepon tersedia lengkap di halaman kontak kami.
+                            Silakan kunjungi link di bawah ini.
+                        </p>
+                        <a href="{{ route('contact') }}" class="btn btn-outline-primary mb-4">Lihat Kontak Lengkap</a>
                         <ul class="social">
                             <li>
                                 <a href="">

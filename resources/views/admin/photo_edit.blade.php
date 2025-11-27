@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Edit Photo')
+@section('heading', 'Edit Photo dan Caption')
 
 @section('button')
 <a href="{{ route('admin_photo_show') }}" class="btn btn-primary"><i class="fas fa-eye"></i> View </a>

@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Categories')
+@section('heading', 'Kategori')
 
 @section('button')
 <a href="{{ route('admin_category_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add </a>

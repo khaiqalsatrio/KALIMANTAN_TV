@@ -52,7 +52,7 @@
                     </div>
                     <div class="item">
                         <b><i class="fas fa-eye"></i></b>
-                        {{ $post_detail->visitors }}
+                        {{ $post_detail->visitor_count }}
                     </div>
                 </div>
                 <div class="main-text">

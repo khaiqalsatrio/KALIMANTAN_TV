@@ -149,24 +149,6 @@
     </div>
 </div>
 
-
-<!-- @if($home_ad_data->above_search_ad_status == 'Show')
-<div class="ad-section-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                @if ($home_ad_data->above_search_ad_url != '')
-                <a href="{{ $home_ad_data->above_search_ad_url }}"><img
-                        src="{{ asset('uploads/'.$home_ad_data->above_search_ad)  }}" alt=""></a>
-                @else
-                <img src="{{ asset('uploads/'.$home_ad_data->above_search_ad) }}" alt="">
-                @endif
-            </div>
-        </div>
-    </div>
-</div>
-@endif -->
-
 <div class="search-section">
     <div class="container">
         <form action="{{ route('search') }}" method="GET">
@@ -177,16 +159,6 @@
                             <input type="text" name="q" class="form-control" placeholder="Cari judul atau isi berita...">
                         </div>
                     </div>
-                    <!-- <div class="col-md-3">
-                        <div class="form-group">
-                            <select name="category" class="form-select">
-                                <option value="">Semua Kategori</option>
-                                @foreach($categories as $cat)
-                                <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div> -->
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </div>
@@ -305,6 +277,7 @@
         </div>
     </div>
 </div>
+
 @if ($setting_data->video_status == 'Show'))
 <div class="video-content">
     <div class="container">
@@ -345,23 +318,6 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endif
-
-@if($home_ad_data->above_footer_ad_status == 'Show')
-<div class="ad-section-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                @if ($home_ad_data->above_footer_ad_url != '')
-                <a href="{{ $home_ad_data->above_footer_ad_url }}"><img
-                        src="{{ asset('uploads/'.$home_ad_data->above_footer_ad)  }}" alt=""></a>
-                @else
-                <img src="{{ asset('uploads/'.$home_ad_data->above_footer_ad) }}" alt="">
-                @endif
             </div>
         </div>
     </div>

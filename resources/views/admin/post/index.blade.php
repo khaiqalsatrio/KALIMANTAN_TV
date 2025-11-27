@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Posts')
+@section('heading', 'Daftar Berita Yang Sudah Dipublikasikan')
 
 @section('button')
 <a href="{{ route('admin_post_create') }}" class="btn btn-primary">

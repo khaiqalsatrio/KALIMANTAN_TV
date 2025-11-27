@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Add Video')
+@section('heading', 'Tambah Video')
 
 @section('button')
 <a href="{{ route('admin_video_show') }}" class="btn btn-primary"><i class="fas fa-eye"></i> View </a>

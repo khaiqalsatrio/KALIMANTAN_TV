@@ -1,17 +1,16 @@
 @extends('admin.layout.app')
-
 @section('heading', 'Tambah Post Baru')
-
 @section('button')
+
 <a href="{{ route('admin_post_show') }}" class="btn btn-primary">
     <i class="fas fa-arrow-left"></i> Kembali
 </a>
-@endsection
 
+@endsection
 @section('main_content')
+
 <div class="card">
     <div class="card-body">
-
         {{-- Error alert --}}
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -46,9 +45,9 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Isi berita</label>
-            <textarea name="post_detail" class="form-control" id="editor" style="height: 200px;">
-            {{ old('post_detail') }}
-            </textarea>
+                <textarea name="post_detail" class="form-control" id="editor" style="height: 200px;">
+                {{ old('post_detail') }}
+                </textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Foto Thumbnail</label>

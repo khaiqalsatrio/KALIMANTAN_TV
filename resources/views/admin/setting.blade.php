@@ -16,11 +16,7 @@
                                     aria-orientation="vertical">
                                     <a class="nav-link active" id="v-1-tab" data-toggle="pill" href="#v-1" role="tab"
                                         aria-controls="v-1" aria-selected="true">
-                                        Home Page
-                                    </a>
-                                    <a class="nav-link" id="v-2-tab" data-toggle="pill" href="#v-2" role="tab"
-                                        aria-controls="v-2" aria-selected="false">
-                                        Text Item
+                                        Home User
                                     </a>
                                 </div>
                             </div>
@@ -31,9 +27,13 @@
                                         <!-- Home Page Start -->
                                         <div class="form-group mb-3">
                                             <label>News Ticker Total *</label>
-                                            <input type="text" class="form-control" name="news_ticker_total"
-                                                placeholder="News Ticker Total" value={{
-                                                $setting_data->news_ticker_total }}>
+                                            <input type="number" class="form-control"
+                                                name="news_ticker_total"
+                                                placeholder="News Ticker Total"
+                                                value="{{ $setting_data->news_ticker_total }}"
+                                                min="0"
+                                                step="1"
+                                                oninput="this.value = this.value.replace(/[^0-9]/g,'')">
                                         </div>
                                         <div class="form-group mb-3">
                                             <label>News Ticker Status</label>
@@ -49,46 +49,8 @@
                                                     >Hide</option>
                                             </select>
                                         </div>
-                                        <!-- Home Page End -->
-                                        <!-- Home Page Start -->
-                                        <div class="form-group mb-3">
-                                            <label>Video Total *</label>
-                                            <input type="text" class="form-control" name="video_total"
-                                                placeholder="News Ticker Total" value={{
-                                                $setting_data->video_total }}>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label>Video Status</label>
-                                            <select name="video_status" class="form-control">
-                                                <option value="Show" @if ($setting_data->video_status == 'Show')
-                                                    selected
-                                                    @endif
-                                                    >
-                                                    Show</option>
-                                                <option value="Hide" @if ($setting_data->video_status == 'Hide')
-                                                    selected
-                                                    @endif
-                                                    >Hide</option>
-                                            </select>
-                                        </div>
-                                        <!-- Home Page End -->
                                     </div>
                                 </div>
-                                {{-- <div class="pt_0 tab-pane fade" id="v-2" role="tabpanel" aria-labelledby="v-2-tab">
-                                    <!-- Text Item Start -->
-                                    <div class="form-group mb-3">
-                                        <label>Text</label>
-                                        <input type="text" class="form-control" name="" value="123">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label>Status</label>
-                                        <select name="recaptcha_status" class="form-control">
-                                            <option value="Show">Show</option>
-                                            <option value="Hide">Hide</option>
-                                        </select>
-                                    </div>
-                                    <!-- Text Item End -->
-                                </div> --}}
                             </div>
                         </div>
                         <div class="form-group mt_30">

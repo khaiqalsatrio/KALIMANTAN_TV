@@ -31,7 +31,7 @@ public function category($id)
 
     $posts = Post::where('category_id', $id)
         ->orderBy('id', 'desc')
-        ->get();
+        ->paginate(10);
 
     return view('front.category', compact('category', 'posts'));
 }

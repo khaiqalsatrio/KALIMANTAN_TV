@@ -12,7 +12,7 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Total News Categories</h4>
+                    <h4>Total Kategori Berita</h4>
                 </div>
                 <div class="card-body">
                     {{ $total_category }}
@@ -27,7 +27,7 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                    <h4>Total News</h4>
+                    <h4>Total Berita</h4>
                 </div>
                 <div class="card-body">
                     {{ $total_news }}

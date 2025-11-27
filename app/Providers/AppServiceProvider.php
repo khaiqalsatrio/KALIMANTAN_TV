@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator; // <-- tambahkan ini
 use Illuminate\Support\ServiceProvider;
 use App\Models\TopAdvertisement;
 use App\Models\SidebarAdvertisement;
@@ -20,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        // 🔥 Tambahkan di sini
+        Paginator::useBootstrap();
+        
         // AMBIL SEMUA DATA GLOBAL
         $top_ad_data = TopAdvertisement::where('id', 1)->first();
 

@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Photos')
+@section('heading', 'Daftar Jurnalis Yang Sudah Dipublikasikan')
 
 @section('button')
 <a href="{{ route('admin_photo_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add </a>

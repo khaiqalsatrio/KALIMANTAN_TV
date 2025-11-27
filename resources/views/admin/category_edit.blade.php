@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Edit Category')
+@section('heading', 'Edit Kategori')
 
 @section('button')
 <a href="{{ route('admin_category_show') }}" class="btn btn-primary"><i class="fas fa-eye"></i> View </a>

@@ -72,6 +72,9 @@
             <div class="col-lg-4 col-md-6 sidebar-col">
                 @include('front.layout.sidebar')
             </div>
+            <div class="d-flex justify-content-center mt-4">
+                {{ $posts->links() }}
+            </div>
         </div>
     </div>
 </div>
