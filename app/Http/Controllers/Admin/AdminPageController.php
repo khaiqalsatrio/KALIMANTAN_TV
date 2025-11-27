@@ -135,18 +135,19 @@ class AdminPageController extends Controller
     public function contact_update(Request $request)
     {
         $page_data = Page::where('id', 1)->first();
+
         $request->validate([
             'contact_title' => 'required',
-            'contact_map_x' => 'required',
-            'contact_map_y' => 'required'
+            'contact_map_link' => 'required'
         ]);
+
         $page_data->contact_title = $request->contact_title;
         $page_data->contact_detail = $request->contact_detail;
-        $page_data->contact_map_x = $request->contact_map_x;
-        $page_data->contact_map_y = $request->contact_map_y;
+        $page_data->contact_map_link = $request->contact_map_link;
+
         $page_data->update();
-        return redirect()->route('admin_page_contact')->with('success', 'Informasi halaman telah berhasil diubah.');
+
+        return redirect()->route('admin_page_contact')
+            ->with('success', 'Informasi halaman telah berhasil diubah.');
     }
-
-
 }

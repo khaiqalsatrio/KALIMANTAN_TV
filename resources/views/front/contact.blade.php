@@ -22,26 +22,27 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-12">
+            {{-- Contact Text Content --}}
+            <div class="col-md-12 mb-3">
                 {!! $page_data->contact_detail !!}
             </div>
-
+            <!-- {{-- Contact Form --}}
             <div class="col-lg-6 col-md-12">
                 <form action="{{ route('contact_form_submit') }}" method="POST" class="form_contact_ajax">
                     @csrf
                     <div class="contact-form">
                         <div class="mb-3">
-                            <label for="" class="form-label"> NAME </label>
+                            <label class="form-label"> NAME </label>
                             <input type="text" class="form-control" name="name">
                             <span class="text-danger error-text name_error"></span>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label"> EMAIL_ADDRESS </label>
+                            <label class="form-label"> EMAIL_ADDRESS </label>
                             <input type="text" class="form-control" name="email">
                             <span class="text-danger error-text email_error"></span>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label"> MESSAGE </label>
+                            <label class="form-label"> MESSAGE </label>
                             <textarea class="form-control" name="message" rows="3"></textarea>
                             <span class="text-danger error-text message_error"></span>
                         </div>
@@ -50,16 +51,36 @@
                         </div>
                     </div>
                 </form>
+            </div> -->
+            <div class="col-lg-6 col-md-12">
+                @if ($page_data->contact_map_link)
+                <div class="card shadow-sm border-0 rounded-3">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Lokasi Kantor Kami</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe
+                                src="{{ $page_data->contact_map_link }}"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+                @else
+                <p class="text-danger">Google Maps link belum ditambahkan.</p>
+                @endif
             </div>
 
-            <div class="col-lg-6 col-md-12">
-                <div id="map" style="width:500px;height:400px;"></div>
-            </div>
 
         </div>
     </div>
 </div>
 
+{{-- AJAX Contact Form Script --}}
 <script>
     (function($) {
         $(".form_contact_ajax").on('submit', function(e) {
@@ -91,37 +112,12 @@
                             message: data.success_message,
                         });
                     }
-
                 }
             });
         });
     })(jQuery);
 </script>
+
 <div id="loader"></div>
 
-@endsection
-
-@section('map_scripts')
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15bed1c8cddf50a218e2c27a919fe330"></script>
-<!-- <script>
-    // Mengambil elemen HTML tempat peta akan ditampilkan
-    var container = document.getElementById('map');
-    // Opsi dasar untuk membuat peta
-    var options = {
-        // Titik pusat peta (latitude, longitude)
-        center: new kakao.maps.LatLng({
-            {
-                $page_data - > contact_map_x
-            }
-        }, {
-            {
-                $page_data - > contact_map_y
-            }
-        }),
-        // Level zoom (semakin besar angka, semakin jauh)
-        level: 3
-    };
-    // Membuat peta dan menampilkannya ke halaman
-    var map = new kakao.maps.Map(container, options);
-</script> -->
 @endsection

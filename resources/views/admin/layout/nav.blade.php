@@ -8,12 +8,18 @@
         </ul>
     </form>
     <ul class="navbar-nav navbar-right">
-        <li class="nav-link">
+        <!-- <li class="nav-link">
             <a href="" target="_blank" class="btn btn-warning">Front End</a>
-        </li>
+        </li> -->
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset('uploads/'.Auth::guard('admin')->user()->photo) }}" class="rounded-circle mr-1">
+                <div class="rounded-circle border border-4 border-light shadow-sm p-1 d-inline-block bg-white">
+                    <img
+                        src="{{ asset('uploads/' . Auth::guard('admin')->user()->photo) }}"
+                        alt="Profile Photo"
+                        class="rounded-circle"
+                        style="width: 45px; height: 45px; object-fit: cover;">
+                </div>
                 <div class="d-sm-none d-lg-inline-block">{{ Auth::guard('admin')->user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
