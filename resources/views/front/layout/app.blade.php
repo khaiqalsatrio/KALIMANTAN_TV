@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>News Portal Kalimantan TV - Website</title>
+    <title>Kalimantan TV Website</title>
     <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
 
     @include('front.layout.styles')
