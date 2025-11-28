@@ -55,14 +55,17 @@
                 </div>
                 @endforeach
             </div>
+            <!-- PAGINATION -->
+            <div class="mt-4">
+                {{ $posts->links() }}
+            </div>
         </div>
-
         <!-- =========================== -->
         <!-- SIDEBAR KANAN (KALENDER)   -->
         <!-- =========================== -->
-            <div class="col-lg-4 col-md-6 sidebar-col">
-                @include('front.layout.sidebar')
-            </div>
+        <div class="col-lg-4 col-md-6 sidebar-col">
+            @include('front.layout.sidebar')
+        </div>
     </div>
 </div>
 

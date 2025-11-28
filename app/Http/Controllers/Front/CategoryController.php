@@ -25,15 +25,14 @@ class CategoryController extends Controller
     // }
 
 
-public function category($id)
-{
-    $category = Category::findOrFail($id);
+    public function category($id)
+    {
+        $category = Category::findOrFail($id);
 
-    $posts = Post::where('category_id', $id)
-        ->orderBy('id', 'desc')
-        ->paginate(16);
+        $posts = Post::where('category_id', $id)
+            ->orderBy('id', 'desc')
+            ->paginate(15);
 
-    return view('front.category', compact('category', 'posts'));
-}
-
+        return view('front.category', compact('category', 'posts'));
+    }
 }

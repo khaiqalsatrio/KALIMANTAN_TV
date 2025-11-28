@@ -37,20 +37,23 @@ class SearchController extends Controller
 
     public function index(Request $request)
     {
-        $keyword = $request->get('q');
-        $category = $request->get('category');
+        $keyword = trim($request->q);
+        $category = $request->category;
+
         $posts = Post::query()
-            ->when($keyword, function ($q) use ($keyword) {
+            ->when(filled($keyword), function ($q) use ($keyword) {
                 $q->where(function ($w) use ($keyword) {
                     $w->where('post_title', 'LIKE', "%$keyword%")
                         ->orWhere('post_detail', 'LIKE', "%$keyword%");
                 });
             })
-            ->when($category, function ($q) use ($category) {
+            ->when(filled($category), function ($q) use ($category) {
                 $q->where('category_id', $category);
             })
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(10)                   // 👈 jumlah per halaman
+            ->appends($request->query());
+
         return view('front.search', compact('posts', 'keyword', 'category'));
     }
 }

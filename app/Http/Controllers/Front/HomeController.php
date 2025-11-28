@@ -53,7 +53,8 @@ class HomeController extends Controller
             ->orderBy('id', 'asc')
             ->get();
         // POST UNTUK NEWS TICKER
-        $post_data = Post::orderBy('id', 'desc')->get();
+        $post_data = Post::orderBy('id', 'desc')->paginate(10);
+
         $video_data = Video::orderBy('id', 'desc')->get();
         $global_sidebar_top_ad = SidebarAdvertisement::where('sidebar_ad_location', 'Top')->get();
         // AMBIL DATA TAG
