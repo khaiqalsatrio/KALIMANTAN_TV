@@ -65,9 +65,9 @@
                                         <li class="{{ Request::is('admin/page/about/*') ? 'active' : '' }}"><a class="nav-link"
                                                         href="{{ route('admin_page_about') }}"><i class="fas fa-angle-right"></i> About Page </a>
                                         </li>
-                                        <li class="{{ Request::is('admin/page/login/*') ? 'active' : '' }}"><a class="nav-link"
+                                        <!-- <li class="{{ Request::is('admin/page/login/*') ? 'active' : '' }}"><a class="nav-link"
                                                         href="{{ route('admin_page_login') }}"><i class="fas fa-angle-right"></i> Login Page </a>
-                                        </li>
+                                        </li> -->
                                         <li class="{{ Request::is('admin/page/faq/*') ? 'active' : '' }}"><a class="nav-link"
                                                         href="{{ route('admin_page_faq') }}"><i class="fas fa-angle-right"></i> FAQ Page </a>
                                         </li>

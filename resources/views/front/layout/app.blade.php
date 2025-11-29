@@ -75,12 +75,12 @@
                         <li class="menu"><a href="{{ route('login') }}">Login</a></li>
                         @endif
                         <li>
-                            <div class="language-switch">
+                            <!-- <div class="language-switch">
                                 <select id="language_select">
                                     <option value="en" {{ session('lang') == 'en' ? 'selected' : '' }}>English</option>
                                     <option value="id" {{ session('lang') == 'id' ? 'selected' : '' }}>Indonesia</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </li>
                     </ul>
                 </div>
