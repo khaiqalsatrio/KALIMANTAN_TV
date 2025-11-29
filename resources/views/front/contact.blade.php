@@ -22,9 +22,11 @@
     <div class="container">
         <div class="row">
 
-            {{-- Contact Text Content --}}
-            <div class="col-md-12 mb-3">
-                {!! $page_data->contact_detail !!}
+            {{-- Deskripsi Kontak --}}
+            <div class="col-md-12 mb-4">
+                <div class="card shadow-sm border-0 rounded-3 p-4 bg-light">
+                    {!! $page_data->contact_detail !!}
+                </div>
             </div>
             <!-- {{-- Contact Form --}}
             <div class="col-lg-6 col-md-12">
@@ -55,7 +57,7 @@
             <div class="col-lg-6 col-md-12">
                 @if ($page_data->contact_map_link)
                 <div class="card shadow-sm border-0 rounded-3">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-dark text-white">
                         <h5 class="mb-0">Lokasi Kantor Kami</h5>
                     </div>
                     <div class="card-body p-0">

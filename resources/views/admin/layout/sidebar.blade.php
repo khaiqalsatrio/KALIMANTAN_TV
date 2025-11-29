@@ -15,7 +15,7 @@
 
                         <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_setting') }}"><i class="fas fa-hand-point-right"></i>
-                                        <span>Setting</span></a></li>
+                                        <span>Setting Ticker Berita</span></a></li>
                         <!-- <li
                                 class="nav-item dropdown {{ Request::is('admin/top-advertisement')||Request::is('admin/home-advertisement')||Request::is('admin/sidebar-advertisement-*') ? 'active' : '' }}">
                                 <a href="#" class="nav-link has-dropdown"><i
@@ -60,7 +60,7 @@
                                         href="{{ route('admin_video_show') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Galeri Video</span></a></li>
                         <li class="nav-item dropdown {{ Request::is('admin/page/*') ? 'active' : '' }}">
-                                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Kelola Halaman / Page</span></a>
+                                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Kelola Halaman</span></a>
                                 <ul class="dropdown-menu">
                                         <li class="{{ Request::is('admin/page/about/*') ? 'active' : '' }}"><a class="nav-link"
                                                         href="{{ route('admin_page_about') }}"><i class="fas fa-angle-right"></i> About Page </a>

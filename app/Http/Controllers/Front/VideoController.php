@@ -14,4 +14,10 @@ class VideoController extends Controller
 
         return view('front.video_gallery', compact('video_data'));
     }
+
+    public function detail($id)
+    {
+        $video = Video::findOrFail($id);
+        return view('front.detail_video', compact('video'));
+    }
 }

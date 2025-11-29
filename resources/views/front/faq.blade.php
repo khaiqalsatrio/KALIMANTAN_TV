@@ -23,7 +23,7 @@
         <div class="row">
 
             @if ($page_data->faq_detail != '')
-            <div class="col-md-12">
+            <div class="card shadow-sm border-0 rounded-3 p-4 bg-light">
                 {!! $page_data->faq_detail !!}
             </div>
             <br>

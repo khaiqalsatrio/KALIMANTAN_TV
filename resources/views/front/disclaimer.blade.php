@@ -21,7 +21,7 @@
 <div class="page-content">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="card shadow-sm border-0 rounded-3 p-4 bg-light">
                 {!! $page_data->disclaimer_detail !!}
             </div>
         </div>

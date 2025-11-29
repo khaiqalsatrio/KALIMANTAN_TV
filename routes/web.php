@@ -20,6 +20,9 @@ use App\Http\Controllers\Front\SubCategoryController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\VideoController;
 use App\Http\Controllers\Front\SubscriberController;
+use App\Http\Controllers\FrontVideoController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -100,11 +103,20 @@ Route::post('/news/{id}/comment', [NewPasswordController::class, 'comment_store'
 // Live Stream
 Route::get('/live-stream', [HomeController::class, 'live_stream'])->name('live_stream');
 
+// Video by id
+Route::get('/video/{id}', [VideoController::class, 'detail'])
+    ->name('video.detail');
+
+// Video
+Route::get('/video', [\App\Http\Controllers\Front\VideoController::class, 'index'])->name('video.index');
+
 // Set Language
-Route::get('/set-language/{lang}', function ($lang) {
-    session(['lang' => $lang]);
-    return redirect()->back();
-})->name('set_language');
+// Route::get('lang/{locale}', function ($locale) {
+//     if (in_array($locale, ['en', 'id'])) {
+//         session(['locale' => $locale]);
+//     }
+//     return back();
+// });
 
 // FRONT LIVE
 Route::get('/live', [\App\Http\Controllers\Front\LiveController::class, 'index'])->name('live.index');
