@@ -13,15 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->integer('visitor_count')->default(0);
-        });
+        if (!Schema::hasColumn('posts', 'visitor_count')) {
+            Schema::table('posts', function (Blueprint $table) {
+                $table->integer('visitor_count')->default(0);
+            });
+        }
     }
 
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('visitor_count');
-        });
+        if (Schema::hasColumn('posts', 'visitor_count')) {
+            Schema::table('posts', function (Blueprint $table) {
+                $table->dropColumn('visitor_count');
+            });
+        }
     }
 };
