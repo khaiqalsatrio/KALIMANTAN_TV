@@ -36,7 +36,7 @@
                             <!-- MENU VIDEO -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">
-                                    News Video 
+                                    Video Berita
                                 </a>
                                 <ul class="dropdown-menu shadow rounded-3 p-2" style="min-width:230px;">
                                     <!-- <li>
@@ -63,7 +63,7 @@
                             </li>
                             <!-- Live Channel -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('live_stream') }}">Live Stream Berita</a>
+                                <a class="nav-link" href="{{ route('live_stream') }}">Live Berita</a>
                             </li>
                         </ul>
                     </div>
