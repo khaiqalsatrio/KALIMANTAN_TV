@@ -56,14 +56,14 @@
                                             onmouseout="this.style.background='transparent'"
                                             href="{{ route('video_gallery') }}">
                                             <span style="width:7px; height:7px; background:#0d6efd; border-radius:50%;"></span>
-                                            Video News
+                                            Video Berita
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                             <!-- Live Channel -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('live_stream') }}">Live Stream</a>
+                                <a class="nav-link" href="{{ route('live_stream') }}">Live Stream Berita</a>
                             </li>
                         </ul>
                     </div>
