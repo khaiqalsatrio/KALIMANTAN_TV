@@ -8,15 +8,13 @@
 </a>
 @endsection
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 @section('main_content')
 <div class="section-body">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    {{-- MASUKKAN TABEL LANGSUNG DI SINI --}}
+
                     <div class="table-responsive">
                         <table class="table table-bordered" id="example1">
                             <thead>
@@ -34,18 +32,22 @@
                                 @foreach($posts as $row)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+
                                     <td>
-                                        <img src="{{ asset('uploads/post/'.$row->post_photo) }}" style="width:200px;">
+                                        <img src="{{ asset('uploads/post/'.$row->post_photo) }}"
+                                            style="width:200px;">
                                     </td>
+
                                     <td>{{ $row->post_title }}</td>
-                                    {{-- CATEGORY LANGSUNG --}}
+
                                     <td>{{ $row->category ? $row->category->category_name : '-' }}</td>
-                                    {{-- AUTHOR (KOSONGKAN JIKA TIDAK DIPAKAI) --}}
-                                    <td> @if($row->admin_id != 0)
+
+                                    <td>
+                                        @if($row->admin_id != 0)
                                         {{ Auth::guard('admin')->user()->name }}
                                         @endif
                                     </td>
-                                    {{-- ADMIN --}}
+
                                     <td>
                                         @if($row->admin_id)
                                         {{ optional($row->admin)->name }}
@@ -53,47 +55,27 @@
                                         -
                                         @endif
                                     </td>
+
                                     <td>
-                                        <a href="{{ route('admin_post_edit', $row->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="javascript:;"
-                                            onclick="deletePost('{{ $row->id }}')"
-                                            class="btn btn-danger btn-sm">
+                                        <a href="{{ route('admin_post_edit', $row->id) }}"
+                                            class="btn btn-primary btn-sm">Edit</a>
+
+                                        <a href="{{ route('admin_post_delete', $row->id) }}"
+                                            class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus postingan ini?');">
                                             Delete
                                         </a>
                                     </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                    {{-- END TABLE --}}
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-<script>
-    // function deletePost(id) {
-    //     Swal.fire({
-    //         title: "Yakin ingin menghapus?",
-    //         text: "Data yang dihapus tidak bisa dikembalikan!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#d33",
-    //         cancelButtonColor: "#3085d6",
-    //         confirmButtonText: "Ya, hapus!",
-    //         cancelButtonText: "Batal",
-    //         backdrop: `
-    //         rgba(0,0,0,0.4)
-    //         left top
-    //         no-repeat
-    //     `
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             window.location.href = "/admin/post/delete/" + id;
-    //         }
-    //     });
-    // }
-</script>
