@@ -278,7 +278,7 @@
     </div>
 </div>
 
-@if ($setting_data->video_status == 'Show'))
+@if ($setting_data->video_status == 'Show')
 <div class="video-content">
     <div class="container">
         <div class="row">
@@ -297,11 +297,12 @@
                     @endif
                     <div class="item">
                         <div class="video-thumb">
-                            <img src="http://img.youtube.com/vi/{{ $row->video_id }}/0.jpg" alt="">
+                            <img src="https://img.youtube.com/vi/{{ $row->video_id }}/0.jpg" alt="">
                             <div class="bg"></div>
                             <div class="icon">
-                                <a href="http://www.youtube.com/watch?v={{ $row->video_id }}" class="video-button"><i
-                                        class="fas fa-play"></i></a>
+                                <a href="https://www.youtube.com/watch?v={{ $row->video_id }}" class="video-button">
+                                    <i class="fas fa-play"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="video-caption">
@@ -309,11 +310,7 @@
                         </div>
                         <div class="video-date">
                             <i class="fas fa-calendar-alt"></i>
-                            @php
-                            $time = $row->created_at;
-                            $create_date = date('d F, Y', strtotime($time));
-                            @endphp
-                            {{ $create_date }}
+                            {{ date('d F, Y', strtotime($row->created_at)) }}
                         </div>
                     </div>
                     @endforeach
@@ -323,4 +320,5 @@
     </div>
 </div>
 @endif
+
 @endsection
