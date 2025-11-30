@@ -30,41 +30,39 @@
                                     <h4 class="text-center">Admin Panel Login</h4>
                                 </div>
                                 <div class="card-body card-body-auth">
-                                @if(session()->get('success'))
-                                <div class="text-success"> {{ session()->get('success') }} </div>
-                                @endif
+                                    @if(session()->get('success'))
+                                    <div class="text-success"> {{ session()->get('success') }} </div>
+                                    @endif
                                     <form method="POST" action="{{ route('admin_login_submit') }}">
                                         @csrf
-                                        <div class="form-group">
-                                            <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                                name="email" placeholder="Email Address" value="{{ old('email') }}"
+                                        <div class="form-group mb-3">
+                                            <input type="email"
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                name="email"
+                                                placeholder="Email Address"
+                                                value="{{ old('email') }}"
                                                 autofocus>
                                             @error('email')
-                                            <div class="text-danger"> {{ $message}} </div>
+                                            <div class="invalid-feedback d-block">{{ $message }}</div>
                                             @enderror
-                                            @if(session()->get('error'))
-                                            <div class="text-danger"> {{ session()->get('error') }} </div>
-                                            @endif
-
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control @error('password') is-invalid
-                                                @enderror" name="password" placeholder="Password">
+                                        <div class="form-group mb-3">
+                                            <input type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password"
+                                                placeholder="Password">
                                             @error('password')
-                                            <div class="text-danger"> {{ $message}} </div>
+                                            <div class="invalid-feedback d-block">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                                Login
-                                            </button>
-                                        </div>
-                                        <div class="form-group">
-                                            <div>
-                                                <a href="{{ route('admin_forget_password') }}">
-                                                    Forget Password?
-                                                </a>
-                                            </div>
+                                        @if(session('login_error'))
+                                        <div class="text-danger mb-3">{{ session('login_error') }}</div>
+                                        @endif
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                            Login
+                                        </button>
+                                        <div class="mt-3">
+                                            <a href="{{ route('admin_forget_password') }}">Forget Password?</a>
                                         </div>
                                     </form>
                                 </div>

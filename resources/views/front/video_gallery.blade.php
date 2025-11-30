@@ -28,7 +28,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="card border-0 shadow-sm video-card h-100">
                                 <a href="{{ route('video.detail', $row->id) }}" class="video-thumb">
-                                    <img src="http://img.youtube.com/vi/{{ $row->video_id }}/hqdefault.jpg"
+                                    <img src="http://img.youtube.com/vi/{{ $row->getYoutubeId() }}/hqdefault.jpg"
                                         class="card-img-top rounded-top"
                                         alt="{{ $row->caption }}">
                                 </a>

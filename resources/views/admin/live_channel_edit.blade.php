@@ -17,7 +17,7 @@
                     <div class="card-body">
 
                         <div class="form-group mb-3">
-                            <label>Video ID </label>
+                            <label>Link Live Youtube</label>
                             <div>
                                 <input type="text" name="video_id" class="form-control" placeholder="Video ID"
                                     value="{{ $live_channel_single->video_id }}">
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label>Heading </label>
+                            <label>Judul Live</label>
                             <div>
                                 <input type="text" name="heading" class="form-control" id=""
                                     value="{{ $live_channel_single->heading }}">

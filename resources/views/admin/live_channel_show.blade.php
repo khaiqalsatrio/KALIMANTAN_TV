@@ -17,8 +17,8 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>Video ID</th>
-                                    <th>Heading</th>
+                                    <th>Link Live YouTube</th>
+                                    <th>Judul Live</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -28,7 +28,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
                                         <div class="video-thumb">
-                                            <iframe style="width=300px height:220px;"
+                                            <iframe style="width:300px; height:220px;"
                                                 src="https://www.youtube.com/embed/{{ $row->video_id }}"
                                                 title="YouTube video player" frameborder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

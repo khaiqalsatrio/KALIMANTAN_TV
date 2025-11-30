@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group mb-3">
-                            <label>Video ID </label>
+                            <label>Link Video YouTube</label>
                             <div>
                                 <input type="text" name="video_id" class="form-control" placeholder="Video ID"
                                     value="{{ $video_single->video_id }}">

@@ -9,6 +9,9 @@ use App\Mail\Websitemail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
+
 
 class AdminLoginController extends Controller
 {
@@ -44,22 +47,52 @@ class AdminLoginController extends Controller
     }
 
 
+    // public function login_submit(Request $request)
+    // {
+    //     // dd(Hash::make('1234'));
+    //     $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required'
+    //     ]);
+    //     $credential = [
+    //         'email' => $request->email,
+    //         'password' => $request->password
+    //     ];
+    //     if (Auth::guard('admin')->attempt($credential)) {
+    //         return redirect()->route('admin_home');
+    //     } else {
+    //         return redirect()->route('admin_login')->with('error', 'Informasi yang Anda masukkan salah..');
+    //     };
+    // }
+
     public function login_submit(Request $request)
     {
-        // dd(Hash::make('1234'));
+        // 1. Validasi input
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|min:4'
         ]);
-        $credential = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-        if (Auth::guard('admin')->attempt($credential)) {
-            return redirect()->route('admin_home');
-        } else {
-            return redirect()->route('admin_login')->with('error', 'Informasi yang Anda masukkan salah..');
-        };
+        // 2. Rate limiting (anti brute-force)
+        $throttleKey = Str::lower($request->email) . '|' . $request->ip();
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            return back()->withErrors([
+                'email' => 'Terlalu banyak percobaan login. Coba lagi dalam 1 menit.'
+            ]);
+        }
+        // 3. Coba login
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
+            // Success → reset rate limit counter
+            RateLimiter::clear($throttleKey);
+            // 4. Prevent session fixation
+            $request->session()->regenerate();
+            // 5. Redirect aman
+            return redirect()->intended(route('admin_home'));
+        }
+        // Gagal login → tambah hit
+        RateLimiter::hit($throttleKey, 60);
+        return back()->withErrors([
+            'email' => 'Email atau password salah.'
+        ]);
     }
 
     public function logout()

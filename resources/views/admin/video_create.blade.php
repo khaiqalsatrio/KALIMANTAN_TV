@@ -15,14 +15,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group mb-3">
-                            <label>Video ID </label>
+                            <label>Link Video Youtube</label>
                             <div>
                                 <input type="text" name="video_id" class="form-control" placeholder="Video ID"
                                     value="{{ old('video_id') }}">
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label>Caption </label>
+                            <label>Caption</label>
                             <div>
                                 <input type="text" name="caption" class="form-control" id="" value="{{ old('caption') }}">
                             </div>

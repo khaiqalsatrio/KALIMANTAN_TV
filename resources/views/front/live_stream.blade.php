@@ -87,7 +87,9 @@
             @foreach ($live_channels as $row)
             <div class="col-lg-3 col-md-4 mb-4">
                 <a href="{{ route('live.detail', $row->id) }}" class="live-card">
-                    <img src="http://img.youtube.com/vi/{{ $row->video_id }}/hqdefault.jpg">
+                    <img src="http://img.youtube.com/vi/{{ $row->getYoutubeId() }}/hqdefault.jpg"
+                        class="card-img-top rounded-top"
+                        alt="{{ $row->caption }}">
                     <div class="play-circle"><i class="fas fa-play"></i></div>
                     <div class="gradient-bottom">
                         <div class="live-date">{{ date('d F Y', strtotime($row->created_at)) }}</div>
