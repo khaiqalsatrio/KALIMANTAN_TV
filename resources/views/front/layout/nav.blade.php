@@ -36,10 +36,10 @@
                             <!-- MENU VIDEO -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">
-                                    News Video & Jurnalis
+                                    News Video 
                                 </a>
                                 <ul class="dropdown-menu shadow rounded-3 p-2" style="min-width:230px;">
-                                    <li>
+                                    <!-- <li>
                                         <a class="dropdown-item d-flex align-items-center gap-2 py-2 fw-medium border-bottom"
                                             style="border-color:#f1f1f1; transition:0.2s;"
                                             onmouseover="this.style.background='#eef4ff'"
@@ -48,7 +48,7 @@
                                             <span style="width:7px; height:7px; background:#0d6efd; border-radius:50%;"></span>
                                             Jurnalis Kami
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li>
                                         <a class="dropdown-item d-flex align-items-center gap-2 py-2 fw-medium"
                                             style="transition:0.2s;"

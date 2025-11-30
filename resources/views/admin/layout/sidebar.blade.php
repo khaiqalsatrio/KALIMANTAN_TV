@@ -53,12 +53,12 @@
                                         </li>
                                 </ul>
                         </li>
-                        <li class="{{ Request::is('admin/photo/*') ? 'active' : '' }}"><a class="nav-link"
+                        <!-- <li class="{{ Request::is('admin/photo/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_photo_show') }}"><i class="fas fa-hand-point-right"></i>
-                                        <span>Galeri Jurnalis</span></a></li>
+                                        <span>Galeri Jurnalis</span></a></li> -->
                         <li class="{{ Request::is('admin/video/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_video_show') }}"><i class="fas fa-hand-point-right"></i>
-                                        <span>Galeri Video</span></a></li>
+                                        <span>Galeri Video Berita</span></a></li>
                         <li class="nav-item dropdown {{ Request::is('admin/page/*') ? 'active' : '' }}">
                                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Kelola Halaman</span></a>
                                 <ul class="dropdown-menu">
@@ -113,7 +113,7 @@
                         </li> -->
                         <li class="{{ Request::is('admin/live_channel/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_live_channel_show') }}"><i class="fas fa-hand-point-right"></i>
-                                        <span>Live Channel</span></a></li>
+                                        <span>Live Channel Berita</span></a></li>
                         <!-- <li class="{{ Request::is('admin/online_poll/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_online_poll_show') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Online Poll</span></a></li> -->

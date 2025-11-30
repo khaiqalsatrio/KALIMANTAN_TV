@@ -59,7 +59,7 @@
                 <div class="col-md-6">
                     <ul>
                         <li class="today-text">Today: {{ date('F d, Y') }}</li>
-                        <li class="email-text">kalimantanTV@gmail.com</li>
+                        <!-- <li class="email-text">kalimantanTV@gmail.com</li> -->
                     </ul>
                 </div>
                 <div class="col-md-6">
