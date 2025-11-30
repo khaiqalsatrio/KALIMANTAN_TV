@@ -75,25 +75,25 @@
 @endsection
 
 <script>
-    function deletePost(id) {
-        Swal.fire({
-            title: "Yakin ingin menghapus?",
-            text: "Data yang dihapus tidak bisa dikembalikan!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Ya, hapus!",
-            cancelButtonText: "Batal",
-            backdrop: `
-            rgba(0,0,0,0.4)
-            left top
-            no-repeat
-        `
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "/admin/post/delete/" + id;
-            }
-        });
-    }
+    // function deletePost(id) {
+    //     Swal.fire({
+    //         title: "Yakin ingin menghapus?",
+    //         text: "Data yang dihapus tidak bisa dikembalikan!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#d33",
+    //         cancelButtonColor: "#3085d6",
+    //         confirmButtonText: "Ya, hapus!",
+    //         cancelButtonText: "Batal",
+    //         backdrop: `
+    //         rgba(0,0,0,0.4)
+    //         left top
+    //         no-repeat
+    //     `
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             window.location.href = "/admin/post/delete/" + id;
+    //         }
+    //     });
+    // }
 </script>
