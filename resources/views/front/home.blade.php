@@ -2,37 +2,92 @@
 
 @section('main_content')
 
+<style>
+    .news-ticker-box {
+        background: #e5e2e2ff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .ticker-label {
+        background: #4a7ce0ff;
+        min-width: 140px;
+        text-align: center;
+    }
+
+    .ticker-content {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .ticker-move {
+        display: inline-block;
+        padding-left: 20px;
+        animation: tickerMove 25s linear infinite;
+    }
+
+    /* ANIMASI KIRI -> KANAN */
+    @keyframes tickerMove {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .ticker-move:hover {
+        animation-play-state: paused;
+    }
+
+    .ticker-move a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .ticker-move a:hover {
+        text-decoration: underline;
+    }
+</style>
+
 @if ($setting_data->news_ticker_status == 'Show')
-<div class="news-ticker-item">
+<div class="news-ticker-wrapper py-2">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="acme-news-ticker">
-                    <div class="acme-news-ticker-label">Latest News</div>
-                    <div class="acme-news-ticker-box">
-                        <ul class="my-news-ticker">
-                            @php
-                            $i=0;
-                            @endphp
-                            @foreach ($post_data as $row)
-                            @php
-                            $i++;
-                            @endphp
-                            @if ($i > $setting_data->news_ticker_total)
-                            @break;
-                            @endif
-                            <li><a href="
-                                {{ route('news_detail', $row->id) }}
-                                ">{{$row->post_title}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
+        <div class="news-ticker-box d-flex align-items-center">
+
+            <!-- LABEL -->
+            <div class="ticker-label text-white fw-bold px-3 py-2">
+                Latest News
             </div>
+
+            <!-- TICKER -->
+            <div class="ticker-content flex-grow-1 overflow-hidden">
+                <ul class="ticker-move mb-0">
+                    @php $i = 0; @endphp
+                    @foreach ($post_data as $row)
+                    @php $i++; @endphp
+                    @if ($i > $setting_data->news_ticker_total)
+                    @break
+                    @endif
+                    <li class="d-inline-block me-4">
+                        <a href="{{ route('news_detail', $row->id) }}">
+                            {{ $row->post_title }}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
 @endif
+
+
+
 
 <!-- Home Main -->
 <div class="home-main">

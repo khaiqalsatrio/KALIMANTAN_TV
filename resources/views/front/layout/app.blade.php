@@ -53,7 +53,7 @@
 <!-- Header -->
 
 <body>
-    <div class="top">
+    <div class="top" style="background-color: #dddfe2ff;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -96,21 +96,30 @@
                     <div class="logo" style="padding: 20px 0; text-align:center;">
                         <a href="{{ route('home') }}" style="text-decoration: none;">
                             <h1 style="
-                            margin: 0; padding: 0;
-                            font-size: 40px;
-                            font-weight: 800;
-                            font-family: 'Poppins', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                            color: #6c85f0;
-                            text-shadow: 2px 2px 0 #dfe3ff;
-                            letter-spacing: 0.5px;
-                            transition: 0.3s ease;
-                            display: inline-block;
-                        "
-                                onmouseover="this.style.transform='scale(1.03)'"
-                                onmouseout="this.style.transform='scale(1)'">
-                                Kalimantan<span style="color:#1e1e1e; margin-left: 6px; letter-spacing: 1px;">TV</span>
+        margin: 0; padding: 0;
+        font-size: 34px;
+        font-weight: 900;
+        font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(90deg, #6e80f2, #3f58e6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 7px rgba(108,133,240,0.22);
+        letter-spacing: 0.5px;
+        display: inline-block;
+        cursor: pointer;
+    ">
+                                Kalimantan
+                                <span style="
+            color: #000000;
+            font-weight: 900;
+            margin-left: 3px; /* jarak diperkecil */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.12);
+        ">
+                                    TV
+                                </span>
                             </h1>
                         </a>
+
                     </div>
                 </div>
             </div>
