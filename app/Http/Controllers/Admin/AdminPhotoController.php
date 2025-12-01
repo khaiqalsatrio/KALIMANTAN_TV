@@ -25,10 +25,14 @@ class AdminPhotoController extends Controller
             'caption' => 'required',
             'photo' => 'required|image|mimes:jpg,jpeg,png,gif'
         ]);
+        // $now = time();
+        // $ext = $request->file('photo')->extension();
+        // $final_name = 'photo_' . $now . '.' . $ext;
+        // $request->file('photo')->move(public_path('uploads/photo_gallery/'), $final_name);
         $now = time();
         $ext = $request->file('photo')->extension();
         $final_name = 'photo_' . $now . '.' . $ext;
-        $request->file('photo')->move(public_path('uploads/photo_gallery/'), $final_name);
+        $request->file('photo')->move($_SERVER['DOCUMENT_ROOT'] . '/uploads/photo_gallery/', $final_name);
         $photo = new Photo();
         $photo->caption = $request->caption;
         $photo->photo = $final_name;
@@ -49,11 +53,13 @@ class AdminPhotoController extends Controller
             $request->validate([
                 'photo' => 'required|image|mimes:jpg,jpeg,png,gif'
             ]);
-            unlink(public_path('uploads/photo_gallery/' . $photo_data->photo));
+            // unlink(public_path('uploads/photo_gallery/' . $photo_data->photo));
+            unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/photo_gallery/' . $photo_data->photo);
             $now = time();
             $ext = $request->file('photo')->extension();
             $final_name = 'photo_' . $now . '.' . $ext;
-            $request->file('photo')->move(public_path('uploads/photo_gallery'), $final_name);
+            // $request->file('photo')->move(public_path('uploads/photo_gallery'), $final_name);
+            $request->file('photo')->move($_SERVER['DOCUMENT_ROOT'] . '/uploads/photo_gallery/', $final_name);
             $photo_data->photo = $final_name;
         }
         $photo_data->caption = $request->caption;
@@ -68,6 +74,4 @@ class AdminPhotoController extends Controller
         unlink(public_path('uploads/photo_gallery/' . $photo_data->photo));
         return redirect()->route('admin_photo_show')->with('success', 'Informasi foto telah berhasil dihapus.');
     }
-
-
 }
