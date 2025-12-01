@@ -25,7 +25,7 @@
     .ticker-move {
         display: inline-block;
         padding-left: 20px;
-        animation: tickerMove 25s linear infinite;
+        animation: tickerMove 60s linear infinite;
     }
 
     /* ANIMASI KIRI -> KANAN */
