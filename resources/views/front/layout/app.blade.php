@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>Kalimantan TV Website</title>
-    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('uploads/kalimantantv2.png') }}">
 
     @include('front.layout.styles')
     @include('front.layout.scripts')
@@ -47,13 +47,15 @@
                 max-height: 100px;
             }
         }
+
+        /* Responsive top untuk mobile */
     </style>
 </head>
 
 <!-- Header -->
 
 <body>
-    <div class="top" style="background-color: #dddfe2ff;">
+    <div class="top" style="background-color: #eff0f2ff;">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
