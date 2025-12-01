@@ -7,7 +7,7 @@
         <h2>{{ $video->heading }}</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('video.index') }}">News Video</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('video.index') }}">Video</a></li>
             <li class="breadcrumb-item active">{{ $video->heading }}</li>
         </ol>
     </div>

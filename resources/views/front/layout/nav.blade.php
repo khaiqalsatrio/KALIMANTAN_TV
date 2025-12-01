@@ -36,7 +36,7 @@
                             <!-- MENU VIDEO -->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle fw-semibold" href="#" data-bs-toggle="dropdown">
-                                    Video Berita
+                                    Video
                                 </a>
                                 <ul class="dropdown-menu shadow rounded-3 p-2" style="min-width:230px;">
                                     <!-- <li>
@@ -56,7 +56,7 @@
                                             onmouseout="this.style.background='transparent'"
                                             href="{{ route('video_gallery') }}">
                                             <span style="width:7px; height:7px; background:#0d6efd; border-radius:50%;"></span>
-                                            Video Berita
+                                            Video
                                         </a>
                                     </li>
                                 </ul>
