@@ -47,7 +47,8 @@ class AdminPostController extends Controller
         if ($request->hasFile('post_photo')) {
             $ext = $request->file('post_photo')->extension();
             $final = 'post_file_' . time() . '.' . $ext;
-            $request->file('post_photo')->move(public_path('uploads/post/'), $final);
+            // $request->file('post_photo')->move(public_path('uploads/post/'), $final);
+            $request->file('post_photo')->move($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/', $final);
             $data->post_photo = $final;
         }
         $data->post_slug = Str::slug($request->post_title);
@@ -87,15 +88,27 @@ class AdminPostController extends Controller
         $post->post_detail = $request->post_detail;
         $post->category_id = $request->category_id;
         $post->post_slug = Str::slug($request->post_title);
+        // if ($request->hasFile('post_photo')) {
+        //     // delete old
+        //     if ($post->post_photo) {
+        //         $this->safeDelete(public_path('uploads/post/' . $post->post_photo));
+        //     }
+        //     // upload baru
+        //     $ext = $request->file('post_photo')->extension();
+        //     $final = 'post_' . time() . '.' . $ext;
+        //     // $request->file('post_photo')->move(public_path('uploads/post/'), $final);
+        //     $request->file('post_photo')->move($_SERVER['DOCUMENT_ROOT'].'/uploads/post/', $final);
+        //     $post->post_photo = $final;
+        // }
         if ($request->hasFile('post_photo')) {
             // delete old
             if ($post->post_photo) {
-                $this->safeDelete(public_path('uploads/post/' . $post->post_photo));
+                $this->safeDelete($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/' . $post->post_photo);
             }
             // upload baru
             $ext = $request->file('post_photo')->extension();
             $final = 'post_' . time() . '.' . $ext;
-            $request->file('post_photo')->move(public_path('uploads/post/'), $final);
+            $request->file('post_photo')->move($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/', $final);
             $post->post_photo = $final;
         }
         $post->save();
@@ -112,11 +125,23 @@ class AdminPostController extends Controller
         return redirect()->route('admin_post_show')->with('success', 'Post updated successfully');
     }
 
+    // public function delete($id)
+    // {
+    //     $post = Post::findOrFail($id);
+    //     if (!empty($post->post_photo)) {
+    //         $file = public_path('uploads/post/' . $post->post_photo);
+    //         $this->safeDelete($file);
+    //     }
+    //     Tag::where('post_id', $id)->delete();
+    //     $post->delete();
+    //     return redirect()->route('admin_post_show')->with('success', 'Post deleted successfully');
+    // }
+
     public function delete($id)
     {
         $post = Post::findOrFail($id);
         if (!empty($post->post_photo)) {
-            $file = public_path('uploads/post/' . $post->post_photo);
+            $file = $_SERVER['DOCUMENT_ROOT'] . '/uploads/post/' . $post->post_photo;
             $this->safeDelete($file);
         }
         Tag::where('post_id', $id)->delete();
