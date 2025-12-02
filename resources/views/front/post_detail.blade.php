@@ -2,7 +2,6 @@
 @section('main_content')
 
 <style>
-
     .tag-container {
         display: flex;
         flex-wrap: wrap;
@@ -83,10 +82,10 @@
                 <div class="main-text">
                     {!! $post_detail->post_detail !!}
                 </div>
+                <!-- TAG -->
                 <div class="tag-section">
-                    <h2 class="text-uppercase">Tags</h2>
                     <div class="tag-section-content">
-                        @foreach ($tag_data as $row)
+                        <!-- @foreach ($tag_data as $row)
                         <a href="javascript:void(0)">
                             <div class="tag-container">
                                 @foreach($tag_data as $row)
@@ -94,7 +93,25 @@
                                 @endforeach
                             </div>
                         </a>
-                        @endforeach
+                        @endforeach -->
+                        <div class="widget mt-3">
+                            <div class="tag-heading">
+                                <h2 class="ps-3 d-flex align-items-center gap-2"
+                                    style="font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">
+                                    <i class="bi bi-tags-fill" style="font-size:20px; color:#0d6efd;"></i>
+                                    Tags
+                                </h2>
+                            </div>
+                            <div class="tag">
+                                @foreach($tag_data as $tag)
+                                <div class="tag-item">
+                                    <a href="#">
+                                        <span class="badge bg-secondary">{{ $tag->tag_name }}</span>
+                                    </a>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @if ($post_detail->is_share != 0)
