@@ -28,6 +28,7 @@
                             </textarea>
                         </div>
 
+                        <!-- show on menu -->
                         <div class=" form-group mb-3">
                             <label>Show on Menu</label>
                             <select name="about_status" class="form-control">

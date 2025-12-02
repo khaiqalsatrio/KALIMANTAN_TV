@@ -69,7 +69,7 @@
         @endforeach
     </div>
 
-    
+
     {{-- TAG STATIC --}}
     <div class="widget">
         <div class="tag-heading">
@@ -116,9 +116,11 @@
     {{-- POPULAR & RECENT NEWS --}}
     <div class="widget">
         <div class="news">
-            <div class="news-heading">
-                <h2>
-                    BERITA POPLER & TERKINI</h2>
+            <div class="news-heading d-flex align-items-center" style="gap:10px; margin-bottom:10px;">
+                <i class="bi bi-newspaper" style="font-size:28px; color:dark;"></i>
+                <h2 class="m-0" style="font-weight:800; letter-spacing:1px;">
+                    BERITA POPULER & TERKINI
+                </h2>
             </div>
             <ul class="nav nav-pills mb-3">
                 <li class="nav-item">

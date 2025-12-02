@@ -3,6 +3,12 @@
 @section('main_content')
 
 <style>
+    /* =======================
+   CLEANED & OPTIMIZED CSS
+   Removed duplicates and unused code
+   ======================= */
+
+    /* ===== NEWS TICKER ===== */
     .news-ticker-box {
         background: whitesmoke;
         border: 1px solid #b2acacff;
@@ -28,7 +34,6 @@
         animation: tickerMove 110s linear infinite;
     }
 
-    /* ANIMASI KIRI -> KANAN */
     @keyframes tickerMove {
         0% {
             transform: translateX(-100%);
@@ -52,11 +57,602 @@
         text-decoration: underline;
     }
 
-    /* news ticker mobile */
-    /* News Ticker - Mobile Responsive (Simple & Clean) */
+    /* ===== SEARCH SECTION ===== */
+    .search-section {
+        background-color: #f8f9fa;
+        padding: 25px 0;
+        border-bottom: 1px solid #e5e5e5;
+    }
 
-    /* Mobile */
-    @media (max-width: 767px) {
+    .search-section .container {
+        padding: 0 15px;
+    }
+
+    .search-section .inner {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .search-section .row {
+        margin: 0 !important;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .search-section .col-md-10,
+    .search-section .col-md-2 {
+        padding: 0 !important;
+    }
+
+    .search-section .form-group {
+        margin-bottom: 0;
+    }
+
+    .search-section .form-control {
+        height: 50px;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 0 20px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+
+    .search-section .form-control:focus {
+        border-color: #4073da;
+        box-shadow: 0 0 0 4px rgba(64, 115, 218, 0.1);
+        outline: none;
+    }
+
+    .search-section .form-control::placeholder {
+        color: #999;
+        font-size: 14px;
+    }
+
+    .search-section .btn {
+        height: 50px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 0 30px;
+        width: 100%;
+        background: linear-gradient(135deg, #4073da 0%, #3f58e6 100%);
+        color: white;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(64, 115, 218, 0.3);
+    }
+
+    .search-section .btn:hover {
+        background: linear-gradient(135deg, #3f58e6 0%, #2d47d4 100%);
+        box-shadow: 0 4px 12px rgba(64, 115, 218, 0.4);
+        transform: translateY(-1px);
+    }
+
+    .search-section .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(64, 115, 218, 0.3);
+    }
+
+    /* ===== DESKTOP (> 1200px) ===== */
+    @media (min-width: 1200px) {
+        .search-section {
+            padding: 30px 0;
+        }
+
+        .search-section .inner {
+            padding: 25px 30px;
+        }
+
+        .search-section .col-md-10 {
+            flex: 0 0 auto;
+            width: 83.33333333%;
+        }
+
+        .search-section .col-md-2 {
+            flex: 0 0 auto;
+            width: 160px;
+        }
+
+        .search-section .form-control {
+            height: 40px;
+            font-size: 16px;
+        }
+
+        .search-section .btn {
+            height: 40px;
+            font-size: 16px;
+        }
+    }
+
+    /* ===== LAPTOP (992px - 1199px) ===== */
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .search-section {
+            padding: 25px 0;
+        }
+
+        .search-section .inner {
+            padding: 20px 25px;
+        }
+
+        .search-section .col-md-10 {
+            flex: 0 0 auto;
+            width: 82%;
+        }
+
+        .search-section .col-md-2 {
+            flex: 0 0 auto;
+            width: 18%;
+        }
+
+        .search-section .form-control {
+            height: 50px;
+            font-size: 15px;
+        }
+
+        .search-section .btn {
+            height: 50px;
+            font-size: 15px;
+            padding: 0 20px;
+        }
+    }
+
+    /* ===== TABLET (768px - 991px) ===== */
+    @media (min-width: 768px) and (max-width: 991px) {
+        .search-section {
+            padding: 20px 0;
+        }
+
+        .search-section .inner {
+            padding: 18px 20px;
+        }
+
+        .search-section .row {
+            gap: 8px;
+        }
+
+        .search-section .col-md-10 {
+            flex: 0 0 auto;
+            width: calc(80% - 4px);
+        }
+
+        .search-section .col-md-2 {
+            flex: 0 0 auto;
+            width: calc(20% - 4px);
+        }
+
+        .search-section .form-control {
+            height: 48px;
+            font-size: 14px;
+            padding: 0 16px;
+        }
+
+        .search-section .form-control::placeholder {
+            font-size: 13px;
+        }
+
+        .search-section .btn {
+            height: 48px;
+            font-size: 14px;
+            padding: 0 15px;
+        }
+    }
+
+    /* ===== iPAD (768px - 1024px) ===== */
+    @media (min-width: 768px) and (max-width: 1024px) {
+
+        /* News Ticker */
+        .news-ticker-wrapper {
+            padding: 1rem 0 !important;
+        }
+
+        .news-ticker-box {
+            display: flex !important;
+            align-items: center !important;
+        }
+
+        .ticker-label {
+            font-size: 15px !important;
+            padding: 0.6rem 1.2rem !important;
+            min-width: 140px !important;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .ticker-content {
+            flex-grow: 1 !important;
+            overflow: hidden !important;
+        }
+
+        .ticker-move {
+            margin-bottom: 0 !important;
+        }
+
+        .ticker-move li {
+            display: inline-block !important;
+            margin-right: 2rem !important;
+        }
+
+        .ticker-move li a {
+            font-size: 15px !important;
+            line-height: 1.5;
+        }
+
+        /* Home Main Section */
+        .home-main {
+            padding: 1.5rem 0 !important;
+        }
+
+        .home-main .container {
+            max-width: 100% !important;
+            padding: 0 15px;
+        }
+
+        .home-main .row.g-2 {
+            margin-right: -6px !important;
+            margin-left: -6px !important;
+        }
+
+        .home-main .col-8.left {
+            flex: 0 0 auto;
+            width: 66.67% !important;
+            padding-right: 6px !important;
+        }
+
+        .home-main .col-4 {
+            flex: 0 0 auto;
+            width: 33.33% !important;
+            padding-left: 6px !important;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Post Besar (Kiri) */
+        .home-main .left .inner {
+            height: 100%;
+        }
+
+        .home-main .left .inner .photo {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .home-main .left .inner .photo img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .home-main .left .inner .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px !important;
+            z-index: 2;
+        }
+
+        .home-main .left .inner .photo .bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.88) 100%);
+            z-index: 1;
+        }
+
+        .home-main .left .inner .text-inner {
+            padding: 0 !important;
+        }
+
+        .home-main .left .inner .text-inner h2 {
+            font-size: 21px !important;
+            line-height: 1.4 !important;
+            margin-bottom: 10px !important;
+            color: white;
+            font-weight: 700;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+        }
+
+        .home-main .left .inner .text-inner h2 a {
+            color: white;
+            text-decoration: none;
+            font-size: 21px !important;
+        }
+
+        .home-main .left .inner .text-inner h2 a:hover {
+            color: #f0f0f0;
+        }
+
+        .home-main .left .category .badge {
+            font-size: 11px !important;
+            padding: 5px 10px !important;
+            margin-bottom: 8px !important;
+            font-weight: 600;
+        }
+
+        .home-main .left .date-user {
+            font-size: 12px !important;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .home-main .left .date-user a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        /* Post Kecil (Kanan) */
+        .home-main .col-4 .inner-right {
+            margin-bottom: 0;
+            height: calc(50% - 6px);
+        }
+
+        .home-main .col-4 .inner-right .photo {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .home-main .col-4 .inner-right .photo img {
+            width: 100%;
+            height: 100%;
+            min-height: 180px;
+            max-height: 184px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .home-main .col-4 .inner-right .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px !important;
+            z-index: 2;
+        }
+
+        .home-main .col-4 .inner-right .photo .bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 65%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.88) 100%);
+            z-index: 1;
+        }
+
+        .home-main .col-4 .inner-right .text-inner {
+            padding: 0 !important;
+        }
+
+        .home-main .col-4 .inner-right .text-inner h2 {
+            font-size: 15px !important;
+            line-height: 1.35 !important;
+            margin-bottom: 6px !important;
+            color: white;
+            font-weight: 600;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+        }
+
+        .home-main .col-4 .inner-right .text-inner h2 a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px !important;
+        }
+
+        .home-main .col-4 .inner-right .text-inner h2 a:hover {
+            color: #f0f0f0;
+        }
+
+        .home-main .col-4 .category .badge {
+            font-size: 10px !important;
+            padding: 4px 7px !important;
+            margin-bottom: 6px !important;
+            font-weight: 600;
+        }
+
+        .home-main .col-4 .date-user {
+            font-size: 11px !important;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .home-main .col-4 .date-user a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 20px 0 !important;
+        }
+
+        .search-section .container {
+            max-width: 100%;
+            padding: 0 15px;
+        }
+
+        .search-section .inner {
+            padding: 18px 20px;
+            border-radius: 8px;
+        }
+
+        .search-section .row {
+            gap: 10px;
+            flex-wrap: nowrap;
+        }
+
+        .search-section .col-md-10 {
+            flex: 0 0 auto;
+            width: calc(78% - 5px);
+        }
+
+        .search-section .col-md-2 {
+            flex: 0 0 auto;
+            width: calc(22% - 5px);
+        }
+
+        .search-section .form-control {
+            height: 48px;
+            font-size: 15px;
+            padding: 0 16px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .search-section .form-control::placeholder {
+            font-size: 14px;
+        }
+
+        .search-section .btn {
+            height: 48px;
+            font-size: 14px;
+            padding: 0 16px;
+            white-space: nowrap;
+        }
+
+        /* Home Content Section */
+        .home-content {
+            padding: 30px 0 !important;
+        }
+
+        .home-content .container {
+            padding: 0 15px;
+        }
+
+        .home-content h2 {
+            font-size: 22px !important;
+        }
+
+        .home-content .left-side .photo img {
+            border-radius: 8px;
+        }
+
+        .home-content .left-side h3 a {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .home-content .right-side-item {
+            margin-bottom: 15px;
+        }
+
+        .home-content .right-side-item .left img {
+            border-radius: 6px;
+        }
+
+        .home-content .right-side-item h2 a {
+            font-size: 15px;
+            line-height: 1.35;
+        }
+
+        .video-content {
+            padding: 30px 0;
+        }
+    }
+
+    /* iPad Portrait */
+    @media (min-width: 768px) and (max-width: 768px) and (orientation: portrait) {
+        .home-main .left .inner .photo img {
+            height: 350px;
+        }
+
+        .home-main .col-4 .inner-right .photo img {
+            min-height: 167px;
+            max-height: 171px;
+        }
+
+        .home-main .left .inner .text-inner h2 {
+            font-size: 20px !important;
+        }
+
+        .home-main .col-4 .inner-right .text-inner h2 {
+            font-size: 14px !important;
+        }
+
+        .search-section .col-md-10 {
+            width: calc(75% - 5px);
+        }
+
+        .search-section .col-md-2 {
+            width: calc(25% - 5px);
+        }
+
+        .search-section .form-control {
+            height: 46px;
+            font-size: 14px;
+        }
+
+        .search-section .btn {
+            height: 46px;
+            font-size: 13px;
+        }
+    }
+
+    /* iPad Landscape */
+    @media (min-width: 1024px) and (max-width: 1024px) and (orientation: landscape) {
+        .home-main .left .inner .photo img {
+            height: 420px;
+        }
+
+        .home-main .col-4 .inner-right .photo img {
+            min-height: 200px;
+            max-height: 204px;
+        }
+
+        .home-main .left .inner .text-inner h2 {
+            font-size: 23px !important;
+        }
+
+        .home-main .col-4 .inner-right .text-inner h2 {
+            font-size: 16px !important;
+        }
+
+        .search-section .col-md-10 {
+            width: calc(80% - 5px);
+        }
+
+        .search-section .col-md-2 {
+            width: calc(20% - 5px);
+        }
+
+        .search-section .form-control {
+            height: 50px;
+            font-size: 15px;
+        }
+
+        .search-section .btn {
+            height: 50px;
+            font-size: 15px;
+        }
+    }
+
+    /* ===== MOBILE (576px - 767px) ===== */
+    @media (min-width: 576px) and (max-width: 767px) {
+
+        /* News Ticker */
         .news-ticker-wrapper {
             padding: 0.5rem 0 !important;
         }
@@ -66,7 +662,6 @@
             align-items: center !important;
         }
 
-        /* Label Latest News */
         .ticker-label {
             font-size: 10px !important;
             padding: 0.3rem 0.4rem !important;
@@ -78,7 +673,6 @@
             text-overflow: ellipsis;
         }
 
-        /* Ticker Content */
         .ticker-content {
             flex-grow: 1 !important;
             overflow: hidden !important;
@@ -99,10 +693,47 @@
             display: inline;
             line-height: 1.4;
         }
+
+        /* Search Section */
+        .search-section {
+            padding: 18px 0;
+        }
+
+        .search-section .inner {
+            padding: 15px;
+        }
+
+        .search-section .row {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .search-section .col-md-10,
+        .search-section .col-md-2 {
+            width: 100% !important;
+        }
+
+        .search-section .form-control {
+            height: 46px;
+            font-size: 14px;
+            padding: 0 16px;
+        }
+
+        .search-section .form-control::placeholder {
+            font-size: 13px;
+        }
+
+        .search-section .btn {
+            height: 46px;
+            font-size: 14px;
+            padding: 0 20px;
+        }
     }
 
-    /* Mobile Small (< 576px) */
-    @media (max-width: 576px) {
+    /* ===== MOBILE SMALL (< 576px) ===== */
+    @media (max-width: 575px) {
+
+        /* News Ticker */
         .news-ticker-wrapper {
             padding: 0.4rem 0 !important;
         }
@@ -120,19 +751,11 @@
         .ticker-move li a {
             font-size: 11px !important;
         }
-    }
 
-    /* data post */
-
-    /* Tambahkan CSS ini ke file stylesheet Anda */
-
-    /* Perbaikan Text untuk Mobile - Layout Tetap 2 Kolom */
-    @media (max-width: 767px) {
-
-        /* Pertahankan Layout: Kiri 8 kolom, Kanan 4 kolom */
+        /* Home Main */
         .home-main .col-8.left {
             flex: 0 0 auto;
-            width: 66.66666667% !important;
+            width: 66.67% !important;
             padding-right: 4px !important;
             display: flex;
             flex-direction: column;
@@ -154,12 +777,17 @@
             flex: 1;
             object-fit: cover;
             min-height: 100%;
+            max-height: 180px;
+            min-height: 180px;
         }
 
         .home-main .col-4 {
             flex: 0 0 auto;
-            width: 33.33333333% !important;
+            width: 33.33% !important;
             padding-left: 4px !important;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .home-main .row.g-2 {
@@ -167,7 +795,6 @@
             margin-left: -4px !important;
         }
 
-        /* Perbaikan Text - Post Besar (Kiri) */
         .home-main .left .inner .text-inner h2 {
             font-size: 13px !important;
             line-height: 1.2 !important;
@@ -180,7 +807,6 @@
             word-wrap: break-word;
             word-break: break-word;
             max-height: 31px;
-            /* 13px * 1.2 * 2 */
         }
 
         .home-main .left .inner .text-inner h2 a {
@@ -189,7 +815,6 @@
             display: block;
         }
 
-        /* Perbaikan Text - Post Kecil (Kanan) */
         .home-main .col-4 .inner-right .text-inner h2 {
             font-size: 10px !important;
             line-height: 1.2 !important;
@@ -202,7 +827,6 @@
             word-wrap: break-word;
             word-break: break-word;
             max-height: 24px;
-            /* 10px * 1.2 * 2 */
         }
 
         .home-main .col-4 .inner-right .text-inner h2 a {
@@ -211,7 +835,6 @@
             display: block;
         }
 
-        /* Badge Kategori - Lebih Kecil */
         .home-main .left .category .badge {
             font-size: 8px !important;
             padding: 2px 4px !important;
@@ -226,7 +849,6 @@
             display: inline-block;
         }
 
-        /* Date & User Info - Lebih Compact */
         .home-main .left .date-user {
             font-size: 8px !important;
             display: flex;
@@ -254,7 +876,6 @@
             font-size: inherit !important;
         }
 
-        /* Padding Text Container - Lebih Kecil */
         .home-main .left .text {
             padding: 6px !important;
         }
@@ -271,7 +892,6 @@
             padding: 3px !important;
         }
 
-        /* Gambar Responsive - Sesuaikan Tinggi */
         .home-main .photo {
             position: relative;
             overflow: hidden;
@@ -284,26 +904,13 @@
             display: block;
         }
 
-        .home-main .left .photo img {
-            max-height: 180px;
-            min-height: 180px;
-        }
-
         .home-main .col-4 .inner-right .photo img {
             max-height: 100px;
             min-height: 100px;
         }
 
-        /* Background overlay - Lebih gelap untuk readability */
         .home-main .photo .bg {
             background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-        }
-
-        /* Gap antara post kanan & Rata tinggi */
-        .home-main .col-4 {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
         }
 
         .home-main .col-4 .inner-right {
@@ -323,10 +930,50 @@
             flex: 1;
             object-fit: cover;
         }
+
+        /* Search Section */
+        .search-section {
+            padding: 15px 0;
+        }
+
+        .search-section .container {
+            padding: 0 10px;
+        }
+
+        .search-section .inner {
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .search-section .row {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .search-section .col-md-10,
+        .search-section .col-md-2 {
+            width: 100% !important;
+        }
+
+        .search-section .form-control {
+            height: 44px;
+            font-size: 14px;
+            padding: 0 15px;
+        }
+
+        .search-section .form-control::placeholder {
+            font-size: 13px;
+        }
+
+        .search-section .btn {
+            height: 44px;
+            font-size: 14px;
+            padding: 0 20px;
+        }
     }
 
-    /* Untuk layar sangat kecil (< 576px) */
-    @media (max-width: 576px) {
+    /* ===== MOBILE EXTRA SMALL (< 400px) ===== */
+    @media (max-width: 399px) {
         .home-main .left .inner .text-inner h2 {
             font-size: 11px !important;
             max-height: 26px !important;
@@ -359,6 +1006,100 @@
 
         .home-main .col-4 .date-user {
             font-size: 6px !important;
+        }
+
+        /* Search Section mobile*/
+        .search-section {
+            padding: 12px 0;
+        }
+
+        .search-section .inner {
+            padding: 10px;
+        }
+
+        .search-section .row {
+            gap: 8px;
+        }
+
+        .search-section .form-control {
+            height: 42px;
+            width: 100%;
+            font-size: 13px;
+            padding: 0 12px;
+        }
+
+        .search-section .form-control::placeholder {
+            font-size: 12px;
+        }
+
+        .search-section .btn {
+            height: 42px;
+            font-size: 13px;
+        }
+
+    }
+
+    /* ===== DESKTOP DEFAULT ===== */
+    .category-title {
+        border-left: 5px solid #0d6efd;
+        font-weight: 800;
+        font-size: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #1a1a1a;
+        padding-left: 12px;
+        margin: 0;
+    }
+
+    .see-all {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .bar {
+        width: 100%;
+        border-bottom: 2px solid #d5d5d5ff;
+        margin-top: 10px;
+    }
+
+
+    /* ===== TABLET (max 991px) ===== */
+    @media (max-width: 991px) {
+        .category-title {
+            font-size: 23px;
+            padding-left: 10px;
+        }
+
+        .see-all {
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+
+        .bar {
+            margin-top: 8px;
+        }
+    }
+
+
+    /* ===== MOBILE (max 576px) ===== */
+    @media (max-width: 576px) {
+        .category-title {
+            font-size: 20px;
+            border-left-width: 4px;
+            padding-left: 10px;
+            line-height: 1.3;
+        }
+
+        .see-all {
+            justify-content: flex-end;
+            margin-top: 10px;
+            padding-right: 5px;
+        }
+
+        .bar {
+            width: 94%;
+            margin: 12px auto 0 auto;
         }
     }
 </style>
@@ -510,23 +1251,15 @@
     </div>
 </div>
 
-<div class="search-section">
-    <div class="container">
-        <form action="{{ route('search') }}" method="GET">
-            <div class="inner">
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="form-group">
-                            <input type="text" name="q" class="form-control" placeholder="Cari judul atau isi berita...">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+<!-- garis News -->
+<div class="d-flex align-items-center my-4" style="background-color: white; padding: 10px 5px;">
+    <div class="flex-grow-1" style="border-bottom: 2px solid #d5d5d5ff;"></div>
+    <span class="px-4 fw-bold"
+        style="font-size: 22px; letter-spacing: 3px; color: #111; font-family: 'Poppins', sans-serif; display:flex; align-items:center; gap:8px;">
+        <i class="bi bi-megaphone-fill"></i>
+        NEWS
+    </span>
+    <div class="flex-grow-1" style="border-bottom: 2px solid #d5d5d5ff;"></div>
 </div>
 
 <div class="home-content">
@@ -540,16 +1273,19 @@
                     @endif
                     <!-- News Of Category -->
                     <div class="news-total-item">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <h2 class="ps-3" style="border-left:5px solid #0d6efd; font-weight:800; font-size:25px; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">{{ $item->category_name }}</h2>
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6 col-8">
+                                <h2 class="ps-3 category-title"
+                                    style="border-left:5px solid #0d6efd; font-weight:800; font-size:25px; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">
+                                    {{ $item->category_name }}
+                                </h2>
                             </div>
-                            <div class="col-lg-6 col-md-12 see-all">
+                            <div class="col-lg-6 col-md-6 col-4 see-all">
                                 <a href="{{ route('category', $item->id) }}" class="btn btn-primary btn-sm">
                                     SEE ALL NEWS
                                 </a>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-12">
                                 <div class="bar"></div>
                             </div>
                         </div>

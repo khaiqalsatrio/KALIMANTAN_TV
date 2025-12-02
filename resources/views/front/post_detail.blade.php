@@ -1,5 +1,23 @@
 @extends('front.layout.app')
 @section('main_content')
+
+<style>
+    .tag-container {
+    display: flex;
+    flex-wrap: wrap;          /* agar turun ke baris berikutnya */
+    gap: 6px;                 /* jarak antar badge */
+}
+
+.tag-badge {
+    font-size: 13px;
+    padding: 6px 10px;
+    white-space: nowrap;      /* badge tetap satu baris */
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;  /* jika teks badge terlalu panjang */
+}
+
+</style>
 <div class="page-top">
     <div class="container">
         <div class="row">
@@ -63,7 +81,12 @@
                     <div class="tag-section-content">
                         @foreach ($tag_data as $row)
                         <a href="javascript:void(0)">
-                            <span class="badge bg-success">{{ $row->tag_name }}</span>
+                            <div class="tag-container">
+                                @foreach($tags as $row)
+                                <span class="badge bg-success tag-badge">{{ $row->tag_name }}</span>
+                                @endforeach
+                            </div>
+
                         </a>
                         @endforeach
                     </div>
@@ -89,6 +112,7 @@
                     </script>
                 </div>
                 @endif
+                
                 <!-- COMMENT FORM -->
                 <div class="comment-section mt-5">
                     <h3 class="mb-3">Tinggalkan Komentar</h3>
@@ -164,7 +188,7 @@
                     </div>
                 </div>
                 <!-- COMMENTS LIST -->
-                <div class="card mt-4 shadow-sm border-0">
+                <div class="card mt-4 shadow-sm border-0 mb-3">
                     <div class="card-body bg-light rounded">
                         <h4 class="mb-4">{{ $post_detail->comments->count() }} Komentar</h4>
                         <!-- Scroll Container -->
