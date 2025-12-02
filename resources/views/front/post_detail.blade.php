@@ -2,21 +2,28 @@
 @section('main_content')
 
 <style>
+
     .tag-container {
-    display: flex;
-    flex-wrap: wrap;          /* agar turun ke baris berikutnya */
-    gap: 6px;                 /* jarak antar badge */
-}
+        display: flex;
+        flex-wrap: wrap;
+        /* otomatis turun baris kalau panjang */
+        gap: 6px;
+        /* jarak antar badge */
+        margin-top: 6px;
+    }
 
-.tag-badge {
-    font-size: 13px;
-    padding: 6px 10px;
-    white-space: nowrap;      /* badge tetap satu baris */
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;  /* jika teks badge terlalu panjang */
-}
-
+    .tag-badge {
+        background: #16A34A;
+        /* warna hijau modern (bg-success versi lebih fresh) */
+        color: #fff;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        /* bulat modern */
+        font-weight: 500;
+        white-space: nowrap;
+        /* tag tidak patah di tengah kata */
+    }
 </style>
 <div class="page-top">
     <div class="container">
@@ -82,11 +89,10 @@
                         @foreach ($tag_data as $row)
                         <a href="javascript:void(0)">
                             <div class="tag-container">
-                                @foreach($tags as $row)
+                                @foreach($tag_data as $row)
                                 <span class="badge bg-success tag-badge">{{ $row->tag_name }}</span>
                                 @endforeach
                             </div>
-
                         </a>
                         @endforeach
                     </div>
@@ -112,7 +118,7 @@
                     </script>
                 </div>
                 @endif
-                
+
                 <!-- COMMENT FORM -->
                 <div class="comment-section mt-5">
                     <h3 class="mb-3">Tinggalkan Komentar</h3>

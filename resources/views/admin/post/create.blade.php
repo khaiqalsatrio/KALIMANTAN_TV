@@ -53,16 +53,12 @@
                 <label class="form-label">Foto Thumbnail</label>
                 <input type="file" name="post_photo" class="form-control" required>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Tags (opsional)</label>
-                <input type="text" name="post_tag" class="form-control"
-                    maxlength="255"
-                    pattern="[A-Za-z0-9, \-]+"
-                    title="Tag hanya boleh huruf, angka, koma, tanda hubung -, dan spasi."
-                    placeholder="Contoh: politik, ekonomi, sport">
-
-            </div>
-            <button type="submit" class="btn btn-success">
+            <input type="text" name="post_tag" class="form-control"
+                maxlength="255"
+                pattern="[A-Za-z0-9,\- ]*"
+                title="Tag hanya boleh huruf, angka, koma, tanda hubung -, dan spasi."
+                placeholder="Contoh: politik, ekonomi, sport">
+            <button type="submit" class="btn btn-success mt-3">
                 <i class="fas fa-save"></i> Simpan Post
             </button>
         </form>

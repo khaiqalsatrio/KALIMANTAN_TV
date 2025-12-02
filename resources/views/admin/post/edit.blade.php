@@ -78,9 +78,12 @@
             <div class="mb-3">
                 <label class="form-label">Tags (opsional)</label>
                 <input type="text" name="post_tag" class="form-control"
+                    maxlength="255"
+                    pattern="[A-Za-z0-9,\- ]*"
+                    title="Tag hanya boleh huruf, angka, koma, tanda hubung -, dan spasi."
+                    placeholder="Contoh: politik, ekonomi, sport"
                     value="{{ old('post_tag', $tagList) }}">
             </div>
-
             <button type="submit" class="btn btn-success">
                 <i class="fas fa-save"></i> Update Post
             </button>

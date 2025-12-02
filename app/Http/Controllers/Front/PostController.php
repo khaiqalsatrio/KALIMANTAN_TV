@@ -22,7 +22,7 @@ class PostController extends Controller
         // HIT VISITOR
         $post_detail->increment('visitor_count');
         // TAG khusus post ini
-        $tag_data = Tag::where('post_id', $id)->get();
+        $tag_data = Tag::where('post_id', $id)->limit(20)->get();
         // TAG global untuk sidebar
         $tags = Tag::orderBy('id', 'desc')->limit(25)->get();
         // ARCHIVE global
