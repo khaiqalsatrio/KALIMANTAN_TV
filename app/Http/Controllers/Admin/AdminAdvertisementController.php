@@ -34,14 +34,17 @@ class AdminAdvertisementController extends Controller
         // UPLOAD ABOVE SEARCH AD
         if ($request->hasFile('above_search_ad')) {
 
-            if ($home_ad_data->above_search_ad && file_exists(public_path('uploads/' . $home_ad_data->above_search_ad))) {
-                unlink(public_path('uploads/' . $home_ad_data->above_search_ad));
+            // HAPUS FILE LAMA
+            if ($home_ad_data->above_search_ad && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/' . $home_ad_data->above_search_ad)) {
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/' . $home_ad_data->above_search_ad);
             }
 
             $ext = $request->file('above_search_ad')->extension();
             $final_name = 'above_search_ad_' . time() . '.' . $ext;
 
-            $request->file('above_search_ad')->move(public_path('uploads/'), $final_name);
+            // UPLOAD SAMA SEPERTI POST STORE
+            $request->file('above_search_ad')->move($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/', $final_name);
+
             $home_ad_data->above_search_ad = $final_name;
         }
 
