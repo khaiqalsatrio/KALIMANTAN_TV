@@ -2,12 +2,12 @@
     /* =============================
    NAVBAR TERANG (MATCH FOOTER)
    ============================= */
-.navbar-custom {
-    background: #2d3f57 !important;
-    padding: 12px 15px;
-    border-bottom: 2px solid #4A70FF;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.20);
-}
+    .navbar-custom {
+        background: #2d3f57 !important;
+        padding: 12px 15px;
+        border-bottom: 2px solid #4A70FF;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.20);
+    }
 
 
     /* Link Navbar */
@@ -182,6 +182,20 @@
             overflow: hidden;
         }
     }
+
+    /* Warna navbar saat discroll */
+    .navbar-scrolled {
+        background: #1f2d40 !important;
+        transition: background 0.25s ease, box-shadow 0.25s ease;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Mobile khusus: agar perubahan halus */
+    @media (max-width: 991px) {
+        .navbar-custom {
+            transition: background 0.25s ease;
+        }
+    }
 </style>
 
 <div class="website-menu bg-white">
@@ -294,3 +308,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("scroll", function() {
+
+        const navbar = document.querySelector(".navbar-custom");
+
+        // Tambah warna saat scroll > 10px
+        if (window.scrollY > 10) {
+            navbar.classList.add("navbar-scrolled");
+        } else {
+            navbar.classList.remove("navbar-scrolled");
+        }
+
+    });
+</script>
