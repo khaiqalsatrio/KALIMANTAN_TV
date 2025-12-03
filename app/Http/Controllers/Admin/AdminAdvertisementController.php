@@ -34,17 +34,16 @@ class AdminAdvertisementController extends Controller
         // UPLOAD ABOVE SEARCH AD
         if ($request->hasFile('above_search_ad')) {
 
-            $oldPath = public_path('uploads/post/' . $home_ad_data->above_search_ad);
-
-            // HAPUS FILE LAMA (jika ada)
-            if ($home_ad_data->above_search_ad && file_exists($oldPath)) {
-                unlink($oldPath);
+            // HAPUS FILE LAMA
+            if ($home_ad_data->above_search_ad && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/' . $home_ad_data->above_search_ad)) {
+                unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/' . $home_ad_data->above_search_ad);
             }
 
             $ext = $request->file('above_search_ad')->extension();
             $final_name = 'above_search_ad_' . time() . '.' . $ext;
 
-            $request->file('above_search_ad')->move(public_path('uploads/post/'), $final_name);
+            // UPLOAD SAMA SEPERTI POST STORE
+            $request->file('above_search_ad')->move($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/', $final_name);
 
             $home_ad_data->above_search_ad = $final_name;
         }
@@ -57,48 +56,6 @@ class AdminAdvertisementController extends Controller
 
         return redirect()->back()->with('success', 'Informasi Anda telah berhasil diubah.');
     }
-
-
-    // public function home_ad_update(Request $request)
-    // {
-    //     // VALIDASI
-    //     $request->validate([
-    //         'above_search_ad' => 'nullable|image|mimes:jpg,jpeg,png,gif',
-    //     ]);
-
-    //     // AMBIL DATA ATAU BUAT
-    //     $home_ad_data = HomeAdvertisement::find(1);
-
-    //     if (!$home_ad_data) {
-    //         $home_ad_data = new HomeAdvertisement();
-    //         $home_ad_data->id = 1;
-    //     }
-
-    //     // UPLOAD ABOVE SEARCH AD
-    //     if ($request->hasFile('above_search_ad')) {
-
-    //         // HAPUS FILE LAMA
-    //         if ($home_ad_data->above_search_ad && file_exists($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/' . $home_ad_data->above_search_ad)) {
-    //             unlink($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/' . $home_ad_data->above_search_ad);
-    //         }
-
-    //         $ext = $request->file('above_search_ad')->extension();
-    //         $final_name = 'above_search_ad_' . time() . '.' . $ext;
-
-    //         // UPLOAD SAMA SEPERTI POST STORE
-    //         $request->file('above_search_ad')->move($_SERVER['DOCUMENT_ROOT'] . '/uploads/post/', $final_name);
-
-    //         $home_ad_data->above_search_ad = $final_name;
-    //     }
-
-    //     // UPDATE FIELD LAIN (HANYA SEARCH)
-    //     $home_ad_data->above_search_ad_url = $request->above_search_ad_url;
-    //     $home_ad_data->above_search_ad_status = $request->above_search_ad_status;
-
-    //     $home_ad_data->save();
-
-    //     return redirect()->back()->with('success', 'Informasi Anda telah berhasil diubah.');
-    // }
 
 
     // public function home_ad_update(Request $request)
