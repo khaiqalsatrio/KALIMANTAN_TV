@@ -25,7 +25,7 @@
                         </div>
 
                         <div class=" form-group mb-3">
-                            <label>Caption * </label>
+                            <label>Isi Nama dan Divisi * </label>
                             <textarea name="caption" class="form-control snote" id="" cols="30" rows="10">{{ old('caption') }}</textarea>
                         </div>
 

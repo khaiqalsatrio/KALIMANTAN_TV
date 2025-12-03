@@ -253,6 +253,13 @@
                         </a>
                     </li>
 
+                    <!-- ANGOTA -->
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('photo_gallery') }}">
+                            <i class="bi bi-person"></i> Daftar Angota
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -302,6 +309,13 @@
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="{{ route('live_stream') }}">
                         <i class="bi bi-broadcast-pin"></i> Live Berita
+                    </a>
+                </li>
+
+                <!-- ANGOTA -->
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('photo_gallery') }}">
+                        <i class="bi bi-person"></i> Daftar Angota
                     </a>
                 </li>
             </ul>

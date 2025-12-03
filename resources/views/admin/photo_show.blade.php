@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Daftar Jurnalis Yang Sudah Dipublikasikan')
+@section('heading', 'Daftar Anggota Kalimantan TV')
 
 @section('button')
 <a href="{{ route('admin_photo_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add </a>
@@ -18,7 +18,7 @@
                                 <tr>
                                     <th>SL</th>
                                     <th>Photo</th>
-                                    <th>Caption</th>
+                                    <th>Nama dan Divisi</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

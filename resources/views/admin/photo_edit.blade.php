@@ -25,14 +25,14 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label>Change Photo </label>
+                            <label>Ubah Photo </label>
                             <div>
                                 <input type="file" name="photo" class="form-control" placeholder="Photo">
                             </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label>Caption </label>
+                            <label>Isi Nama dan Divisi </label>
                             <div>
                                 <textarea name="caption" class="form-control snote" cols="30" rows="10">
                                     {!!$photo_single->caption !!}

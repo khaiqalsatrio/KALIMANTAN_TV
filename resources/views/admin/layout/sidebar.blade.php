@@ -28,9 +28,9 @@
                                 </ul>
                         </li>
 
-                        <!-- <li class="{{ Request::is('admin/photo/*') ? 'active' : '' }}"><a class="nav-link"
+                        <li class="{{ Request::is('admin/photo/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_photo_show') }}"><i class="fas fa-hand-point-right"></i>
-                                        <span>Galeri Jurnalis</span></a></li> -->
+                                        <span>Daftar Angota</span></a></li>
                         <li class="{{ Request::is('admin/video/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_video_show') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Video Berita</span></a></li>
