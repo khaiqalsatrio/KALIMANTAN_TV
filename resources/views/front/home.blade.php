@@ -1371,7 +1371,7 @@
             <div class="col-12">
                 <div class="ad-box">
                     <a href="{{ $home_ad_data->above_search_ad_url }}" target="_blank">
-                        <img src="{{ asset('uploads/' . $home_ad_data->above_search_ad) }}"
+                        <img src="{{ asset('uploads/post/' . $home_ad_data->above_search_ad) }}"
                             alt="Advertisement"
                             class="ad-banner">
                     </a>
