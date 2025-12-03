@@ -59,8 +59,8 @@
                         <div class="form-group mb-3">
                             <label>Existing Photo</label>
                             <div>
-                                @if (!empty($home_ad_data->above_footer_ad) && file_exists(public_path('uploads/'.$home_ad_data->above_footer_ad)))
-                                    <img src="{{ asset('uploads/'.$home_ad_data->above_footer_ad) }}" style="width:100%">
+                                @if (!empty($home_ad_data->above_footer_ad) && file_exists(public_path('uploads/post/'.$home_ad_data->above_footer_ad)))
+                                    <img src="{{ asset('uploads/post/'.$home_ad_data->above_footer_ad) }}" style="width:100%">
                                 @else
                                     <div class="text-danger">No Image Found</div>
                                 @endif
