@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>Kalimantan TV Website</title>
+    <title>KalimantanTV News</title>
     <link rel="icon" type="image/png" href="{{ asset('uploads/kalimantantv2.png') }}">
 
     @include('front.layout.styles')
     @include('front.layout.scripts')
 
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6212352ed76fda0a"></script>
 
     <!-- Google Analytics -->
@@ -25,7 +26,11 @@
         gtag('js', new Date());
         gtag('config', 'UA-84213520-6');
     </script>
+
     <style>
+        /* =========================================================
+   1. TOP AD BANNER
+   ========================================================= */
         .top-ad-img {
             max-width: 100%;
             height: auto;
@@ -34,13 +39,11 @@
             margin: 0 auto;
         }
 
-        /* Wrap container supaya rapi */
         .ad-section-1 {
             padding: 10px 0;
             text-align: center;
         }
 
-        /* Batas maksimal agar tetap mirip ukuran desain */
         @media (min-width: 992px) {
             .top-ad-img {
                 max-width: 800px;
@@ -48,226 +51,9 @@
             }
         }
 
-        /* ===== LOGO HEADER RESPONSIVE ===== */
-        .heading-area {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e5e5;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .heading-area .container {
-            position: relative;
-        }
-
-        .logo-wrapper {
-            padding: 15px 0;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .logo-link {
-            display: inline-block;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-link:hover {
-            transform: scale(1.02);
-        }
-
-        /* Logo Image */
-        .logo-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Logo Text Fallback (jika belum ada gambar) */
-        .logo-text {
-            margin: 0;
-            padding: 0;
-            font-size: 34px;
-            font-weight: 900;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.2;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .logo-text .logo-main {
-            background: linear-gradient(90deg, #6e80f2, #3f58e6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 2px 2px 7px rgba(108, 133, 240, 0.22);
-            letter-spacing: 0.5px;
-        }
-
-        .logo-text .logo-accent {
-            color: #000000;
-            font-weight: 900;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-        }
-
-        /* ===== DESKTOP (> 1200px) ===== */
-        @media (min-width: 1200px) {
-            .logo-wrapper {
-                padding: 20px 0;
-            }
-
-            .logo-image {
-                max-height: 70px;
-                width: auto;
-            }
-
-            .logo-text {
-                font-size: 38px;
-            }
-        }
-
-        /* ===== LAPTOP (992px - 1199px) ===== */
-        @media (min-width: 992px) and (max-width: 1199px) {
-            .logo-wrapper {
-                padding: 18px 0;
-            }
-
-            .logo-image {
-                max-height: 65px;
-                width: auto;
-            }
-
-            .logo-text {
-                font-size: 34px;
-            }
-        }
-
-        /* ===== TABLET / iPad (768px - 991px) ===== */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .logo-wrapper {
-                padding: 15px 0;
-            }
-
-            .logo-image {
-                max-height: 55px;
-                width: auto;
-            }
-
-            .logo-text {
-                font-size: 30px;
-            }
-        }
-
-        /* ===== MOBILE (576px - 767px) ===== */
-        @media (min-width: 576px) and (max-width: 767px) {
-            .logo-wrapper {
-                padding: 12px 0;
-                justify-content: center;
-            }
-
-            .logo-image {
-                max-height: 45px;
-                width: auto;
-            }
-
-            .logo-text {
-                font-size: 24px;
-            }
-
-            .logo-text .logo-main,
-            .logo-text .logo-accent {
-                text-shadow: 1px 1px 3px rgba(108, 133, 240, 0.15);
-            }
-        }
-
-        /* ===== MOBILE SMALL (< 576px) ===== */
-        @media (max-width: 575px) {
-            .heading-area {
-                border-bottom: 1px solid #e5e5e5;
-            }
-
-            .logo-wrapper {
-                padding: 10px 0;
-                justify-content: center;
-            }
-
-            .logo-image {
-                max-height: 40px;
-                width: auto;
-            }
-
-            .logo-text {
-                font-size: 22px;
-                gap: 3px;
-            }
-
-            .logo-text .logo-main {
-                letter-spacing: 0.3px;
-            }
-
-            .logo-text .logo-main,
-            .logo-text .logo-accent {
-                text-shadow: 1px 1px 2px rgba(108, 133, 240, 0.12);
-            }
-        }
-
-        /* ===== MOBILE EXTRA SMALL (< 400px) ===== */
-        @media (max-width: 399px) {
-            .logo-wrapper {
-                padding: 8px 0;
-            }
-
-            .logo-image {
-                max-height: 35px;
-                width: auto;
-            }
-
-            .logo-text {
-                font-size: 20px;
-                gap: 2px;
-            }
-        }
-
-        /* ===== iPad Specific ===== */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .logo-wrapper {
-                padding: 16px 0;
-            }
-
-            .logo-image {
-                max-height: 58px;
-                width: auto;
-            }
-
-            .logo-text {
-                font-size: 32px;
-            }
-        }
-
-        /* iPad Portrait */
-        @media (min-width: 768px) and (max-width: 768px) and (orientation: portrait) {
-            .logo-image {
-                max-height: 52px;
-            }
-
-            .logo-text {
-                font-size: 28px;
-            }
-        }
-
-        /* iPad Landscape */
-        @media (min-width: 1024px) and (max-width: 1024px) and (orientation: landscape) {
-            .logo-image {
-                max-height: 60px;
-            }
-
-            .logo-text {
-                font-size: 34px;
-            }
-        }
-
-        /* ===== TOP BAR RESPONSIVE ===== */
+        /* =========================================================
+   2. TOP BAR
+   ========================================================= */
         .top {
             background-color: #eff0f2;
             border-bottom: 1px solid #e0e0e0;
@@ -297,35 +83,32 @@
             margin-right: 20px;
         }
 
-        /* Today Text */
-        .top .today-text {
-            color: #555;
+        .top-info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 18px;
+            align-items: center;
             font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .top-info-list li {
             display: flex;
             align-items: center;
-            gap: 6px;
-        }
-
-        .top .today-text::before {
-            content: "📅";
             font-size: 14px;
+            color: #333;
         }
 
-        /* Email Text */
-        .top .email-text {
-            color: #666;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .top-info-list li i {
+            margin-right: 6px;
         }
 
-        .top .email-text::before {
-            content: "✉";
-            font-size: 14px;
+        .top-info-list li.breaking-news i {
+            color: red;
         }
 
-        /* Right Menu */
         .top ul.right {
             justify-content: flex-end;
         }
@@ -334,9 +117,7 @@
             color: #333;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
             padding: 10px 12px;
-            display: inline-block;
             border-radius: 4px;
             transition: all 0.3s ease;
         }
@@ -346,569 +127,450 @@
             background-color: rgba(64, 115, 218, 0.1);
         }
 
-        /* Language Switch (jika diaktifkan) */
-        .language-switch {
+        /* =========================================================
+   3. HEADER / LOGO
+   ========================================================= */
+        .heading-area {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-wrapper {
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .logo-link {
             display: inline-block;
+            text-decoration: none;
+            transition: transform 0.3s ease;
         }
 
-        .language-switch select {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 13px;
-            background-color: white;
-            color: #333;
-            cursor: pointer;
-            transition: border-color 0.3s ease;
+        .logo-link:hover {
+            transform: scale(1.02);
         }
 
-        .language-switch select:hover {
-            border-color: #4073da;
+        .logo-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .language-switch select:focus {
-            outline: none;
-            border-color: #4073da;
-            box-shadow: 0 0 0 2px rgba(64, 115, 218, 0.1);
+        .logo-text {
+            margin: 0;
+            padding: 0;
+            font-size: 34px;
+            font-weight: 900;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        /* ===== DESKTOP (> 1200px) ===== */
+        .logo-text .logo-main {
+            background: linear-gradient(90deg, #6e80f2, #3f58e6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .logo-text .logo-accent {
+            color: #000;
+            font-weight: 900;
+        }
+
+        /* =========================================================
+   4. FOOTER (NEWS PORTAL ELEGANT)
+   ========================================================= */
+        .footer {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            /* background: #2d3f57 !important; */
+            color: #e2e8f0;
+            padding: 2.5rem 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated top border */
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+            background-size: 200% 100%;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 200% 0%;
+            }
+        }
+
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Fade animation */
+        .footer-item {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer .heading {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .footer .heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        .footer-item p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 0.875rem;
+        }
+
+        /* Links */
+        .footer .useful-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer .useful-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer .useful-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            padding-left: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .footer .useful-links a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            color: #3b82f6;
+            transition: all 0.25s ease;
+        }
+
+        .footer .useful-links a:hover {
+            color: #fff;
+            padding-left: 2rem;
+        }
+
+        .footer .useful-links a:hover::before {
+            opacity: 1;
+            left: 0.5rem;
+        }
+
+        /* Footer button */
+        .footer .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .footer .btn:hover {
+            color: #fff;
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .footer .btn:hover::before {
+            left: 0;
+        }
+
+        /* Social icons */
+        .footer .social {
+            display: flex;
+            gap: 0.75rem;
+            list-style: none;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            padding: 0;
+        }
+
+        .footer .social li a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #cbd5e1;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer .social li a:hover {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: #fff;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            border-color: transparent;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* =========================================================
+   5. RESPONSIVE
+   ========================================================= */
+
+        /* Desktop >1200 */
         @media (min-width: 1200px) {
-            .top {
-                padding: 0;
+            .logo-wrapper {
+                padding: 20px 0;
+            }
+
+            .logo-image {
+                max-height: 70px;
+            }
+
+            .logo-text {
+                font-size: 38px;
             }
 
             .top ul li {
                 padding: 12px 0;
             }
-
-            .top .today-text {
-                font-size: 14px;
-            }
-
-            .top ul.right li.menu a {
-                font-size: 14px;
-                padding: 10px 15px;
-            }
         }
 
-        /* ===== LAPTOP (992px - 1199px) ===== */
+        /* Laptop 992–1199 */
         @media (min-width: 992px) and (max-width: 1199px) {
-            .top ul li:not(:last-child) {
-                margin-right: 15px;
+            .logo-wrapper {
+                padding: 18px 0;
             }
 
-            .top ul.right li.menu a {
-                padding: 8px 12px;
-                font-size: 13px;
+            .logo-image {
+                max-height: 65px;
+            }
+
+            .logo-text {
+                font-size: 34px;
             }
         }
 
-        /* ===== TABLET / iPad (768px - 991px) ===== */
+        /* Tablet 768–991 */
         @media (min-width: 768px) and (max-width: 991px) {
-            .top {
-                font-size: 13px;
+            .logo-wrapper {
+                padding: 15px 0;
             }
 
-            .top .row {
-                margin: 0 !important;
+            .logo-image {
+                max-height: 55px;
             }
 
-            .top .col-md-6 {
-                padding: 0 8px !important;
+            .logo-text {
+                font-size: 30px;
             }
 
-            .top ul li {
-                padding: 10px 0;
-            }
-
-            .top ul li:not(:last-child) {
-                margin-right: 12px;
-            }
-
-            .top .today-text {
-                font-size: 13px;
-            }
-
-            .top .today-text::before {
-                font-size: 13px;
-            }
-
-            .top ul.right li.menu a {
-                padding: 6px 10px;
-                font-size: 13px;
-            }
-
-            .language-switch select {
-                font-size: 12px;
-                padding: 4px 8px;
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* ===== MOBILE (576px - 767px) ===== */
+        /* Mobile 576–767 */
         @media (min-width: 576px) and (max-width: 767px) {
-            .top {
-                padding: 8px 0;
-                font-size: 12px;
-            }
-
-            .top .row {
-                margin: 0 !important;
-            }
-
-            .top .col-md-6 {
-                width: 100% !important;
-                padding: 0 !important;
-                text-align: center;
-            }
-
-            .top .col-md-6:first-child {
-                margin-bottom: 8px;
-            }
-
-            .top ul {
-                justify-content: center;
-                gap: 8px;
-            }
-
-            .top ul li {
-                padding: 6px 0;
-                margin-right: 0 !important;
-            }
-
-            .top .today-text {
-                font-size: 12px;
-            }
-
-            .top .today-text::before {
-                font-size: 12px;
-            }
-
-            .top ul.right {
+            .logo-wrapper {
                 justify-content: center;
             }
 
-            .top ul.right li.menu {
-                margin: 0 4px;
+            .logo-image {
+                max-height: 45px;
             }
 
-            .top ul.right li.menu a {
-                padding: 5px 10px;
-                font-size: 12px;
+            .logo-text {
+                font-size: 24px;
             }
 
-            .language-switch select {
-                font-size: 11px;
-                padding: 4px 8px;
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
         }
 
-        /* ===== MOBILE SMALL (< 576px) ===== */
+        /* Mobile <575 */
         @media (max-width: 575px) {
-            .top {
-                padding: 6px 0;
-                font-size: 11px;
-            }
-
-            .top .container {
-                padding: 0 10px;
-            }
-
-            .top .row {
-                margin: 0 !important;
-            }
-
-            .top .col-md-6 {
-                width: 100% !important;
-                padding: 0 !important;
-                text-align: center;
-            }
-
-            .top .col-md-6:first-child {
-                margin-bottom: 6px;
-            }
-
-            .top ul {
-                justify-content: center;
-                gap: 6px;
-                flex-wrap: wrap;
-            }
-
-            .top ul li {
-                padding: 4px 0;
-                margin-right: 0 !important;
-            }
-
-            .top .today-text {
-                font-size: 11px;
-            }
-
-            .top .today-text::before {
-                font-size: 11px;
-            }
-
-            .top .email-text {
-                display: none;
-                /* Hide email on very small screens */
-            }
-
-            .top ul.right {
+            .logo-wrapper {
                 justify-content: center;
             }
 
-            .top ul.right li.menu {
-                margin: 0 3px;
+            .logo-image {
+                max-height: 40px;
             }
 
-            .top ul.right li.menu a {
-                padding: 4px 8px;
-                font-size: 11px;
+            .logo-text {
+                font-size: 22px;
             }
 
-            .language-switch select {
-                font-size: 10px;
-                padding: 3px 6px;
+            .footer .btn {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* ===== MOBILE EXTRA SMALL (< 400px) ===== */
+        /* Extra small <400 */
         @media (max-width: 399px) {
-            .top {
-                padding: 5px 0;
-                font-size: 10px;
+            .logo-image {
+                max-height: 35px;
             }
 
-            .top .today-text {
-                font-size: 10px;
-            }
-
-            .top .today-text::before {
-                display: none;
-                /* Hide icon on very small screens */
-            }
-
-            .top ul.right li.menu a {
-                padding: 3px 6px;
-                font-size: 10px;
-                margin: 0 2px;
-            }
-
-            /* Compress menu items */
-            .top ul.right li.menu a {
-                white-space: nowrap;
-            }
-        }
-
-        /* ===== iPad Specific (768px - 1024px) ===== */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .top {
-                padding: 0;
-            }
-
-            .top ul li {
-                padding: 11px 0;
-            }
-
-            .top ul li:not(:last-child) {
-                margin-right: 14px;
-            }
-
-            .top .today-text {
-                font-size: 13px;
-            }
-
-            .top ul.right li.menu a {
-                padding: 7px 11px;
-                font-size: 13px;
-            }
-        }
-
-        /* iPad Portrait */
-        @media (min-width: 768px) and (max-width: 768px) and (orientation: portrait) {
-            .top ul li:not(:last-child) {
-                margin-right: 12px;
-            }
-
-            .top ul.right li.menu a {
-                padding: 6px 10px;
-                font-size: 12px;
-            }
-        }
-
-        /* iPad Landscape */
-        @media (min-width: 1024px) and (max-width: 1024px) and (orientation: landscape) {
-            .top ul li:not(:last-child) {
-                margin-right: 16px;
-            }
-
-            .top ul.right li.menu a {
-                padding: 8px 12px;
-                font-size: 13px;
-            }
-        }
-
-        /* ===== Stacked Layout for Very Small Screens ===== */
-        @media (max-width: 450px) {
-
-            /* Stack menu items vertically if too crowded */
-            .top ul.right {
-                gap: 4px;
-            }
-
-            .top ul.right li.menu {
-                margin: 2px 0;
-            }
-        }
-
-        /* BREAKING NEWS */
-        .top-info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 18px;
-            align-items: center;
-            font-weight: 500;
-            white-space: nowrap;
-            /* Supaya tidak turun */
-        }
-
-        .top-info-list li {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .top-info-list li i {
-            margin-right: 6px;
-            color: #2d6cdf;
-        }
-
-        /* Jika layar kecil banget, perkecil font supaya tetap muat */
-        @media (max-width: 400px) {
-            .top-info-list li {
-                font-size: 12px;
-            }
-        }
-
-        .top-info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 18px;
-            align-items: center;
-            font-weight: 500;
-            white-space: nowrap;
-            flex-wrap: nowrap !important;
-            /* cegah turun baris */
-        }
-
-        .top-info-list li {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .top-info-list li i {
-            margin-right: 6px;
-            color: #2d6cdf;
-        }
-
-        /* --- KHUSUS IPAD (portrait + landscape) --- */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .top-info-list {
-                gap: 25px;
-                /* beri ruang lebih */
-                font-size: 15px;
-                /* sedikit lebih besar agar enak dilihat */
-            }
-
-            .top-info-list li {
-                font-size: 15px;
-            }
-        }
-
-        /* Untuk hp kecil saja, perkecil text */
-        @media (max-width: 450px) {
-            .top-info-list li {
-                font-size: 12px;
-            }
-        }
-
-        /* ============================
-   iPad PORTRAIT (768px)
-   ============================ */
-        @media (min-width: 768px) and (max-width: 820px) {
-            .heading-area {
-                padding-top: 15px;
-                padding-bottom: 15px;
-            }
-
-            .heading-area img {
-                max-height: 55px !important;
-            }
-
-            .heading-area .col-md-4 {
-                margin-bottom: 10px;
-            }
-
-            .heading-area .input-group input {
-                height: 42px;
-                font-size: 15px;
-            }
-
-            .heading-area .btn {
-                height: 42px;
-                font-size: 15px;
-                padding: 0 16px;
-            }
-        }
-
-        /* ============================
-   iPad LANDSCAPE (1024px)
-   ============================ */
-        @media (min-width: 821px) and (max-width: 1024px) {
-            .heading-area img {
-                max-height: 60px !important;
-            }
-
-            .heading-area .input-group input {
-                height: 45px;
-                font-size: 15px;
-            }
-
-            .heading-area .btn {
-                height: 45px;
-                padding: 0 20px;
-                font-size: 16px;
-            }
-        }
-
-        /* ============================
-   iPad PORTRAIT (768px)
-   ============================ */
-        @media (min-width: 768px) and (max-width: 820px) {
-
-            .heading-area h1 {
-                font-size: 26px !important;
-                line-height: 1.2;
-            }
-
-            .heading-area h1 span {
-                display: inline-block;
-            }
-        }
-
-        /* ============================
-   iPad LANDSCAPE (1024px)
-   ============================ */
-        @media (min-width: 821px) and (max-width: 1024px) {
-
-            .heading-area h1 {
-                font-size: 30px !important;
-                line-height: 1.2;
-            }
-
-            .heading-area h1 span {
-                display: inline-block;
+            .logo-text {
+                font-size: 20px;
             }
         }
     </style>
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-<!-- Header -->
 
 <body>
     <!-- TOP BAR SECTION -->
     <div class="top">
         <div class="container">
             <div class="row">
-                <!-- Left Side: Date & Email -->
+                <!-- Left Side: Date & Breaking News -->
                 <div class="col-md-6">
                     <ul class="top-info-list">
                         <li><i class="bi bi-calendar-date"></i>{{ date('F d, Y') }}</li>
                         <li class="breaking-news">
-                            <i class="bi bi-broadcast-pin" style="color: red;"></i>
+                            <i class="bi bi-broadcast-pin"></i>
                             BREAKING NEWS
                         </li>
-
                     </ul>
                 </div>
 
-                <!-- Right Side: Menu Links -->
+                <!-- Right Side: Menu Links (Uncomment if needed) -->
                 <!-- <div class="col-md-6">
                     <ul class="right">
                         @if ($global_page_data->faq_status == 'Show')
-                        <li class="menu">
-                            <a href="{{ route('faq') }}">FAQ</a>
-                        </li>
+                        <li class="menu"><a href="{{ route('faq') }}">FAQ</a></li>
                         @endif
-
                         @if ($global_page_data->about_status == 'Show')
-                        <li class="menu">
-                            <a href="{{ route('about') }}">About</a>
-                        </li>
+                        <li class="menu"><a href="{{ route('about') }}">About</a></li>
                         @endif
-
-                        <li class="menu">
-                            <a href="{{ route('contact') }}">Contact</a>
-                        </li>
-
+                        <li class="menu"><a href="{{ route('contact') }}">Contact</a></li>
                         @if ($global_page_data->login_status == 'Show')
-                        <li class="menu">
-                            <a href="{{ route('login') }}">Login</a>
-                        </li>
-                        @endif -->
-
-                <!-- Language Switcher (Uncomment jika ingin diaktifkan) -->
-                <!-- <li>
-                        <div class="language-switch">
-                            <select id="language_select">
-                                <option value="en" {{ session('lang') == 'en' ? 'selected' : '' }}>English</option>
-                                <option value="id" {{ session('lang') == 'id' ? 'selected' : '' }}>Indonesia</option>
-                            </select>
-                        </div>
-                    </li> -->
-                </ul>
+                        <li class="menu"><a href="{{ route('login') }}">Login</a></li>
+                        @endif
+                    </ul>
+                </div> -->
             </div>
         </div>
-    </div>
     </div>
 
     <!-- HEADING AREA -->
     <div class="heading-area py-3 mb-2">
         <div class="container">
             <div class="row align-items-center">
-
                 <!-- LOGO -->
                 <div class="col-12 col-md-4 mb-3 mb-md-0">
                     <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none">
-
                         @if(isset($setting_data->logo) && $setting_data->logo)
-                        <img src="{{ asset('uploads/kalimantantv_logo.png' . $setting_data->logo) }}"
+                        <img src="{{ asset('uploads/kalimantantv_logo.png') }}"
                             alt="Kalimantan TV Logo"
-                            class="img-fluid"
-                            style="max-height: 60px;">
+                            class="img-fluid logo-image">
                         @else
                         <h1 class="m-0 fw-bold display-6 d-flex align-items-center gap-2">
-                            <span class="text-dark" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Kalimantan</span>
+                            <span class="text-dark">Kalimantan</span>
                             <span class="badge bg-dark fs-6">TV</span>
                         </h1>
                         @endif
                     </a>
                 </div>
+
                 <!-- SEARCH BAR -->
                 <div class="col-12 col-md-8">
                     <form action="{{ route('search') }}" method="GET">
                         <div class="input-group">
-                            <input type="text" name="q"
-                                class="form-control"
-                                placeholder="Cari judul atau isi berita..."
-                                required>
+                            <input type="text" name="q" class="form-control"
+                                placeholder="Cari judul atau isi berita..." required>
                             <button class="btn" type="submit"
                                 style="background-color: #3965bf; color: white;">
                                 <i class="bi bi-search"></i>
@@ -916,11 +578,9 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
-
 
     <!-- Navigation -->
     @include('front.layout.nav')
@@ -928,96 +588,72 @@
     <!-- Main Content -->
     @yield('main_content')
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <div class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="item">
-                        <h2 class="heading">Kunjungi YouTube Kami</h2>
-                        <p>
-                            Dapatkan konten terbaru dari Kalimantan TV melalui kanal YouTube resmi kami.
-                            Kami menghadirkan berita lokal, liputan daerah, budaya, dan berbagai program menarik lainnya
-                            langsung dari Pangkalan Bun, Kotawaringin Barat.
-                            Jangan lupa subscribe agar tidak ketinggalan update terbaru!
-                        </p>
-                    </div>
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <h2 class="heading">Kunjungi YouTube Kami</h2>
+                    <p>
+                        Dapatkan konten terbaru dari Kalimantan TV melalui kanal YouTube resmi kami.
+                        Kami menghadirkan berita lokal, liputan daerah, budaya, dan berbagai program menarik lainnya
+                        langsung dari Pangkalan Bun, Kotawaringin Barat.
+                        Jangan lupa subscribe agar tidak ketinggalan update terbaru!
+                    </p>
                 </div>
-                <div class="col-md-3">
-                    <div class="item">
-                        <h2 class="heading">
-                            Tautan</h2>
-                        <ul class="useful-links">
-                            <li><a href="{{ route('home') }}">Home</a></li>
-                            @if ($global_page_data->terms_status == 'Show')
-                            <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
-                            @endif
-                            @if ($global_page_data->privacy_status == 'Show')
-                            <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
-                            @endif
-                            @if ($global_page_data->disclaimer_status == 'Show')
-                            <li><a href="{{ route('disclaimer') }}">Disclaimer</a></li>
-                            @endif
-                            <li><a href="{{ route('contact') }}">Contact</a></li>
-                            <li><a href="{{ route('faq') }}">FAQ</a></li>
-                            <li><a href="{{ route('about') }}">About</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-item">
+                    <h2 class="heading">Tautan</h2>
+                    <ul class="useful-links">
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        @if ($global_page_data->terms_status == 'Show')
+                        <li><a href="{{ route('terms') }}">Terms and Conditions</a></li>
+                        @endif
+                        @if ($global_page_data->privacy_status == 'Show')
+                        <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                        @endif
+                        @if ($global_page_data->disclaimer_status == 'Show')
+                        <li><a href="{{ route('disclaimer') }}">Disclaimer</a></li>
+                        @endif
+                        <li><a href="{{ route('contact') }}">Contact</a></li>
+                        <li><a href="{{ route('faq') }}">FAQ</a></li>
+                        <li><a href="{{ route('about') }}">About</a></li>
+                    </ul>
                 </div>
-                <div class="col-md-3">
-                    <div class="item">
-                        <h2 class="heading">Informasi Lebih Lanjut</h2>
-                        <p>
-                            Semua informasi terkait alamat, email, dan nomor telepon tersedia lengkap di halaman kontak kami.
-                            Silakan kunjungi link di bawah ini.
-                        </p>
-                        <a href="{{ route('contact') }}" class="btn btn-outline-primary mb-4">Lihat Kontak Lengkap</a>
-                        <ul class="social">
-                            <li>
-                                <a href="">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fab fa-pinterest-p"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="footer-item">
+                    <h2 class="heading">Informasi Lebih Lanjut</h2>
+                    <p>
+                        Semua informasi terkait alamat, email, dan nomor telepon tersedia lengkap di halaman kontak kami.
+                        Silakan kunjungi link di bawah ini.
+                    </p>
+                    <a href="{{ route('contact') }}" class="btn">Lihat Kontak Lengkap</a>
+                    <ul class="social">
+                        <li><a href="" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a></li>
+                        <li><a href="" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
                 </div>
-                <div class="col-md-3">
-                    <div class="item">
-                        <h2 class="heading">Tentang Situs Ini</h2>
-                        <p>
-                            Kami menyajikan berita terbaru, akurat, dan terpercaya dari berbagai kategori.
-                            Hadir untuk memberikan informasi yang cepat, relevan, dan mudah dipahami
-                            oleh pembaca di seluruh Indonesia.
-                        </p>
-                    </div>
+                <div class="footer-item">
+                    <h2 class="heading">Tentang Situs Ini</h2>
+                    <p>
+                        Kami menyajikan berita terbaru, akurat, dan terpercaya dari berbagai kategori.
+                        Hadir untuk memberikan informasi yang cepat, relevan, dan mudah dipahami
+                        oleh pembaca di seluruh Indonesia.
+                    </p>
                 </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 Kalimantan TV. All rights reserved.</p>
             </div>
         </div>
     </div>
 
-    <div class="copyright">
+    <!-- <div class="copyright">
         Copyright 2025, KalimantanTV. All Rights Reserved.
-    </div>
+    </div> -->
 
     <div class="scroll-top">
         <i class="fas fa-angle-up"></i>
@@ -1025,7 +661,7 @@
 
     @include('front.layout.scripts_footer')
 
-    {{-- Ajax Start --}}
+    <!-- Ajax Scripts -->
     <script>
         (function($) {
             $(".form_subscribe_ajax").on('submit', function(e) {
@@ -1056,23 +692,19 @@
                                 message: data.success_message,
                             });
                         }
-
                     }
                 });
             });
         })(jQuery);
 
-        // Change Language (Bahasa)
-        document.getElementById('language_select').addEventListener('change', function() {
+        // Change Language
+        document.getElementById('language_select')?.addEventListener('change', function() {
             window.location.href = "/set-language/" + this.value;
         });
     </script>
     <div id="loader"></div>
 
-    {{-- Ajax End --}}
-
-
-    {{-- Toast message Setup start --}}
+    <!-- Toast Messages -->
     @if(session()->get('success'))
     <script>
         iziToast.success({
@@ -1082,13 +714,8 @@
         });
     </script>
     @endif
-    {{-- Toast message Setup end --}}
-
-
-
 
     @yield('map_scripts')
-
 
 </body>
 

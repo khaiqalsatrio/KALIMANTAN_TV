@@ -50,6 +50,198 @@
         margin-bottom: 10px;
         font-size: 18px;
     }
+
+    /* CARD SIDEBAR */
+    .sidebar-card {
+        background: linear-gradient(145deg, #23314d, #1c2940);
+        border-radius: 14px;
+        padding: 18px;
+        color: #e8ecf7;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* BORDER GLOWING */
+    .sidebar-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        padding: 2px;
+        /* ketebalan border */
+        background: linear-gradient(135deg, #4da3ff, #6c8dff, #4da3ff);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    /* Reset default nav-pills */
+    .custom-tabs .nav-link {
+        border-radius: 5px;
+        background: #dededeff;
+        color: #4f74e8;
+        font-weight: 600;
+        position: relative;
+        padding: 8px 22px;
+        margin-right: 10px;
+        transition: .25s;
+    }
+
+    Glow Border .glow-tab::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 5px;
+        padding: 2px;
+        background: linear-gradient(135deg, #4f74e8, #6f87f5, #4f74e8);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        opacity: 0;
+        box-shadow: 0 0 18px rgba(79, 116, 232, 0.6);
+        transition: .3s;
+    }
+
+    /* Active tab — glow aktif */
+    .custom-tabs .nav-link.active::before {
+        opacity: 1;
+    }
+
+    /* Hover memperkuat glow */
+    .custom-tabs .nav-link:hover::before {
+        opacity: .9;
+    }
+
+    /* Warna active */
+    .custom-tabs .nav-link.active {
+        background: #2d3f57 !important;
+        color: #fff;
+    }
+
+    /* Hover */
+    .custom-tabs .nav-link:hover {
+        background: #273356;
+    }
+
+    /* ---------------------------------------------------
+   CARD STYLE – Kalender Modern
+--------------------------------------------------- */
+    .card.calendar-card {
+        border-radius: 14px;
+        border: 1px solid rgba(0, 102, 255, 0.25);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+    }
+
+    /* Judul */
+    .calendar-card h5 {
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    /* ---------------------------------------------------
+   TABLE – Calendar Style
+--------------------------------------------------- */
+    .calendar-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    /* Header Hari */
+    .calendar-table th {
+        background: linear-gradient(90deg, #4f74e8, #6a8dff);
+        color: white;
+        padding: 10px 0;
+        font-weight: bold;
+        border: none;
+        font-size: 14px;
+    }
+
+    /* Sel Hari */
+    .calendar-table td {
+        padding: 10px 0;
+        border: 1px solid #e5e7eb;
+        font-weight: 600;
+        position: relative;
+        transition: 0.25s ease;
+    }
+
+    /* Hover Glow */
+    .calendar-table td:hover {
+        background: rgba(0, 106, 255, 0.1);
+        border-color: #4f74e8;
+        cursor: pointer;
+    }
+
+    /* ---------------------------------------------------
+   Today Highlight – GARIS MENYALA
+--------------------------------------------------- */
+    .active-day {
+        background: #eaf0ff;
+        border: 2px solid #4f74e8 !important;
+        font-weight: 900;
+        color: #2a48d8;
+        border-radius: 8px;
+
+        /* Glow menyala */
+        box-shadow:
+            0 0 4px rgba(79, 116, 232, 0.6),
+            0 0 8px rgba(79, 116, 232, 0.4);
+    }
+
+    /* ---------------------------------------------------
+   RESPONSIVE – HP, Tablet, Semua Device
+--------------------------------------------------- */
+
+    /* Tablet */
+    @media (max-width: 768px) {
+
+        .calendar-table th,
+        .calendar-table td {
+            padding: 8px 0;
+            font-size: 13px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 576px) {
+
+        .calendar-table th,
+        .calendar-table td {
+            padding: 7px 0;
+            font-size: 12px;
+        }
+
+        .calendar-card h5 {
+            font-size: 16px;
+        }
+
+        .calendar-card strong {
+            font-size: 15px;
+        }
+    }
+
+    /* Extra Small Mobile */
+    @media (max-width: 380px) {
+
+        .calendar-table th,
+        .calendar-table td {
+            padding: 6px 0;
+            font-size: 11px;
+        }
+    }
 </style>
 
 <!-- Sidebar -->
@@ -72,7 +264,7 @@
 
     {{-- TAG STATIC --}}
     <div class="widget">
-        <div class="tag-heading">
+        <div class="tag-heading mb-3">
             <h2 class="ps-3" style="border-left:5px solid #0d6efd; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">Tag berita</h2>
         </div>
         <div class="tag">
@@ -94,6 +286,7 @@
         </a>
     </div>
     @endforeach
+
     {{-- LIVE CHANNEL --}}
     <div class="widget">
         @foreach ($global_live_channel_data as $row)
@@ -113,6 +306,7 @@
         </div>
         @endforeach
     </div>
+
     {{-- POPULAR & RECENT NEWS --}}
     <div class="widget">
         <div class="news">
@@ -122,18 +316,19 @@
                     BERITA POPULER & TERKINI
                 </h2>
             </div>
-            <ul class="nav nav-pills mb-3">
+            <ul class="nav nav-pills mb-3 custom-tabs">
                 <li class="nav-item">
-                    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#recent-news">
+                    <button class="nav-link active glow-tab" data-bs-toggle="pill" data-bs-target="#recent-news">
                         Berita Terkini
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#popular-news">
+                    <button class="nav-link glow-tab" data-bs-toggle="pill" data-bs-target="#popular-news">
                         Berita Populer
                     </button>
                 </li>
             </ul>
+
             <div class="tab-content">
                 {{-- RECENT --}}
                 <div class="tab-pane fade show active" id="recent-news">
@@ -147,6 +342,7 @@
                             <img src="{{ asset('uploads/post/'.$row->post_photo) }}" alt="">
                         </div>
                         <div class="right">
+
                             {{-- CATEGORY FIX --}}
                             <div class="category">
                                 <span class="badge bg-success">
@@ -170,6 +366,7 @@
                     </div>
                     @endforeach
                 </div>
+
                 {{-- POPULAR --}}
                 <div class="tab-pane fade" id="popular-news">
                     @foreach ($global_popular_news_data as $row)
@@ -182,6 +379,7 @@
                             <img src="{{ asset('uploads/post/'.$row->post_photo) }}" alt="">
                         </div>
                         <div class="right">
+
                             {{-- CATEGORY FIX --}}
                             <div class="category">
                                 <span class="badge bg-success">
@@ -205,26 +403,27 @@
                     </div>
                     @endforeach
                 </div>
+                
                 {{-- TENTANG KAMI --}}
                 <div class="widget">
-                    <div class="card shadow-sm mb-4 mt-4" style="border-radius: 12px;">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <h5 class="fw-bold mb-0">Tentang Kami</h5>
-                                <div class="d-flex justify-content-center align-items-center"
-                                    style="width:34px; height:34px; background:#eef2ff; border-radius:50%;">
-                                    <i class="bi bi-person-circle text-primary" style="font-size: 20px;"></i>
-                                </div>
+                    <div class="sidebar-card mb-4 mt-4">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h5 class="fw-bold mb-0">Tentang Kami</h5>
+                            <div class="icon-circle">
+                                <i class="bi bi-person-circle text-primary" style="font-size: 20px;"></i>
                             </div>
-                            <div style="width: 70px; height: 3px; background-color: #4f74e8; border-radius: 3px;" class="mb-3"></div>
-                            <p class="text-muted" style="font-size: 14.2px; line-height: 1.55;">
-                                Kalimantan TV adalah platform media digital yang menyediakan berita terkini,
-                                video, serta informasi terbaru seputar Kalimantan. Menghadirkan konten informatif,
-                                faktual, dan terpercaya untuk masyarakat.
-                            </p>
                         </div>
+
+                        <div class="sidebar-title-line mb-3"></div>
+
+                        <p>
+                            Kalimantan TV adalah platform media digital yang menyediakan berita terkini,
+                            video, serta informasi terbaru seputar Kalimantan. Menghadirkan konten informatif,
+                            faktual, dan terpercaya untuk masyarakat.
+                        </p>
                     </div>
                 </div>
+
                 {{-- CALENDAR --}}
                 @php
                 $month = date('n');
@@ -238,7 +437,8 @@
                 $day = 1;
                 @endphp
                 <div class="col-md-12 mt-4">
-                    <div class="card shadow-sm mb-4" style="border-radius: 12px;">
+                    <div class="card shadow-sm mb-4 calendar-card">
+
                         <div class="card-body">
                             {{-- TITLE --}}
                             <h5 class="fw-bold mb-3">Kalender</h5>

@@ -23,6 +23,89 @@
         white-space: nowrap;
         /* tag tidak patah di tengah kata */
     }
+
+    /* ===== COMMENT FORM MODERN STYLE ===== */
+
+    /* Card styling */
+    .comment-section form {
+        border-radius: 14px !important;
+        padding: 25px !important;
+        transition: 0.3s;
+        border: 2px solid #f1f1f1;
+    }
+
+    /* Glow saat hover */
+    .comment-section form:hover {
+        border-color: #0d6efd;
+        box-shadow: 0 0 12px rgba(13, 110, 253, 0.3);
+    }
+
+    /* Label */
+    .comment-section .form-label {
+        color: #333;
+        font-size: 15px;
+    }
+
+    /* Input dan textarea */
+    .comment-section .form-control {
+        border-radius: 10px;
+        padding: 10px 14px;
+        transition: 0.3s;
+        border: 1.8px solid #dcdcdc;
+    }
+
+    /* Efek fokus */
+    .comment-section .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
+    }
+
+    /* Tombol kirim */
+    .comment-section button {
+        border-radius: 10px;
+        font-weight: 600;
+        padding: 10px 22px !important;
+        transition: 0.3s;
+        background-color: #1f3a63;
+    }
+
+    /* Hover tombol */
+    .comment-section button:hover {
+        background-color: #0b5ed7;
+        box-shadow: 0 0 10px rgba(13, 110, 253, 0.4);
+    }
+
+    /* ===========================
+   RESPONSIVE
+=========================== */
+    @media (max-width: 768px) {
+        .comment-section form {
+            padding: 18px !important;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .comment-section h3 {
+            font-size: 20px;
+        }
+
+        .comment-section .form-control {
+            font-size: 14px;
+        }
+
+        .comment-section button {
+            width: 100%;
+        }
+    }
+
+    /* ANIMASI */
+    .comment-box {
+    transition: 0.2s ease;
+}
+.comment-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
 </style>
 <div class="page-top">
     <div class="container">
@@ -138,7 +221,13 @@
 
                 <!-- COMMENT FORM -->
                 <div class="comment-section mt-5">
-                    <h3 class="mb-3">Tinggalkan Komentar</h3>
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div style="width:40px; height:40px; background:#1f3a63; 
+                border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                            <i class="bi bi-chat-dots text-white" style="font-size:20px;"></i>
+                        </div>
+                        <h3 class="m-0 fw-bold">Tinggalkan Komentar</h3>
+                    </div>
                     @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
@@ -181,9 +270,12 @@
                 <!-- RELATED NEWS -->
                 {{-- RELATED NEWS - MASIH STATIC, nanti bisa saya buat dinamis --}}
                 <div class="related-news">
-                    <div class="related-news-heading">
-                        <h2>Related News</h2>
+                    <div class="related-news-heading d-flex align-items-center mb-3"
+                        style="padding-left: 10px;">
+                        <i class="bi bi-newspaper me-2" style="font-size: 1.5rem;"></i>
+                        <h2 class="m-0 fw-bold">Related News</h2>
                     </div>
+
                     <div class="related-post-carousel owl-carousel owl-theme">
                         @foreach ($related_posts as $post)
                         <div class="item">
@@ -211,31 +303,46 @@
                     </div>
                 </div>
                 <!-- COMMENTS LIST -->
-                <div class="card mt-4 shadow-sm border-0 mb-3">
-                    <div class="card-body bg-light rounded">
-                        <h4 class="mb-4">{{ $post_detail->comments->count() }} Komentar</h4>
-                        <!-- Scroll Container -->
-                        <div class="px-1" style="max-height: 300px; overflow-y: auto;">
-                            @foreach ($post_detail->comments as $komen)
-                            <div class="d-flex gap-3 p-3 mb-3 border rounded bg-white shadow-sm">
-                                <!-- Avatar -->
-                                <div class="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
-                                    style="width:45px; height:45px; font-weight:600; font-size: 18px;">
-                                    {{ strtoupper(substr($komen->name, 0, 1)) }}
-                                </div>
-                                <!-- Comment Content -->
-                                <div class="flex-grow-1">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <strong>{{ $komen->name }}</strong>
-                                        <small class="text-muted">{{ $komen->created_at->format('d M Y H:i') }}</small>
-                                    </div>
-                                    <p class="mb-0">{{ $komen->comment }}</p>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
+<div class="card mt-4 shadow-sm border-0 mb-3">
+    <div class="card-body bg-light rounded">
+
+        <!-- Heading -->
+        <div class="d-flex align-items-center gap-2 mb-4">
+            <i class="bi bi-chat-left-text" style="font-size: 1.4rem; color:#0d6efd;"></i>
+            <h4 class="m-0 fw-bold">{{ $post_detail->comments->count() }} Komentar</h4>
+        </div>
+
+        <!-- Scroll Container -->
+        <div class="px-1" style="max-height: 300px; overflow-y: auto;">
+            @foreach ($post_detail->comments as $komen)
+            <div class="d-flex gap-3 p-3 mb-3 border rounded bg-white shadow-sm align-items-start comment-box">
+                
+                <!-- Avatar -->
+                <div class="rounded-circle d-flex justify-content-center align-items-center shadow-sm"
+                    style="width:45px; height:45px; font-weight:600; font-size: 18px; background:#1f3a63; color:white;">
+                    {{ strtoupper(substr($komen->name, 0, 1)) }}
                 </div>
+
+                <!-- Comment Content -->
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between mb-1">
+                        <strong class="text-dark">{{ $komen->name }}</strong>
+                        <small class="text-muted">
+                            <i class="bi bi-clock"></i> {{ $komen->created_at->format('d M Y H:i') }}
+                        </small>
+                    </div>
+
+                    <p class="mb-0 text-secondary" style="line-height: 1.5;">
+                        {{ $komen->comment }}
+                    </p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+    </div>
+</div>
+
             </div>
             <div class="col-lg-4 col-md-6 sidebar-col">
                 @include('front.layout.sidebar')

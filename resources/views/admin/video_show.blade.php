@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Daftar Video Yang Sudah Dipublikasikan')
+@section('heading', 'Daftar Video Yang Sudah Di Posting')
 
 @section('button')
 <a href="{{ route('admin_video_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add </a>

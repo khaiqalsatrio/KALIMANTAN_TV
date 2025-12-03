@@ -16,49 +16,27 @@
                         <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_setting') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Setting Ticker Berita</span></a></li>
-                        <!-- <li
+                        <li
                                 class="nav-item dropdown {{ Request::is('admin/top-advertisement')||Request::is('admin/home-advertisement')||Request::is('admin/sidebar-advertisement-*') ? 'active' : '' }}">
                                 <a href="#" class="nav-link has-dropdown"><i
                                                 class="fas fa-hand-point-right"></i><span>Advertisements</span></a>
                                 <ul class="dropdown-menu">
-                                        <li class="{{ Request::is('admin/top-advertisement') ? 'active' : '' }}"><a class="nav-link"
-                                                        href="{{ route('admin_top_ad_show') }}"><i class="fas fa-angle-right"></i> Top Advertisement
-                                                </a>
-                                        </li>
                                         <li class="{{ Request::is('admin/home-advertisement') ? 'active' : '' }}"><a class="nav-link"
                                                         href="{{ route('admin_home_ad_show') }}"><i class="fas fa-angle-right"></i> Home
                                                         Advertisement </a>
                                         </li>
-                                        <li class="{{ Request::is('admin/sidebar-advertisement-*') ? 'active' : '' }}"><a class="nav-link"
-                                                        href="{{ route('admin_sidebar_ad_show') }}"><i class="fas fa-angle-right"></i> Sidebar
-                                                        Advertisement
-                                                </a>
-                                        </li>
-                                </ul>
-                        </li> -->
-                        <li
-                                class="nav-item dropdown {{ Request::is('admin/category/*')||Request::is('admin/sub-category/*')||Request::is('admin/post/*') ? 'active' : '' }}">
-                                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Berita</span></a>
-                                <ul class="dropdown-menu">
-                                        <li class="{{ Request::is('admin/category/*') ? 'active' : '' }}"><a class="nav-link"
-                                                        href="{{ route('admin_category_show') }}"><i class="fas fa-angle-right"></i> Kategori </a>
-                                        </li>
-                                        <!-- <li class="{{ Request::is('admin/sub-category/*') ? 'active' : '' }}"><a class="nav-link"
-                                                        href="{{ route('admin_sub_category_show') }}"><i class="fas fa-angle-right"></i>
-                                                        SubCategories </a>
-                                        </li> -->
-                                        <li class="{{ Request::is('admin/post/*') ? 'active' : '' }}"><a class="nav-link"
-                                                        href="{{ route('admin_post_show') }}"><i class="fas fa-angle-right"></i>
-                                                        Posting </a>
-                                        </li>
                                 </ul>
                         </li>
+
                         <!-- <li class="{{ Request::is('admin/photo/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_photo_show') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Galeri Jurnalis</span></a></li> -->
                         <li class="{{ Request::is('admin/video/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_video_show') }}"><i class="fas fa-hand-point-right"></i>
-                                        <span>Galeri Video Berita</span></a></li>
+                                        <span>Video Berita</span></a></li>
+                        <li class="{{ Request::is('admin/live_channel/*') ? 'active' : '' }}"><a class="nav-link"
+                                        href="{{ route('admin_live_channel_show') }}"><i class="fas fa-hand-point-right"></i>
+                                        <span>Live Berita</span></a></li>
                         <li class="nav-item dropdown {{ Request::is('admin/page/*') ? 'active' : '' }}">
                                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Kelola Halaman</span></a>
                                 <ul class="dropdown-menu">
@@ -89,6 +67,23 @@
                                         </li>
                                 </ul>
                         </li>
+                        <li
+                                class="nav-item dropdown {{ Request::is('admin/category/*')||Request::is('admin/sub-category/*')||Request::is('admin/post/*') ? 'active' : '' }}">
+                                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Berita</span></a>
+                                <ul class="dropdown-menu">
+                                        <li class="{{ Request::is('admin/category/*') ? 'active' : '' }}"><a class="nav-link"
+                                                        href="{{ route('admin_category_show') }}"><i class="fas fa-angle-right"></i> Kategori </a>
+                                        </li>
+                                        <!-- <li class="{{ Request::is('admin/sub-category/*') ? 'active' : '' }}"><a class="nav-link"
+                                                        href="{{ route('admin_sub_category_show') }}"><i class="fas fa-angle-right"></i>
+                                                        SubCategories </a>
+                                        </li> -->
+                                        <li class="{{ Request::is('admin/post/*') ? 'active' : '' }}"><a class="nav-link"
+                                                        href="{{ route('admin_post_show') }}"><i class="fas fa-angle-right"></i>
+                                                        Posting </a>
+                                        </li>
+                                </ul>
+                        </li>
                         <!-- <li class="{{ Request::is('admin/faq/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_faq_show') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Faq Section</span></a></li> -->
@@ -111,9 +106,7 @@
                                         </li>
                                 </ul>
                         </li> -->
-                        <li class="{{ Request::is('admin/live_channel/*') ? 'active' : '' }}"><a class="nav-link"
-                                        href="{{ route('admin_live_channel_show') }}"><i class="fas fa-hand-point-right"></i>
-                                        <span>Live Channel Berita</span></a></li>
+
                         <!-- <li class="{{ Request::is('admin/online_poll/*') ? 'active' : '' }}"><a class="nav-link"
                                         href="{{ route('admin_online_poll_show') }}"><i class="fas fa-hand-point-right"></i>
                                         <span>Online Poll</span></a></li> -->

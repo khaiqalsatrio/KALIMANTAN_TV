@@ -1041,7 +1041,8 @@
 
     /* ===== DESKTOP DEFAULT ===== */
     .category-title {
-        border-left: 5px solid #0d6efd;
+
+        border-left: 5px solid linear-gradient(135deg, #264a7b, #3562a8) !important;
         font-weight: 800;
         font-size: 25px;
         text-transform: uppercase;
@@ -1055,6 +1056,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
     }
 
     .bar {
@@ -1102,18 +1104,133 @@
             margin: 12px auto 0 auto;
         }
     }
+
+    .ticker-label {
+        background: #2d3f57 !important;
+        /* biru gelap elegan */
+        color: #ffffff;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 4px 4px 0 0;
+        position: relative;
+    }
+
+    /* garis glow */
+    .ticker-label::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        /* jarak garis ke box */
+        width: 100%;
+        height: 3px;
+        background: #4da3ff;
+        /* biru terang */
+        box-shadow: 0 0 8px #4da3ff, 0 0 14px #4da3ff;
+        /* glow */
+        border-radius: 6px;
+    }
+
+    /* GARIS MENYALA */
+    .glow-line {
+        width: 4px;
+        height: 34px;
+        border-radius: 10px;
+        background: linear-gradient(180deg, #6f87f5, #4f74e8, #6f87f5);
+        box-shadow: 0 0 12px rgba(79, 116, 232, 0.8);
+    }
+
+    /* TOMBOL */
+    .see-all-btn {
+        display: inline-block;
+        padding: 8px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #ffffff !important;
+        background: linear-gradient(135deg, #4f74e8, #6f87f5);
+        border-radius: 5px;
+        text-decoration: none;
+        transition: 0.25s ease-in-out;
+        box-shadow: 0 4px 12px rgba(79, 116, 232, 0.4);
+        border: none;
+    }
+
+    .see-all-btn:hover {
+        background: linear-gradient(135deg, #6f87f5, #4f74e8);
+        box-shadow: 0 6px 18px rgba(79, 116, 232, 0.7);
+        transform: translateY(-2px);
+    }
+
+    .see-all-btn:active {
+        transform: scale(0.95);
+    }
+
+    .glow-border {
+        border-left: 5px solid #0d6efd !important;
+        position: relative;
+    }
+
+    .glow-border::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 5px;
+    }
+
+    @keyframes glowAnim {
+        from {
+            box-shadow: 0 0 6px #0d6efd;
+        }
+
+        to {
+            box-shadow: 0 0 18px #0d6efd;
+        }
+    }
+
+    /* AD */
+    .ad-box {
+        padding: 0;
+        margin: 0;
+        position: relative;
+        width: 100%;
+    }
+
+    .ad-box a {
+        display: block;
+        width: 100%;
+    }
+
+    .ad-banner {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Responsive dengan aspect ratio */
+    @media (max-width: 768px) {
+        .ad-banner {
+            height: 80px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .ad-banner {
+            height: 60px;
+        }
+    }
 </style>
 
 @if ($setting_data->news_ticker_status == 'Show')
 <div class="news-ticker-wrapper py-2">
     <div class="container">
         <div class="news-ticker-box d-flex align-items-center">
-
             <!-- LABEL -->
             <div class="ticker-label text-white fw-bold px-3 py-2">
                 Latest News
             </div>
-
             <!-- TICKER -->
             <div class="ticker-content flex-grow-1 overflow-hidden">
                 <ul class="ticker-move mb-0">
@@ -1131,7 +1248,6 @@
                     @endforeach
                 </ul>
             </div>
-
         </div>
     </div>
 </div>
@@ -1248,6 +1364,22 @@
                 @endforeach
             </div>
         </div>
+
+        <!-- Advertisement Section - Dipindahkan ke dalam container dan row -->
+        @if ($home_ad_data && $home_ad_data->above_search_ad_status == 'Show')
+        <div class="row g-2 mt-2">
+            <div class="col-12">
+                <div class="ad-box">
+                    <a href="{{ $home_ad_data->above_search_ad_url }}" target="_blank">
+                        <img src="{{ asset('uploads/' . $home_ad_data->above_search_ad) }}"
+                            alt="Advertisement"
+                            class="ad-banner">
+                    </a>
+                </div>
+            </div>
+        </div>
+        @endif
+
     </div>
 </div>
 
@@ -1262,6 +1394,7 @@
     <div class="flex-grow-1" style="border-bottom: 2px solid #d5d5d5ff;"></div>
 </div>
 
+<!-- Home Content -->
 <div class="home-content">
     <div class="container">
         <div class="row">
@@ -1275,16 +1408,18 @@
                     <div class="news-total-item">
                         <div class="row align-items-center">
                             <div class="col-lg-6 col-md-6 col-8">
-                                <h2 class="ps-3 category-title"
-                                    style="border-left:5px solid #0d6efd; font-weight:800; font-size:25px; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">
+                                <h2 class="ps-3 category-title glow-border"
+                                    style="font-weight:800; font-size:25px; text-transform:uppercase; letter-spacing:1px; color:#1a1a1a;">
                                     {{ $item->category_name }}
                                 </h2>
                             </div>
+
                             <div class="col-lg-6 col-md-6 col-4 see-all">
-                                <a href="{{ route('category', $item->id) }}" class="btn btn-primary btn-sm">
+                                <a href="{{ route('category', $item->id) }}" class="see-all-btn" style="background: #2d3f57 !important;">
                                     SEE ALL NEWS
                                 </a>
                             </div>
+
                             <div class="col-12">
                                 <div class="bar"></div>
                             </div>
@@ -1375,6 +1510,7 @@
     </div>
 </div>
 
+<!-- VIDEO -->
 @if ($setting_data->video_status == 'Show')
 <div class="video-content">
     <div class="container">

@@ -1,91 +1,88 @@
 <style>
     /* =============================
-       NAVBAR MODERN STYLING
-       ============================= */
-    .navbar-custom {
-        background: linear-gradient(135deg, #5078c8, #3a5baa);
-        padding: 8px 15px;
-        border-radius: 5px;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-    }
+   NAVBAR TERANG (MATCH FOOTER)
+   ============================= */
+.navbar-custom {
+    background: #2d3f57 !important;
+    padding: 12px 15px;
+    border-bottom: 2px solid #4A70FF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.20);
+}
 
+
+    /* Link Navbar */
     .navbar-custom .nav-link {
-        color: #f2f2f2 !important;
+        color: #f5f7ff !important;
         font-weight: 600;
         padding: 10px 18px !important;
-        border-radius: 8px;
-        transition: 0.25s ease;
-        letter-spacing: 0.3px;
+        border-radius: 6px;
+        position: relative;
+        transition: 0.25s ease-in-out;
+    }
+
+    /* Efek garis biru halus */
+    .navbar-custom .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 4px;
+        width: 0;
+        height: 2px;
+        background: #4A70FF;
+        transition: 0.3s ease;
+        transform: translateX(-50%);
+        border-radius: 50px;
+    }
+
+    .navbar-custom .nav-link:hover::after {
+        width: 60%;
     }
 
     .navbar-custom .nav-link:hover {
-        background: rgba(255, 255, 255, 0.22);
+        color: #aecdff !important;
+        /* biru soft, lebih terang */
         transform: translateY(-2px);
     }
 
-    /* =============================
-       HAMBURGER ICON ANIMATION
-       ============================= */
-    .navbar-toggler {
-        border: none !important;
-    }
-
-    .navbar-toggler-icon {
-        background-image: none !important;
-        width: 26px;
-        height: 2px;
-        background-color: white;
-        position: relative;
-        border-radius: 2px;
-    }
-
+    /* HAMBURGER */
+    .navbar-toggler-icon,
     .navbar-toggler-icon::before,
     .navbar-toggler-icon::after {
-        content: "";
-        width: 26px;
-        height: 2px;
-        background-color: white;
-        position: absolute;
-        left: 0;
-        border-radius: 2px;
+        background-color: #dfe6ff !important;
     }
 
-    .navbar-toggler-icon::before {
-        top: -7px;
-    }
-
-    .navbar-toggler-icon::after {
-        top: 7px;
-    }
-
-
-    /* =============================
-       DROPDOWN DESKTOP
-       ============================= */
+    /* DROPDOWN */
     .dropdown-menu {
-        border-radius: 12px !important;
-        padding: 10px 0;
-        border: 0;
-        margin-top: 10px;
-        animation: fadeInMenu 0.25s ease;
-        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+        background: #e1e1e2ff !important;
+        /* sedikit lebih terang */
+        border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    @keyframes fadeInMenu {
-        from {
-            opacity: 0;
-            transform: translateY(8px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .dropdown-item {
+        color: black;
     }
 
     .dropdown-item:hover {
-        background: #dfe8ff;
+        background: rgba(74, 112, 255, 0.25) !important;
+        color: #4A70FF !important;
     }
+
+    /* OFFCANVAS (Mobile) */
+    .offcanvas {
+        background: #1b2b47 !important;
+        /* matching navbar */
+        color: white;
+    }
+
+    .offcanvas .nav-link {
+        color: #e8ecff !important;
+    }
+
+    .offcanvas .nav-link:hover {
+        background: rgba(74, 112, 255, 0.22);
+        color: #4A70FF !important;
+    }
+
 
     /* =============================
        MOBILE FULL WIDTH NAVBAR
@@ -175,12 +172,21 @@
             top: 8px !important;
         }
     }
+
+    @media (max-width: 991px) {
+        #mobileMenu {
+            width: 60% !important;
+            max-width: 300px;
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+            overflow: hidden;
+        }
+    }
 </style>
 
 <div class="website-menu bg-white">
     <div class="container-lg">
 
-        <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
 
             <!-- HAMBURGER -->
@@ -193,10 +199,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto">
 
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+                    <!-- HOME -->
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('home') }}">
+                            <i class="bi bi-house-door"></i> Home
+                        </a>
+                    </li>
 
+                    <!-- KATEGORI -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Kategori</a>
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-grid"></i> Kategori
+                        </a>
                         <ul class="dropdown-menu">
                             @foreach($global_category_data as $cat)
                             <li>
@@ -208,36 +222,49 @@
                         </ul>
                     </li>
 
+                    <!-- VIDEO -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Video</a>
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-camera-video"></i> Video
+                        </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('video_gallery') }}">Video</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="{{ route('live_stream') }}">Live Berita</a></li>
+                    <!-- LIVE BERITA -->
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('live_stream') }}">
+                            <i class="bi bi-broadcast-pin"></i> Live Berita
+                        </a>
+                    </li>
 
                 </ul>
             </div>
         </nav>
     </div>
 
+
     <!-- OFFCANVAS MOBILE MENU -->
     <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="mobileMenu">
 
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title fw-bold">Menu</h5>
+            <h5 class="offcanvas-title fw-bold" style="color: black;">Menu</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
-
         <div class="offcanvas-body">
-
             <ul class="navbar-nav">
-
-                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-
+                <!-- HOME -->
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('home') }}">
+                        <i class="bi bi-house-door"></i> Home
+                    </a>
+                </li>
+                <!-- KATEGORI -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Kategori</a>
+                    <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-grid"></i> Kategori
+                    </a>
                     <ul class="dropdown-menu show position-static">
                         @foreach($global_category_data as $cat)
                         <li>
@@ -248,18 +275,22 @@
                         @endforeach
                     </ul>
                 </li>
-
+                <!-- VIDEO -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Video</a>
+                    <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-camera-video"></i> Video
+                    </a>
                     <ul class="dropdown-menu show position-static">
                         <li><a class="dropdown-item" href="{{ route('video_gallery') }}">Video</a></li>
                     </ul>
                 </li>
-
-                <li class="nav-item"><a class="nav-link" href="{{ route('live_stream') }}">Live Berita</a></li>
-
+                <!-- LIVE BERITA -->
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="{{ route('live_stream') }}">
+                        <i class="bi bi-broadcast-pin"></i> Live Berita
+                    </a>
+                </li>
             </ul>
         </div>
-
     </div>
 </div>

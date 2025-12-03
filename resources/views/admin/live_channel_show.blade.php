@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Live Channels')
+@section('heading', 'Daftar Live Channels Yang Sudah Di Posting')
 
 @section('button')
 <a href="{{ route('admin_live_channel_create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add </a>
