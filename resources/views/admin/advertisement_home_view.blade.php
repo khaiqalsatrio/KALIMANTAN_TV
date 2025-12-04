@@ -18,7 +18,9 @@
                             </label>
                             <div>
                                 @if (!empty($home_ad_data->above_search_ad) && file_exists(public_path('uploads/post/'.$home_ad_data->above_search_ad)))
-                                <img src="{{ asset('uploads/post/'.$home_ad_data->above_search_ad) }}" style="width:100%">
+                                <img src="{{ asset('uploads/post/' . $home_ad_data->above_search_ad) }}"
+                                    alt="Advertisement"
+                                    class="ad-banner">
                                 @else
                                 <div class="text-danger">No Image Found</div>
                                 @endif
