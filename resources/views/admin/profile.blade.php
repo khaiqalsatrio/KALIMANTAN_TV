@@ -12,7 +12,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-3">
-                                <img src="{{ asset('uploads/post/'.Auth::guard('admin')->user()->photo) }}" alt="" class="profile-photo w_100_p">
+                                <img src="{{ asset('uploads/'.Auth::guard('admin')->user()->photo) }}" alt="" class="profile-photo w_100_p">
                                 <input type="file" class="form-control mt_10" name="photo">
                             </div>
                             <div class="col-md-9">
