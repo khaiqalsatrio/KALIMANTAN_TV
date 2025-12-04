@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <link rel="icon" type="image/png" href="{{ asset('uploads/kalimantantv2.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('uploads/logokalimantantv.png') }}">
 
 
     <title>Admin Panel KalimantanTV</title>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>KalimantanTV News</title>
-    <link rel="icon" type="image/png" src="{{ asset('uploads/post/kalimantantv2.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('uploads/logokalimantantv.png') }}">
 
     @include('front.layout.styles')
     @include('front.layout.scripts')
