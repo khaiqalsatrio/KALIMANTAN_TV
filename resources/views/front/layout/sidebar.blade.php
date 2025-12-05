@@ -244,61 +244,104 @@
     }
 
     /* WEATHER CARD */
-    .weather-card {
-        background: #ffffff;
-        border-radius: 14px;
-        padding: 18px;
-        margin-top: 20px;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-        border: 1px solid #e5e7eb;
-        font-family: 'Inter', sans-serif;
-        transition: .3s;
-    }
+/* WEATHER CARD WITH NEON BORDER */
+.weather-card {
+    position: relative;
+    background: #0f1c30;
+    border-radius: 20px;
+    padding: 25px;
+    overflow: hidden;
+    color: #ffffff;
+    z-index: 1;
+}
 
-    /* Hover glow */
-    .weather-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 106, 255, 0.15);
-    }
+/* GARIS MENYALA */
+.weather-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        rgba(20, 128, 201, 0.9),
+        rgba(0, 195, 255, 0.5),
+        rgba(0, 225, 255, 0.9)
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: glow 3s linear infinite;
+    z-index: -1;
+}
 
-    .weather-title {
-        font-weight: 800;
-        font-size: 18px;
-        margin-bottom: 12px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+/* ANIMASI GLOW */
+@keyframes glow {
+    0% { opacity: 0.8; filter: blur(2px); }
+    50% { opacity: 1; filter: blur(4px); }
+    100% { opacity: 0.8; filter: blur(2px); }
+}
 
-    .weather-title i {
-        font-size: 22px;
-        color: #0d6efd;
-    }
+/* FLEX */
+.weather-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    /* Temperature */
-    .weather-temp {
-        font-size: 34px;
-        font-weight: 900;
-        color: #0d6efd;
-    }
+/* TEMP */
+.weather-left .weather-temp {
+    font-size: 3rem;
+    font-weight: 800;
+}
 
-    /* Detail */
-    .weather-meta {
-        margin-top: 6px;
-        font-size: 14px;
-        color: #555;
-    }
+/* DESC */
+.weather-desc {
+    text-transform: capitalize;
+    color: #d1d1d1;
+    margin-top: -5px;
+}
 
-    /* Loading */
-    .weather-loading {
-        font-weight: 600;
+/* LOCATION */
+.weather-location {
+    margin-top: 4px;
+    color: #b8c4d8 !important;
+}
+
+/* ICON */
+.weather-icon img {
+    width: 85px;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+    transition: 0.3s ease;
+}
+
+/* FADE */
+.fade-icon {
+    opacity: 0;
+}
+.fade-icon.show {
+    opacity: 1;
+}
+
+/* MOBILE */
+@media (max-width: 576px) {
+    .weather-info {
+        flex-direction: column;
         text-align: center;
+        gap: 15px;
     }
 
-    .weather-error {
-        color: #d9534f;
-        font-weight: 600;
+    .weather-left .weather-temp {
+        font-size: 2.5rem;
     }
+
+    .weather-icon img {
+        width: 70px;
+    }
+}
+
 </style>
 
 <!-- Sidebar -->
@@ -550,12 +593,26 @@
             </div>
 
             <!-- Weather -->
-            <div class="weather-card" id="cuaca">
-                <div class="weather-loading">Mengambil lokasi cuaca...</div>
+            <div class="weather-card shadow-sm" id="cuaca">
+                <div class="weather-info">
+                    <div class="weather-left">
+                        <div class="weather-temp" id="weather-temp">
+                            <span class="spinner-border spinner-border-sm"></span> Memuat...
+                        </div>
+                        <div class="weather-desc" id="weather-desc"></div>
+                        <div class="weather-location text-muted small" id="weather-location">
+                            Mendeteksi lokasi...
+                        </div>
+                    </div>
+                    <div class="weather-icon">
+                        <img id="weather-icon" src="" alt="Weather Icon" class="fade-icon" style="display:none;">
+                    </div>
+                </div>
             </div>
-            
+
         </div>
     </div>
+
     {{-- BOTTOM SIDEBAR ADS --}}
     <div class="widget">
         @foreach($global_sidebar_bottom_ad as $row)
@@ -581,62 +638,75 @@
 </div>
 
 <script>
-    // Cek apakah browser mendukung GPS
-    if (!navigator.geolocation) {
-        document.getElementById("cuaca").innerHTML = `
-            <div class="weather-error">Browser tidak mendukung lokasi.</div>
-        `;
-    } else {
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Starting geolocation...');
 
-        navigator.geolocation.getCurrentPosition(function(pos) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    console.log('📍 Location:', lat, lon);
 
-            let lat = pos.coords.latitude;
-            let lon = pos.coords.longitude;
+                    fetchWeather(lat, lon);
+                },
+                function(error) {
+                    console.error('❌ Geolocation error:', error);
+                    document.getElementById('weather-temp').textContent = 'Lokasi ditolak';
+                    document.getElementById('weather-desc').textContent = 'Aktifkan izin lokasi';
+                    document.getElementById('weather-location').textContent = 'Izin lokasi diperlukan';
+                }
+            );
+        } else {
+            console.error('❌ Geolocation not supported');
+            document.getElementById('weather-temp').textContent = 'Tidak didukung';
+            document.getElementById('weather-desc').textContent = 'Browser tidak mendukung geolokasi';
+        }
+    });
 
-            // Request ke Laravel
-            fetch(`/cuaca?lat=${lat}&lon=${lon}`)
-                .then(response => response.json())
-                .then(data => {
+    function fetchWeather(lat, lon) {
+        const url = `/api/weather?lat=${lat}&lon=${lon}`;
+        console.log('🌤️ Fetching weather from:', url);
 
-                    // Jika API error
-                    if (data.error) {
-                        document.getElementById("cuaca").innerHTML = `
-                            <div class="weather-title">
-                                <i class="bi bi-cloud-slash-fill"></i> Cuaca
-                            </div>
-                            <div class="weather-error">${data.error}</div>
-                        `;
-                        return;
-                    }
+        fetch(url)
+            .then(response => {
+                console.log('📥 Response status:', response.status);
 
-                    // Tampilkan card
-                    document.getElementById("cuaca").innerHTML = `
-                        <div class="weather-title">
-                            <i class="bi bi-cloud-sun-fill"></i> Cuaca Sekitar Anda
-                        </div>
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
-                        <div class="weather-temp">${data.temp}°C</div>
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    return response.text().then(text => {
+                        console.error('❌ Response bukan JSON:', text);
+                        throw new Error('Response bukan JSON');
+                    });
+                }
 
-                        <div class="weather-meta">
-                            Kelembapan: ${data.humidity}% <br>
-                            Angin: ${data.wind} m/s
-                        </div>
-                    `;
-                })
-                .catch(err => {
-                    document.getElementById("cuaca").innerHTML = `
-                        <div class="weather-error">Gagal memuat data cuaca.</div>
-                    `;
-                });
+                return response.json();
+            })
+            .then(data => {
+                console.log('✅ Weather data:', data);
 
-        }, function(error) {
-            // Jika user menolak GPS
-            document.getElementById("cuaca").innerHTML = `
-                <div class="weather-title">
-                    <i class="bi bi-geo-alt-fill"></i> Cuaca
-                </div>
-                <div class="weather-error">Lokasi tidak diizinkan.</div>
-            `;
-        });
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                // Update UI
+                document.getElementById('weather-temp').textContent = Math.round(data.temp) + '°C';
+                document.getElementById('weather-desc').textContent = data.description;
+                document.getElementById('weather-location').textContent = data.location; // ← Update ini
+
+                const iconImg = document.getElementById('weather-icon');
+                iconImg.src = data.icon;
+                iconImg.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('❌ Weather fetch error:', error);
+                document.getElementById('weather-temp').textContent = 'Error';
+                document.getElementById('weather-desc').textContent = error.message;
+                document.getElementById('weather-location').textContent = 'Tidak dapat memuat lokasi';
+            });
     }
 </script>

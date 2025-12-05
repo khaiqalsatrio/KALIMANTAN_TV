@@ -123,7 +123,7 @@ Route::get('/live', [\App\Http\Controllers\Front\LiveController::class, 'index']
 Route::get('/live/{id}', [\App\Http\Controllers\Front\LiveController::class, 'detail'])->name('live.detail');
 
 // Weather
-Route::get('/cuaca', [\App\Http\Controllers\WeatherController::class, 'getWeather']);
+use App\Http\Controllers\WeatherController;
 
 
 // // Category
