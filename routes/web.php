@@ -122,6 +122,10 @@ Route::get('/video', [\App\Http\Controllers\Front\VideoController::class, 'index
 Route::get('/live', [\App\Http\Controllers\Front\LiveController::class, 'index'])->name('live.index');
 Route::get('/live/{id}', [\App\Http\Controllers\Front\LiveController::class, 'detail'])->name('live.detail');
 
+// Weather
+Route::get('/cuaca', [\App\Http\Controllers\WeatherController::class, 'getWeather']);
+
+
 // // Category
 // Route::get('/category/{id}', [CategoryController::class, 'index'])->name('category');
 

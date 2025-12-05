@@ -242,6 +242,63 @@
             font-size: 11px;
         }
     }
+
+    /* WEATHER CARD */
+    .weather-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 18px;
+        margin-top: 20px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e5e7eb;
+        font-family: 'Inter', sans-serif;
+        transition: .3s;
+    }
+
+    /* Hover glow */
+    .weather-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 106, 255, 0.15);
+    }
+
+    .weather-title {
+        font-weight: 800;
+        font-size: 18px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .weather-title i {
+        font-size: 22px;
+        color: #0d6efd;
+    }
+
+    /* Temperature */
+    .weather-temp {
+        font-size: 34px;
+        font-weight: 900;
+        color: #0d6efd;
+    }
+
+    /* Detail */
+    .weather-meta {
+        margin-top: 6px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    /* Loading */
+    .weather-loading {
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .weather-error {
+        color: #d9534f;
+        font-weight: 600;
+    }
 </style>
 
 <!-- Sidebar -->
@@ -403,7 +460,7 @@
                     </div>
                     @endforeach
                 </div>
-                
+
                 {{-- TENTANG KAMI --}}
                 <div class="widget">
                     <div class="sidebar-card mb-4 mt-4">
@@ -491,6 +548,12 @@
                 </div>
                 {{-- STYLE UNTUK HARI AKTIF --}}
             </div>
+
+            <!-- Weather -->
+            <div class="weather-card" id="cuaca">
+                <div class="weather-loading">Mengambil lokasi cuaca...</div>
+            </div>
+            
         </div>
     </div>
     {{-- BOTTOM SIDEBAR ADS --}}
@@ -516,3 +579,64 @@
         }
     </style>
 </div>
+
+<script>
+    // Cek apakah browser mendukung GPS
+    if (!navigator.geolocation) {
+        document.getElementById("cuaca").innerHTML = `
+            <div class="weather-error">Browser tidak mendukung lokasi.</div>
+        `;
+    } else {
+
+        navigator.geolocation.getCurrentPosition(function(pos) {
+
+            let lat = pos.coords.latitude;
+            let lon = pos.coords.longitude;
+
+            // Request ke Laravel
+            fetch(`/cuaca?lat=${lat}&lon=${lon}`)
+                .then(response => response.json())
+                .then(data => {
+
+                    // Jika API error
+                    if (data.error) {
+                        document.getElementById("cuaca").innerHTML = `
+                            <div class="weather-title">
+                                <i class="bi bi-cloud-slash-fill"></i> Cuaca
+                            </div>
+                            <div class="weather-error">${data.error}</div>
+                        `;
+                        return;
+                    }
+
+                    // Tampilkan card
+                    document.getElementById("cuaca").innerHTML = `
+                        <div class="weather-title">
+                            <i class="bi bi-cloud-sun-fill"></i> Cuaca Sekitar Anda
+                        </div>
+
+                        <div class="weather-temp">${data.temp}°C</div>
+
+                        <div class="weather-meta">
+                            Kelembapan: ${data.humidity}% <br>
+                            Angin: ${data.wind} m/s
+                        </div>
+                    `;
+                })
+                .catch(err => {
+                    document.getElementById("cuaca").innerHTML = `
+                        <div class="weather-error">Gagal memuat data cuaca.</div>
+                    `;
+                });
+
+        }, function(error) {
+            // Jika user menolak GPS
+            document.getElementById("cuaca").innerHTML = `
+                <div class="weather-title">
+                    <i class="bi bi-geo-alt-fill"></i> Cuaca
+                </div>
+                <div class="weather-error">Lokasi tidak diizinkan.</div>
+            `;
+        });
+    }
+</script>
