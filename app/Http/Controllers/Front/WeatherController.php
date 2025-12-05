@@ -12,21 +12,37 @@ class WeatherController extends Controller
         $lat = $request->lat;
         $lon = $request->lon;
 
-        // Jika lokasi tidak ditemukan
         if (!$lat || !$lon) {
-            return response()->json(['error' => 'Lokasi tidak ditemukan'], 400);
+            return response()->json(['error' => 'Latitude atau Longitude tidak ditemukan'], 400);
         }
 
-        // API Open-Meteo
-        $url = "https://api.open-meteo.com/v1/forecast?latitude={$lat}&longitude={$lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto";
+        // Build URL aman
+        $url = "https://api.open-meteo.com/v1/forecast?" . http_build_query([
+            'latitude'  => $lat,
+            'longitude' => $lon,
+            'current'   => 'temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m',
+            'timezone'  => 'auto'
+        ]);
 
-        $data = Http::get($url)->json();
+        // Request ke API
+        $response = Http::timeout(10)->get($url);
+
+        if (!$response->successful()) {
+            return response()->json(['error' => 'Gagal menghubungi server cuaca'], 500);
+        }
+
+        $data = $response->json();
+
+        // Validasi data
+        if (!isset($data['current'])) {
+            return response()->json(['error' => 'Data cuaca tidak tersedia'], 500);
+        }
 
         return response()->json([
-            'temp'      => $data['current']['temperature_2m'],
-            'humidity'  => $data['current']['relative_humidity_2m'],
-            'wind'      => $data['current']['wind_speed_10m'],
-            'code'      => $data['current']['weather_code'],
+            'temp'     => $data['current']['temperature_2m'] ?? null,
+            'humidity' => $data['current']['relative_humidity_2m'] ?? null,
+            'wind'     => $data['current']['wind_speed_10m'] ?? null,
+            'code'     => $data['current']['weather_code'] ?? null,
         ]);
     }
 }
