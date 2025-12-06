@@ -244,104 +244,70 @@
     }
 
     /* WEATHER CARD */
-/* WEATHER CARD WITH NEON BORDER */
-.weather-card {
-    position: relative;
-    background: #0f1c30;
-    border-radius: 20px;
-    padding: 25px;
-    overflow: hidden;
-    color: #ffffff;
-    z-index: 1;
-}
+    .weather-card {
+        background: linear-gradient(135deg, #4caf50, #2196f3);
+        border-radius: 20px;
+        padding: 30px;
+        color: white;
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+    }
 
-/* GARIS MENYALA */
-.weather-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    padding: 2px;
-    background: linear-gradient(
-        135deg,
-        rgba(20, 128, 201, 0.9),
-        rgba(0, 195, 255, 0.5),
-        rgba(0, 225, 255, 0.9)
-    );
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    animation: glow 3s linear infinite;
-    z-index: -1;
-}
-
-/* ANIMASI GLOW */
-@keyframes glow {
-    0% { opacity: 0.8; filter: blur(2px); }
-    50% { opacity: 1; filter: blur(4px); }
-    100% { opacity: 0.8; filter: blur(2px); }
-}
-
-/* FLEX */
-.weather-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* TEMP */
-.weather-left .weather-temp {
-    font-size: 3rem;
-    font-weight: 800;
-}
-
-/* DESC */
-.weather-desc {
-    text-transform: capitalize;
-    color: #d1d1d1;
-    margin-top: -5px;
-}
-
-/* LOCATION */
-.weather-location {
-    margin-top: 4px;
-    color: #b8c4d8 !important;
-}
-
-/* ICON */
-.weather-icon img {
-    width: 85px;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
-    transition: 0.3s ease;
-}
-
-/* FADE */
-.fade-icon {
-    opacity: 0;
-}
-.fade-icon.show {
-    opacity: 1;
-}
-
-/* MOBILE */
-@media (max-width: 576px) {
+    /* FLEX UTAMA */
     .weather-info {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    .weather-left .weather-temp {
-        font-size: 2.5rem;
+    /* SUHU BESAR */
+    .weather-temp {
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1;
     }
 
+    /* DESKRIPSI CUACA */
+    .weather-desc {
+        font-size: 1.1rem;
+        margin-top: 5px;
+        opacity: 0.85;
+    }
+
+    /* LOKASI */
+    .weather-location {
+        font-size: 0.9rem;
+        margin-top: 3px;
+        opacity: 0.8;
+    }
+
+    /* ICON */
     .weather-icon img {
-        width: 70px;
+        width: 90px;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+        opacity: 0;
+        transition: opacity 0.4s ease;
     }
-}
 
+    .weather-icon img.show {
+        opacity: 1;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 576px) {
+        .weather-info {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+        }
+
+        .weather-temp {
+            font-size: 3rem;
+        }
+
+        .weather-icon img {
+            width: 70px;
+        }
+    }
 </style>
 
 <!-- Sidebar -->
@@ -593,7 +559,23 @@
             </div>
 
             <!-- Weather -->
-            <div class="weather-card shadow-sm" id="cuaca">
+            <div class="weather-card" id="cuaca">
+                <div class="weather-info">
+                    <div class="weather-left">
+                        <div class="weather-temp" id="weather-temp">
+                            <span class="spinner-border spinner-border-sm"></span> Memuat...
+                        </div>
+                        <div class="weather-desc" id="weather-desc">-</div>
+                        <div class="weather-location" id="weather-location">Mendeteksi lokasi...</div>
+                    </div>
+
+                    <div class="weather-icon">
+                        <img id="weather-icon" src="" alt="Weather Icon">
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="weather-card shadow-sm" id="cuaca">
                 <div class="weather-info">
                     <div class="weather-left">
                         <div class="weather-temp" id="weather-temp">
@@ -608,7 +590,7 @@
                         <img id="weather-icon" src="" alt="Weather Icon" class="fade-icon" style="display:none;">
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
