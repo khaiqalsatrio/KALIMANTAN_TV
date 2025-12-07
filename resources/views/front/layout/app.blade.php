@@ -507,6 +507,20 @@
                 font-size: 20px;
             }
         }
+
+        .top-info-list {
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+        }
+
+        .top-info-list li {
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+        }
+
+        .top-info-list::-webkit-scrollbar {
+    display: none;
+}
     </style>
 </head>
 
@@ -617,6 +631,7 @@
                         <li><a href="{{ route('contact') }}">Contact</a></li>
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
                         <li><a href="{{ route('about') }}">About</a></li>
+                        <li><a href="{{ route('photo_gallery') }}">Team Member</a></li>
                     </ul>
                 </div>
                 <div class="footer-item">

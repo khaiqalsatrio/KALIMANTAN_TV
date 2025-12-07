@@ -254,11 +254,11 @@
                     </li>
 
                     <!-- ANGOTA -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2" href="{{ route('photo_gallery') }}">
                             <i class="bi bi-person"></i> Daftar Angota
                         </a>
-                    </li>
+                    </li> -->
 
                 </ul>
             </div>
@@ -313,11 +313,11 @@
                 </li>
 
                 <!-- ANGOTA -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2" href="{{ route('photo_gallery') }}">
                         <i class="bi bi-person"></i> Daftar Angota
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
