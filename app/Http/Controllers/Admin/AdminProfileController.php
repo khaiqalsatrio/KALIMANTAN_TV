@@ -41,23 +41,32 @@ class AdminProfileController extends Controller
                 'photo' => 'image|mimes:jpg,jpeg,png,gif'
             ]);
 
-            // Hapus foto lama jika ada
-            $oldPhoto = public_path('uploads/' . $admin_data->photo);
+            // Path root dari server (production friendly)
+            $rootPath = rtrim($_SERVER['DOCUMENT_ROOT'], '/') . '/uploads/';
 
-            if ($admin_data->photo && file_exists($oldPhoto)) {
-                unlink($oldPhoto);
+            // Hapus foto lama jika ada
+            if ($admin_data->photo) {
+                $oldPhoto = $rootPath . $admin_data->photo;
+
+                if (file_exists($oldPhoto)) {
+                    unlink($oldPhoto);
+                }
             }
 
             // Upload foto baru
             $ext = $request->file('photo')->extension();
             $final_name = 'admin.' . $ext;
 
-            $request->file('photo')->move(public_path('uploads/'), $final_name);
+            // Buat folder jika belum ada
+            if (!is_dir($rootPath)) {
+                mkdir($rootPath, 0755, true);
+            }
+
+            // Simpan file
+            $request->file('photo')->move($rootPath, $final_name);
 
             $admin_data->photo = $final_name;
         }
-
-
 
         $admin_data->update();
         return redirect()->back()->with('success', 'Informasi profil Anda telah berhasil diubah.');
