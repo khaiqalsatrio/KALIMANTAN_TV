@@ -661,7 +661,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2024 Kalimantan TV. All rights reserved.</p>
+                <p>&copy; 2025 Kalimantan TV. All rights reserved.</p>
             </div>
         </div>
     </div>
